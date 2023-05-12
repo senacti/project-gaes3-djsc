@@ -1,7 +1,7 @@
 # DJSC
-## Obejtivo Genereal
+## Obejtivo General
 ## Objetivos Especificos
-## Plantamiento del problema 
-## Justificacion 
+## Plantamiento del Problema 
+## Justificación 
 ## Alcance
 ## Integrantes
