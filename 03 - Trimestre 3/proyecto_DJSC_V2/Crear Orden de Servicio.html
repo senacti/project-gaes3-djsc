@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/STYLEJF.CSS">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>CREACION DE ORDEN DE SERVICIO</title>
+</head>
+<body>
+    <section class="form-register">
+        <center style="background: black;"><h4 style="color: white; background: none;" >CREACION DE ORDEN DE SERVICIO</h4></center>
+         <div style="color:black; background: none;">
+            INFORMACION REQUERIDA
+        </div>
+        <input class="controlsj1" type="text" placeholder="Ingrese Nombre de Usuario" required id="Nombre de usuario">
+        <span style="background: none;" class="col-1" id="Nombre de usuarioOK"></span>
+        <input class="controlsj2" type="tel" placeholder="Ingrese el numero de contacto" required id="numero de contacto">
+        <span style="background: none;" class="col-1" id="numero de contactoOK"></span>
+        <input class="controlsj3" type="email" placeholder="Ingrese su Email" required id="Email">
+        <span style="background: none;" class="col-1" id="emailOK"></span>
+        <input class="controlsj4" type="number" placeholder="Ingrese Cantidad" required id="Cantidad de Productos">
+        <span style="background: none;" class="col-1" id="Cantidad de ProductosOK"></span>
+        <input class="controlsj5" type="text" placeholder="Ingrese detalles" required id="detalles del Servicio">
+        <span style="background: none;" class="col-1" id="detalles del ServicioOK"></span>
+        <div style="background: none;">
+        <input class="botons1"data-bs-toggle="modal" data-bs-target="#myModal" type="submit" value="Guardar Orden">
+    </div>
+      <div class="modal " id="myModal">
+       <div style="background: white;" class="modal-dialog modal-lg">
+         <div style="background: white;" class="modal-content">
+     
+           <!-- Modal Header -->
+           <div style="background: white;"class="modal-header">
+             
+             <a href="servicios.html"><button type="button" class="btn-close" data-bs-dismiss="modal"></button></a>
+           </div>
+     
+           <!-- Modal body -->
+           <div style="background: white;" class="modal-body">
+             <div style="background: white;"style="display: flex;">
+             
+               <center><div style=" background: white;display: inline-block; margin-left: 5%;">
+               <center> <img class="check" src="imagenes/cheque.png" alt=""></center>
+               <center><p style="background: none;">CONFIRMADO </p>
+               <p style="background: none;">Su solicitud se guardo en el sistema de informacion con exito</p></center>
+             </div></center>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+
+      </section>
+      <script src="js/validacionFJ2.js"></script>
+</body>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+</html>

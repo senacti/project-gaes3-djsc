@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <title>consultar contratos sub empresas</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand"></a>
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="search" placeholder="nombre materia prima" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">buscar</button>
+        </form>
+      </nav>
+    <table class="table">
+       
+        <thead>
+          <tr>
+            
+            <th scope="col">id materia prima</th>
+            <th scope="col">tipo materia prima</th>
+            <th scope="col">cantidad disponible</th>
+         
+            
+          </tr>
+        </thead>
+    
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>pantalones</td>
+            <td>20</td>
+        
+            <th>  
+           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                abrir
+             </button>
+             
+             
+             <!-- The Modal -->
+             <div class="modal " id="myModal">
+               <div class="modal-dialog modal-lg">
+                 <div class="modal-content">
+             
+                   <!-- Modal Header -->
+                   <div class="modal-header">
+                     
+                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                   </div>
+             
+                   <!-- Modal body -->
+                   <div class="modal-body">
+                     <div style="display: flex;">
+                     <div class="card" style="width: 20rem;height: 80%">
+                         <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" alt="...">
+                         
+                       </div>
+                       <div style="display: inline-block; margin-left: 5%;">
+                        <div style="display: flex;">
+                      <p style="color: red;">tipo:</p>
+                      <p style="margin-left: 5%;">pantalones</p>
+                    </div>
+                    <div style="display: inline-block; margin-left: 5%;">
+                        <div style="display: flex;">
+                      <p style="color: red;">cantidad:</p>
+                      <p style="margin-left: 5%;">20</p>
+                    </div>
+                    <div style="display: inline-block; margin-left: 5%;">
+                        <div style="display: flex;">
+                      <p style="color: red;">color:</p>
+                      <p style="margin-left: 5%;">blanco</p>
+
+                    </div>
+                    
+                        <p style="color: red;">cantidad actual:</p>
+                        <input  class="controls ms-0" type="number" placeholder="Ingrese la cantidad" required id="Nombre de usuario">
+                        
+                     
+                  
+                     </div>
+                   </div>
+             
+                   <!-- Modal footer -->
+                   <div class="modal-footer">
+                    
+                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">modificar cantidad</button>
+                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                   </div>
+             
+                 </div>
+               </div>
+               </div>
+               </div>
+             </div></th>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>camisas</td>
+            <td>14</td>
+       
+            <th><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal1">
+                abrir
+             </button>
+             
+             
+             <!-- The Modal -->
+             <div class="modal " id="myModal1">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                      </div>
+                
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        <div style="display: flex;">
+                        <div class="card" style="width: 20rem;height: 80%">
+                            <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" alt="...">
+                            
+                          </div>
+                          <div style="display: inline-block; margin-left: 5%;">
+                           <div style="display: flex;">
+                         <p style="color: red;">tipo:</p>
+                         <p style="margin-left: 5%;">camisas</p>
+                       </div>
+                       <div style="display: inline-block; margin-left: 5%;">
+                           <div style="display: flex;">
+                         <p style="color: red;">cantidad:</p>
+                         <p style="margin-left: 5%;">14</p>
+                       </div>
+                       <div style="display: inline-block; margin-left: 5%;">
+                           <div style="display: flex;">
+                         <p style="color: red;">color:</p>
+                         <p style="margin-left: 5%;">verde</p>
+   
+                       </div>
+                       
+                           <p style="color: red;">cantidad actual:</p>
+                           <input  class="controls ms-0" type="number" placeholder="Ingrese la cantidad" required id="Nombre de usuario">
+                           
+                        
+                     
+                        </div>
+                      </div>
+                
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                       
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">modificar cantidad</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                      </div>
+                
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+                </div></th>
+             
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>tinta</td>
+            <td>15</td>
+         
+      
+            <th><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal2">
+                abrir
+             </button>
+             
+             
+             <!-- The Modal -->
+             <div class="modal " id="myModal2">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                
+                      <!-- Modal Header -->
+                      <div class="modal-header">
+                        
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                      </div>
+                
+                      <!-- Modal body -->
+                      <div class="modal-body">
+                        <div style="display: flex;">
+                        <div class="card" style="width: 20rem;height: 80%;">
+                            <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" alt="...">
+                            
+                          </div>
+                          <div style="display: inline-block; margin-left: 5%;">
+                           <div style="display: flex;">
+                         <p style="color: red;">tipo:</p>
+                         <p style="margin-left: 5%;">tinta</p>
+                       </div>
+                       <div style="display: inline-block; margin-left: 5%;">
+                           <div style="display: flex;">
+                         <p style="color: red;">cantidad:</p>
+                         <p style="margin-left: 5%;">15</p>
+                       </div>
+                       <div style="display: inline-block; margin-left: 5%;">
+                           <div style="display: flex;">
+                         <p style="color: red;">color:</p>
+                         <p style="margin-left: 5%;">rojo</p>
+   
+                       </div>
+                       
+                           <p style="color: red;">cantidad actual:</p>
+                           <input  class="controls ms-0" type="number" placeholder="Ingrese la cantidad" required id="Nombre de usuario">
+                           
+                        
+                     
+                        </div>
+                      </div>
+                
+                      <!-- Modal footer -->
+                      <div class="modal-footer">
+                       
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">modificar cantidad</button>
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
+                      </div>
+                
+                    </div>
+                  </div>
+                  </div>
+                  </div>
+                </div></th>
+          </tr>
+        </tbody>
+      </table>
+</body>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
+</html>
