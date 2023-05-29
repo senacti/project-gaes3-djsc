@@ -18,4 +18,3 @@ Con este proyecto contribuiremos en dar solución a los diferentes inconveniente
 - Jhoan Sebastián Pinilla Acosta
 - Jesús Alberto Castellanos Romero
 - Juan Pablo González Ayala
-- Joan Jairo Peña Garcia
