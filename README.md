@@ -2,7 +2,6 @@
 ## Obejtivo General
 Desarrollar un software para la empresa “La Plancha de Pancha” el cual permita mejorar la efectividad y la calidad del servicio de la empresa así como reducir gastos y mantener la información segura y guardada.
 ## Objetivos Especificos
-- Registrar y organizar la administración del inventario de las piezas consumibles 
 - Facilitar un listado con los diferentes servicios que proporciona la empresa
 - Administrar el proceso de ventas online para la empresa
 - Validar un seguimiento a través del sistema debido a la producción de la empresa
