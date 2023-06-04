@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="{{ asset('CSS/STYLEj.CSS')}}">
     <link rel="stylesheet" href="{{ asset('CSS/STYLE2J.CSS')}}">
     <link rel="stylesheet" href="{{ asset('CSS/bootstrap.min.css')}}">
-    <title>INICIO SESION</title>
+    <title>RECUPERAR CONTRASEÑA</title>
     
 </head>
 
@@ -55,26 +55,47 @@
           </nav>
     </header>
     <section>
-        <center><div class="container">
+        <center><div style="width:70% " class="container">
             <div class="wrapper">
-              <div class="title"><span style="background: none;">INICIO DE SESION</span></div>
-              <form action="{{url('/dashboard')}}">
-                <div class="mb-4 row w-75">
-                    <input type="text" placeholder="Email" required id="Email">
+              <div class="title"><span style="background: none;">RECUPERAR CONTRASEÑA</span></div>
+              <form action="{{url('/iniciosesion')}}">
+                <div class="row w-75">
+                    <a>Ingrese Email que uso en el Registro</a>
+                    <input type="text" placeholder="Ingrese su Email" required id="Email">
                     <span class="col-1" id="emailOK"></span>
                 </div>
-                <div class="mb-4 row w-75">
-                  <input type="password" placeholder="Contraseña" required id="Contraseña">
-                  <span class="col-1" id="contraseñaOK"></span>
+                <div class=" row w-75">
                 </div>
-                <div class="pass"><a href="{{url('/recuperarcontraseña')}}">¿olvido su contraseña?</a></div>
                 <div class=" w-75 row button">
-                  <input type="submit" value="INGRESAR">
+                  <input data-bs-toggle="modal" data-bs-target="#myModal" type="submit" value="RECUPERAR CONTRASEÑA">
                 </div>
-                <p class=" me-5" style="background: none;"><input type="checkbox" name="RECORDARME"> RECORDARME</p>
-                <div class="signup-link">¿No es usuario? <a href="{{url('/registrarse')}}">Registrese Ahora</a></div>
+                <div class="signup-link">¿Talvez no tiene cuenta? <a href="{{url('/registrarse')}}">Registrese Ahora</a></div>
               </form>
             </div>
+            <div class="modal " id="myModal">
+                <div style="background: white;" class="modal-dialog modal-lg">
+                  <div style="background: white;" class="modal-content">
+              
+                    <!-- Modal Header -->
+                    <div style="background: white;"class="modal-header">
+                      
+                      <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+              
+                    <!-- Modal body -->
+                    <div style="background: white;" class="modal-body">
+                      <div style="background: white;"style="display: flex;">
+                      
+                        <div style=" background: white;display: inline-block; margin-left: 5%;">
+                        <center> <img class="check" src="img/check.png" alt=""></center>
+                        <p style="background: none;">CONFIRMADO </p>
+                        <p style="background: none;">Su contraseña actual se ha enviado a su correo electronico</p>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div></center>     
     </section>
     <script src="{{ asset('JS/validacionJ.js')}}"></script>

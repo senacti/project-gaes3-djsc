@@ -100,3 +100,6 @@ Route::get('/RegistroContrato', function () {
 Route::get('/servicios', function () {
     return view('servicios');
 });
+Route::get('/recuperarcontraseña', function () {
+    return view('recuperarcontraseña');
+});
