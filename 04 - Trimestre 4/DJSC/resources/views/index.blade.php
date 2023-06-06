@@ -40,8 +40,8 @@
               </li>
             </ul>
               <div>
-                <a href="{{url('/iniciosesion')}}"><button type="button" class="btn btn-outline-dark">Iniciar sesión</button></a>
-                <a href="{{url('/registrarse')}}"> <button type="button" class="btn btn-outline-dark">Registrarse</button></a>
+                <a href="{{url('login')}}"><button type="button" class="btn btn-outline-dark">Iniciar sesión</button></a>
+                <a href="{{url('register')}}"> <button type="button" class="btn btn-outline-dark">Registrarse</button></a>
               </div>
             </form>
           </div>

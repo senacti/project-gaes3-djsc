@@ -64,8 +64,8 @@ Route::get('/generarinformesp', function () {
 Route::get('/generarinformesS', function () {
     return view('generarinformesS');
 });
-Route::get('/home', function () {
-    return view('home');
+Route::get('/db', function () {
+    return view('db');
 });
 Route::get('/iniciosesion', function () {
     return view('iniciosesion');
@@ -100,6 +100,7 @@ Route::get('/RegistroContrato', function () {
 Route::get('/servicios', function () {
     return view('servicios');
 });
-Route::get('/recuperarcontraseña', function () {
-    return view('recuperarcontraseña');
-});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
