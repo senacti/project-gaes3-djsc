@@ -18,8 +18,8 @@
                         <h4 style="color:white;background: none;">REALIZAR ABONO</h4>
                     </div>
                 </center>
-                <input class="controls" type="text" placeholder="Ingrese su Nombre" required id="Nombre de usuario">
-                <span class="col-1" id="Nombre de usuarioOK"></span>
+                <input class="controls" type="text" placeholder="Ingrese su Nombre" required id="Nombredeusuario">
+                <span class="col-1" id="NombredeusuarioOK"></span>
                 <input class="controls" type="number" placeholder="Ingrese su DNI" required id="DNI">
                 <span class="col-1" id="DNIOK"></span>
                 <input class="controls" type="tel" placeholder="Ingrese numero de contacto" required id="contacto">
@@ -37,7 +37,7 @@
                 <input class="botons" type="submit" value="Confirmar Abono">
             </form>
         </section>
-        <script src="{{ asset('JS/validacionJ2.js')}}"></script>
+        <script src="{{ asset('JS/validacionJ.js')}}"></script>
     </div>
     
 </body>
