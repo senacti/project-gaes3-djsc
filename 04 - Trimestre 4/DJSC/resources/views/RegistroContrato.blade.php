@@ -20,16 +20,10 @@
         <span style="background: none;" class="col-1" id="NombredeusuarioOK"></span>
         <input class="controlsh2" type="tel" placeholder="Ingrese el teléfono de contacto" required id="numerodecontacto">
         <span style="background: none;" class="col-1" id="numerodecontactoOK"></span>
-        <input class="controlsh3" type="email" placeholder="Ingrese su Email" required id="Email">
+        <input class="controlsh3" type="email" placeholder="Ingrese su Email corporativo" required id="Email">
         <span style="background: none;" class="col-1" id="emailOK"></span>
         <input class="controlsh5" type="text" placeholder="Ingrese detalles del producto" required id="detallesdelServicio">
         <span style="background: none;" class="col-1" id="detallesdelServicioOK"></span>
-        <input class="controlsh1" type="text" placeholder="Ingrese nombre del administrador" required id="Nombredeadministrador">
-        <span style="background: none;" class="col-1" id="NombredeadministradorOK"></span>
-        <input class="controlsh2" type="tel" placeholder="Ingrese el telefono del administrador" required id="numerodetelefono">
-        <span style="background: none;" class="col-1" id="numerodetelefonoOK"></span>
-        <input class="controlsh4" type="number" placeholder="Ingrese DNI del administrador" required id="DNI">
-        <span style="background: none;" class="col-1" id="DNIOK"></span>
         <div style="background: none;">
             <input class="botons2" type="submit" value="Confirmar">
         </div>

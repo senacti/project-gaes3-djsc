@@ -58,14 +58,23 @@
         <h4 style="background: none;" >Formulario Registro</h4>
         <input class="controls" type="text" placeholder="Ingrese su Nombre" required id="Nombre de usuario" name="name" value="{{ old('name') }}">
         <span class="col-1" id="Nombre de usuarioOK"></span>
-        <input class="controls" type="text" placeholder="Ingrese su Apellido" required id="Apellido de usuario">
-        <span class="col-1" id="Apellido de usuarioOK"></span>
+        <input class="controls" type="text" placeholder="Ingrese su direccion" required id="direccion">
+        <span class="col-1" id="direccionOK"></span>
+        <input class="controls" type="tel" placeholder="Ingrese el telefono" required id="numerodetelefono">
+        <span style="background: none;" class="col-1" id="numerodetelefonoOK"></span>
         <input class="controls" type="text" placeholder="Ingrese su Email" required id="Email" name="email" value="{{ old('email') }}">
         <span class="col-1" id="emailOK"></span>
         <input class="controls" type="password" placeholder="Ingrese su Contraseña" required id="Contraseña" name="password">
         <span class="col-1" id="contraseñaOK"></span>
         <input id="password-confirm" type="password" class="controls" name="password_confirmation" required autocomplete="new-password" placeholder="repita la contraseña">
-       
+        <div>
+          <select>
+              <option value="">-Seleccione su genero-</option>
+              <option value="1">FEMENINO</option>
+              <option value="2">MASCULINO</option>
+              <option value="3">OTRO</option>
+          </select>
+      </div>
         <button type="submit" class="botons">registrarse </button>
         <p style="background: none;"><a style="background: none;" href="{{url('login')}}">¿Ya posee una Cuenta?</a></p>
       </section>

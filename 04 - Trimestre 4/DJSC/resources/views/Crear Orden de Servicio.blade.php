@@ -14,12 +14,6 @@
          <div style="color:black; background: none;">
             INFORMACION REQUERIDA
         </div>
-        <input class="controlsj1" type="text" placeholder="Ingrese Nombre de Usuario" required id="Nombredeusuario">
-        <span style="background: none;" class="col-1" id="NombredeusuarioOK"></span>
-        <input class="controlsj2" type="tel" placeholder="Ingrese el numero de contacto" required id="numerodecontacto">
-        <span style="background: none;" class="col-1" id="numerodecontactoOK"></span>
-        <input class="controlsj3" type="email" placeholder="Ingrese su Email" required id="Email">
-        <span style="background: none;" class="col-1" id="emailOK"></span>
         <input class="controlsj4" type="number" placeholder="Ingrese Cantidad" required id="CantidaddeProductos" name="cantidad">
         <span style="background: none;" class="col-1" id="CantidaddeProductosOK"></span>
         <input class="controlsj5" type="text" placeholder="Ingrese detalles" required id="detallesdelServicio" name="descripcion">

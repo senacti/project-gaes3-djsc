@@ -20,8 +20,6 @@
         <span style="background: none;" class="col-1" id="NombredelServicioOK"></span>
         <input class="controls2" type="text" placeholder="Ingrese Descripcion del Servicio" required id="DescripciondelServicio">
         <span style="background: none;" class="col-1" id="DescripciondelServicioOK"></span>
-        <input class="controls3" type="number" placeholder="Ingrese Cantidad de Productos" required id="CantidaddeProductos">
-        <span style="background: none;" class="col-1" id="CantidaddeProductosOK"></span>
         <input class="controls4" type="text" placeholder="Ingrese el Tipo de Servicio" required id="TipodeServicio">
         <span style="background: none;" class="col-1" id="TipodeServicioOK"></span>
         <div style="background: none;">

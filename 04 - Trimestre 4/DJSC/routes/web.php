@@ -67,9 +67,6 @@ Route::get('/generarinformesS', function () {
 Route::get('/db', function () {
     return view('db');
 });
-Route::get('/iniciosesion', function () {
-    return view('iniciosesion');
-});
 Route::get('/pedidos', function () {
     return view('pedidos');
 });
@@ -87,9 +84,6 @@ Route::get('/registrarActividades', function () {
 });
 Route::get('/registrarOrdenProduccion', function () {
     return view('registrarOrdenProduccion');
-});
-Route::get('/registrarse', function () {
-    return view('registrarse');
 });
 Route::get('/Registro de Servicio', function () {
     return view('Registro de Servicio');

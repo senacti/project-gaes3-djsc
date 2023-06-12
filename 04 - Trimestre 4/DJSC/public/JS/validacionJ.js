@@ -142,19 +142,6 @@ document.getElementById('Contraseña').addEventListener('input', function(event)
 });
 });
 document.addEventListener("DOMContentLoaded", function() {
-document.getElementById('Apellidodeusuario').addEventListener('input', function(event) {
-  campo = event.target;
-  valido = document.getElementById('ApellidodeusuarioOK');
-      
-  usuarioRegex = /^[a-zA-ZñÑáéíóúÁÉÍÓÚ]+$/i;
-  if (usuarioRegex.test(campo.value)) {
-    valido.innerText = "válido";
-  } else {
-    valido.innerText = "inválido";
-  }
-});
-});
-document.addEventListener("DOMContentLoaded", function() {
 document.getElementById('numerodeidentificacion').addEventListener('input', function(event) {
   campo = event.target;
   valido = document.getElementById('numerodeidentificacionOK');
@@ -167,6 +154,19 @@ document.getElementById('numerodeidentificacion').addEventListener('input', func
   }
 });
 });
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById('direccion').addEventListener('input', function(event) {
+    campo = event.target;
+    valido = document.getElementById('direccionOK');
+        
+    usuarioRegex = /^(?:Calle|Carrera|Avenida|Transversal|Diagonal)\.\s\d{1,5}\s#\d{1,5},\s[a-zA-Záéíóúñ\s]+$/;
+    if (usuarioRegex.test(campo.value)) {
+      valido.innerText = "válido";
+    } else {
+      valido.innerText = "inválido";
+    }
+  });
+  });
 document.addEventListener("DOMContentLoaded", function() {
 document.getElementById("DNI").addEventListener("input", function (event) {
   campo = event.target;

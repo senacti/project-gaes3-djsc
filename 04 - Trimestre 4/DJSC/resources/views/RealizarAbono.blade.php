@@ -18,12 +18,6 @@
                         <h4 style="color:white;background: none;">REALIZAR ABONO</h4>
                     </div>
                 </center>
-                <input class="controls" type="text" placeholder="Ingrese su Nombre" required id="Nombredeusuario">
-                <span class="col-1" id="NombredeusuarioOK"></span>
-                <input class="controls" type="number" placeholder="Ingrese su DNI" required id="DNI">
-                <span class="col-1" id="DNIOK"></span>
-                <input class="controls" type="tel" placeholder="Ingrese numero de contacto" required id="contacto">
-                <span class="col-1" id="contactoOK"></span>
                 <input class="controls" type="number" placeholder="Ingrese cantidad de abono" required id="cantidad">
                 <span class="col-1" id="cantidadOK"></span>
                 <div>
