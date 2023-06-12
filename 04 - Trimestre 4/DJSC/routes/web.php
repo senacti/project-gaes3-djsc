@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Controllers\SolicitudController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -104,3 +104,9 @@ Route::get('/servicios', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// rutas orden de servicio
+Route::get('/Solicitud', [SolicitudController::class, 'index'])->name('ordenservicio');
+
+Route::get('/Crear Orden de Servicio', [SolicitudController::class, 'create']);

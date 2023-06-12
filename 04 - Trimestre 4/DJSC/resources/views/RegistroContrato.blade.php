@@ -16,20 +16,20 @@
          <center style="margin: 10px;"><div style="color:white; background: black;">
             INFORMACION REQUERIDA
         </div></center>
-        <input class="controlsh1" type="text" placeholder="Ingrese Nombre de sub empresa" required id="Nombre de usuario">
-        <span style="background: none;" class="col-1" id="Nombre de usuarioOK"></span>
-        <input class="controlsh2" type="tel" placeholder="Ingrese el teléfono de contacto" required id="numero de contacto">
-        <span style="background: none;" class="col-1" id="numero de contactoOK"></span>
+        <input class="controlsh1" type="text" placeholder="Ingrese Nombre de sub empresa" required id="Nombredeusuario">
+        <span style="background: none;" class="col-1" id="NombredeusuarioOK"></span>
+        <input class="controlsh2" type="tel" placeholder="Ingrese el teléfono de contacto" required id="numerodecontacto">
+        <span style="background: none;" class="col-1" id="numerodecontactoOK"></span>
         <input class="controlsh3" type="email" placeholder="Ingrese su Email" required id="Email">
         <span style="background: none;" class="col-1" id="emailOK"></span>
-        <input class="controlsh5" type="text" placeholder="Ingrese detalles del producto" required id="detalles del Servicio">
-        <span style="background: none;" class="col-1" id="detalles del ServicioOK"></span>
-        <input class="controlsh1" type="text" placeholder="Ingrese nombre del administrador" required id="Nombre de administrador">
-        <span style="background: none;" class="col-1" id="Nombre de administradorOK"></span>
-        <input class="controlsh2" type="tel" placeholder="Ingrese el telefono del administrador" required id="numero de telefono">
-        <span style="background: none;" class="col-1" id="numero de telefonoOK"></span>
-        <input class="controlsh4" type="number" placeholder="Ingrese DNI del administrador" required id="Cantidad de Productos">
-        <span style="background: none;" class="col-1" id="Cantidad de ProductosOK"></span>
+        <input class="controlsh5" type="text" placeholder="Ingrese detalles del producto" required id="detallesdelServicio">
+        <span style="background: none;" class="col-1" id="detallesdelServicioOK"></span>
+        <input class="controlsh1" type="text" placeholder="Ingrese nombre del administrador" required id="Nombredeadministrador">
+        <span style="background: none;" class="col-1" id="NombredeadministradorOK"></span>
+        <input class="controlsh2" type="tel" placeholder="Ingrese el telefono del administrador" required id="numerodetelefono">
+        <span style="background: none;" class="col-1" id="numerodetelefonoOK"></span>
+        <input class="controlsh4" type="number" placeholder="Ingrese DNI del administrador" required id="DNI">
+        <span style="background: none;" class="col-1" id="DNIOK"></span>
         <div style="background: none;">
             <input class="botons2" type="submit" value="Confirmar">
         </div>
@@ -64,7 +64,7 @@
      </div>
 
       </section>
-      <script src="{{ asset('JS/validacionFJ2.js')}}"></script>
+      <script src="{{ asset('JS/validacionJ.js')}}"></script>
 </body>
 <script src="{{ asset('JS/bootstrap.min.js')}}"></script>
 <script src="{{ asset('JS/bootstrap.bundle.min.js')}}"></script>

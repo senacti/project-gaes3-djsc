@@ -78,7 +78,7 @@
           </div></center>     
     </section>
     <script src="{{ asset('JS/validacionJ.js')}}"></script>
-</body>
+  </body>
 <script src="{{ asset('JS/bootstrap.min.js')}}"></script>
 <script src="{{ asset('JS/bootstrap.bundle.min.js')}}"></script>
 </html>

@@ -54,10 +54,10 @@
       <form action="{{url('/iniciosesion')}}">
     <section class="form-register">
         <h4 style="background: none;" >Formulario Registro</h4>
-        <input class="controls" type="text" placeholder="Ingrese su Nombre" required id="Nombre de usuario">
-        <span class="col-1" id="Nombre de usuarioOK"></span>
-        <input class="controls" type="text" placeholder="Ingrese su Apellido" required id="Apellido de usuario">
-        <span class="col-1" id="Apellido de usuarioOK"></span>
+        <input class="controls" type="text" placeholder="Ingrese su Nombre" required id="Nombredeusuario">
+        <span class="col-1" id="NombredeusuarioOK"></span>
+        <input class="controls" type="text" placeholder="Ingrese su Apellido" required id="Apellidodeusuario">
+        <span class="col-1" id="ApellidodeusuarioOK"></span>
         <input class="controls" type="text" placeholder="Ingrese su Email" required id="Email">
         <span class="col-1" id="emailOK"></span>
         <input class="controls" type="password" placeholder="Ingrese su Contraseña" required id="Contraseña">

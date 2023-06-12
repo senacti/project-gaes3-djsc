@@ -16,14 +16,14 @@
         <center style="background: black;"><div style="color: white;margin: 20px; background: none;">
             INFORMACION PRINCIPAL
         </div></center>
-        <input class="controls1" type="text" placeholder="Ingrese Nombre del Servicio" required id="Nombre del Servicio">
-        <span style="background: none;" class="col-1" id="Nombre del ServicioOK"></span>
-        <input class="controls2" type="text" placeholder="Ingrese Descripcion del Servicio" required id="Descripcion del Servicio">
-        <span style="background: none;" class="col-1" id="Descripcion del ServicioOK"></span>
-        <input class="controls3" type="number" placeholder="Ingrese Cantidad de Productos" required id="Cantidad de Productos">
-        <span style="background: none;" class="col-1" id="Cantidad de ProductosOK"></span>
-        <input class="controls4" type="text" placeholder="Ingrese el Tipo de Servicio" required id="Tipo de Servicio">
-        <span style="background: none;" class="col-1" id="Tipo de ServicioOK"></span>
+        <input class="controls1" type="text" placeholder="Ingrese Nombre del Servicio" required id="NombredelServicio">
+        <span style="background: none;" class="col-1" id="NombredelServicioOK"></span>
+        <input class="controls2" type="text" placeholder="Ingrese Descripcion del Servicio" required id="DescripciondelServicio">
+        <span style="background: none;" class="col-1" id="DescripciondelServicioOK"></span>
+        <input class="controls3" type="number" placeholder="Ingrese Cantidad de Productos" required id="CantidaddeProductos">
+        <span style="background: none;" class="col-1" id="CantidaddeProductosOK"></span>
+        <input class="controls4" type="text" placeholder="Ingrese el Tipo de Servicio" required id="TipodeServicio">
+        <span style="background: none;" class="col-1" id="TipodeServicioOK"></span>
         <div style="background: none;">
         <input class="botons1"data-bs-toggle="modal" data-bs-target="#myModal" type="submit" value="Registrar Servicio">
     </div>
@@ -54,8 +54,8 @@
 
       </section>
     </form>
-      <script src="{{ asset('JS/validacionFJ.js')}}"></script>
-</body>
+    <script src="{{ asset('JS/validacionJ.js')}}"></script>
+  </body>
 <script src="{{ asset('JS/bootstrap.min.js')}}"></script>
 <script src="{{ asset('JS/bootstrap.bundle.min.js')}}"></script>
 </html>

@@ -58,7 +58,7 @@
             
                   <!-- Modal footer -->
                   <div class="modal-footer">
-                    <a href="{{url('/Crear Orden de Servicio')}}"><button   type="button" class="btn btn-primary" >
+                    <a href="{{ route('ordenservicio') }}"><button   type="button" class="btn btn-primary" >
                       crear orden de servicio
                     </button></a>
                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
