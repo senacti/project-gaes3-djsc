@@ -25,9 +25,9 @@
           </div>
           <ul class="list-unstyled px-2">
             <li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="#"target="pedidos"><i class="fas fa-home"></i>inicio</a></li>
-            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/servicios')}}"target="pedidos"><i class="fas fa-search"></i>consultar servicios</a></li>
+            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{route('servicios')}}"target="pedidos"><i class="fas fa-search"></i>consultar servicios</a></li>
 
-            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/abonos')}}"target="pedidos"><i class="fas fa-shopping-cart"></i>consultar compras</a></li>
+            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{route('abonos')}}"target="pedidos"><i class="fas fa-shopping-cart"></i>consultar compras</a></li>
             <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/realizarventa')}}"target="pedidos"><i class="fas fa-dollar-sign"></i>registrar venta</a></li>
             
           </ul>

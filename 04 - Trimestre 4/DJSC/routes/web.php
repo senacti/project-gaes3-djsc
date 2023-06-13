@@ -91,9 +91,8 @@ Route::get('/Registro de Servicio', function () {
 Route::get('/RegistroContrato', function () {
     return view('RegistroContrato');
 });
-Route::get('/servicios', function () {
-    return view('servicios');
-});
+
+
 
 Auth::routes();
 
@@ -101,6 +100,10 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 
 // rutas orden de servicio
-Route::get('/Solicitud', [SolicitudController::class, 'index'])->name('ordenservicio');
+Route::get('/servicios', [SolicitudController::class, 'index'])->name('servicios');
 
-Route::get('/Crear Orden de Servicio', [SolicitudController::class, 'create']);
+Route::get('/Crear Orden de Servicio', [SolicitudController::class, 'create'])->name('ordenservicio');
+
+Route::post('/Crear Orden de Servicio', [SolicitudController::class, 'store'])->name('almacenarordenservicio');
+
+Route::get('/mis-solicitudes', [SolicitudController::class, 'misSolicitudes'])->name('abonos');

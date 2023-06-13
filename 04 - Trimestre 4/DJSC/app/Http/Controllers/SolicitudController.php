@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
 
@@ -12,15 +12,28 @@ class SolicitudController extends Controller
      */
     public function index()
     {
-        return view('Crear Orden de Servicio');
+       
+        return view('ordenServicio.servicios');
     }
+    public function misSolicitudes()
+{
+     // Obtenemos el usuario actualmente autenticado
+     $user = Auth::user();
+
+     // Obtenemos todas las solicitudes del usuario actual
+     $solicitudes = Solicitud::where('id_usuario', $user->id)->orderBy('id')->get();
+ 
+     // Retornamos la vista con las solicitudes
+     return view('ordenServicio.abonos', ['solicitudes' => $solicitudes]);
+ }
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        return view('Crear Orden de Servicio');
+        return view('ordenServicio.Crear Orden de Servicio');
     }
 
     /**
@@ -29,15 +42,18 @@ class SolicitudController extends Controller
     public function store(Request $request)
     {
         $request -> validate ([
-        'descripcion' => 'required',
         'cantidad' => 'required',
+        'descripcion' => 'required', 
         ]);
 
-        $solicitudes = new solicitud();
-        $solicitudes->descripcion = $request->input('descripcion');
-        $solicitudes->cantidad = $request->input('cantidad');
-        $solicitudes->save();
+        $solicitud = new solicitud();
+        $solicitud->cantidad = $request->input('cantidad');
+        $solicitud->descripcion = $request->input('descripcion');
+        $solicitud->id_estado  = 1;
+        $solicitud->id_usuario = Auth::id();
+        $solicitud->save();
         
+        return redirect()->route('ordenServicio.abonos');
     }
 
     /**

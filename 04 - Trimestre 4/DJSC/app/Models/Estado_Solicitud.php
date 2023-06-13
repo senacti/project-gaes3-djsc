@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estado_Solicitud extends Model
 {
-    use HasFactory;
+protected $table = 'estado__solicitudes'; 
+
+public function solicitudes()
+{
+    return $this->hasMany(Solicitud::class, 'id_estado');
+}
 }
