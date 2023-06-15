@@ -62,7 +62,7 @@
                 @csrf
                 <div class="row w-75">
                     <a>Ingrese Email que uso en el Registro</a>
-                    <input id="email" type="email" name="email" placeholder="Ingrese su Email" required id="Email">
+                    <input id="email" type="email" name="email" placeholder="Ingrese su Email" required id="Email" >
                     <span class="col-1" id="emailOK"></span>
                 </div>
                 <div class=" row w-75">
@@ -72,7 +72,7 @@
                         {{ __('Send Password Reset Link') }}
                     </button>
                 </div>
-                <div class="signup-link">¿Talvez no tiene cuenta? <a href="{{url('/registrarse')}}">Registrese Ahora</a></div>
+                <div class="signup-link">¿Talvez no tiene cuenta? <a href="{{url('register')}}">Registrese Ahora</a></div>
               </form>
             </div>
             <div class="modal " id="myModal">

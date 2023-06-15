@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estado_Solicitud extends Model
 {
-protected $table = 'estado__solicitudes'; 
+    protected $table = 'estado__solicitudes';
 
-public function solicitudes()
-{
-    return $this->hasMany(Solicitud::class, 'id_estado');
-}
+    public function solicitudes()
+    {
+        return $this->hasMany(Solicitud::class, 'id_estado');
+    }
 }

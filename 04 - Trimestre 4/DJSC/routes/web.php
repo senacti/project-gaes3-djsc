@@ -1,4 +1,6 @@
 <?php
+
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SolicitudController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,9 +18,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
-Route::get('/abonos', function () {
-    return view('abonos');
-});
+
 Route::get('/asignarEmpleadoActividad', function () {
     return view('asignarEmpleadoActividad');
 });
@@ -107,3 +107,5 @@ Route::get('/Crear Orden de Servicio', [SolicitudController::class, 'create'])->
 Route::post('/Crear Orden de Servicio', [SolicitudController::class, 'store'])->name('almacenarordenservicio');
 
 Route::get('/mis-solicitudes', [SolicitudController::class, 'misSolicitudes'])->name('abonos');
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

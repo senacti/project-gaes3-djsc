@@ -58,9 +58,9 @@
         <h4 style="background: none;" >Formulario Registro</h4>
         <input class="controls" type="text" placeholder="Ingrese su Nombre" required id="Nombre de usuario" name="name" value="{{ old('name') }}">
         <span class="col-1" id="Nombre de usuarioOK"></span>
-        <input class="controls" type="text" placeholder="Ingrese su direccion" required id="direccion">
+        <input class="controls" type="text" placeholder="Ingrese su direccion" required id="direccion" name="direccion">
         <span class="col-1" id="direccionOK"></span>
-        <input class="controls" type="tel" placeholder="Ingrese el telefono" required id="numerodetelefono">
+        <input class="controls" type="tel" placeholder="Ingrese el telefono" required id="numerodetelefono" name="telefono">
         <span style="background: none;" class="col-1" id="numerodetelefonoOK"></span>
         <input class="controls" type="text" placeholder="Ingrese su Email" required id="Email" name="email" value="{{ old('email') }}">
         <span class="col-1" id="emailOK"></span>

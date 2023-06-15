@@ -17,18 +17,20 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </nav>
-  <div class="centered-message">
+  
   @if ($solicitudes->isEmpty())
+  <div class="centered-message">
   <div class="my-5">
     <h1 style="font-size: 3rem;">No existen compras aún</h1>
-</div>
+    </div>
+    
   </div>
     @else
   
   <div class="row">
   @foreach ($solicitudes as $solicitud)
-  <div class="col-md-3">
-    <div class="anun p-5">
+  <div class="col-sm-3">
+    <div class="anun m-5">
         <div class="card" style="width: 18rem;">
       
         <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="card-img-top" alt="...">
@@ -68,9 +70,9 @@
                   </div>
                  
                     <p style="color: red;">Detalles: </p>
-                    <p>{{ $solicitud->descripcion}}</p>
-                    <p>{{ $solicitud->id }}</p>
+                    <p>{{ $solicitud->descripcion}}</p>               
                     <p style="color: red;">Total: </p>
+                    
                     <p>13.500$</p>
                     <ul class="list-group list-group-horizontal-sm">
                       <li class="list-group-item">1.abono</li>
