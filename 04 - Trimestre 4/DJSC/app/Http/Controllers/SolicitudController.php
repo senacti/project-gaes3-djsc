@@ -6,18 +6,11 @@ use App\Models\Estado_Solicitud;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class SolicitudController extends Controller
 {
-    public function obtenerEstadoSolicitud($id)
-    {
-        $estado = Estado_Solicitud::findOrFail($id);
-
-        $estadoSolicitud = $estado->estadoSolicitud;
-
-        // Acceder a los atributos del estado de la solicitud
-        $estado = $estadoSolicitud->estadoSolicitud;
-    }
     public function index()
     {
 
@@ -47,7 +40,7 @@ class SolicitudController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function almacenarordenservicio(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'cantidad' => 'required',
@@ -57,12 +50,20 @@ class SolicitudController extends Controller
         $solicitud = new solicitud();
         $solicitud->cantidad = $request->input('cantidad');
         $solicitud->descripcion = $request->input('descripcion');
-        $solicitud->id_estado  = 1;
+        $solicitud->id_estado = 1;
         $solicitud->id_usuario = Auth::id();
         $solicitud->save();
 
         return redirect()->route('abonos');
     }
+    public function listaSolicitudes()
+    {
+        $solicitudes = Solicitud::with('usuario', 'estadosolicitud')->get();
+        return view('ordenServicio.consultarordenesservicio', [
+            'solicitudes' => $solicitudes,
+        ]);
+    }
+
 
     /**
      * Display the specified resource.
@@ -75,9 +76,9 @@ class SolicitudController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Solicitud $solicitud)
+    public function edit($id)
     {
-        //
+        
     }
 
     /**

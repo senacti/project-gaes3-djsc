@@ -51,6 +51,9 @@ Route::get('/dashboard jefe de produccion', function () {
 Route::get('/dashboard', function () {
     return view('dashboard');
 });
+Route::get('/dashboardV', function () {
+    return view('dashboardV');
+});
 Route::get('/dashboardadmin', function () {
     return view('dashboardadmin');
 });
@@ -128,3 +131,4 @@ Route::put('/ordenProduccion/{id}', [ProduccionController::class, 'update'])->na
 Route::delete('/ordenProduccion/{id}', [ProduccionController::class, 'destroy'])->name('ordenProduccion.destroy');
 
 
+// rutas contrato sub empresa

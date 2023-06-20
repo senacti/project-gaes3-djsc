@@ -19,26 +19,29 @@
               <img src="img/logo.png" alt="Logo" width="240" height="100">
             </a>
             <h1 class="fs-4"><span class="text-dark rounded shadow px-2 me-2"></span>bienvenido</h1>
-           <h4>aministrador</h4>
+           <h4>cliente</h4>
            <br>
            <br>
           </div>
           <ul class="list-unstyled px-2">
-            <li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/home')}}"target="pedidos"><i class="fas fa-home"></i>dashboard</a></li>
-            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/consultarcontratos')}}"target="pedidos"><i class="fas fa-search"></i></i>consultar contratos con sub empresas</a></li>
-            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/RegistroContrato')}}"target="pedidos"><i class="fas fa-file-contract"></i>registrar contrato sub empresa</a></li>
-            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/Registro de Servicio')}}"target="pedidos"><i class="fas fa-cart-plus"></i>registrar servicios disponibles</a></li>
-            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{route('listaSolicitudes')}}"target="pedidos"><i class="fas fa-search"></i></i>consultar ordenes de servicio</a></li>
-            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/generarinformesS')}}"target="pedidos"><i class="far fa-file-edit"></i>generar informes de solicitudes</a></li>
+            <li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="#"target="pedidos"><i class="fas fa-home"></i>inicio</a></li>
+            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{route('servicios')}}"target="pedidos"><i class="fas fa-search"></i>consultar servicios</a></li>
+
+            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{route('abonos')}}"target="pedidos"><i class="fas fa-shopping-cart"></i>consultar compras</a></li>
+            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/realizarventa')}}"target="pedidos"><i class="fas fa-dollar-sign"></i>registrar venta</a></li>
+            
           </ul>
           <hr class="h-color mx-3">
-         
+          <ul class="list-unstyled px-2">
+            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="#"target="pedidos"><i class="fas fa-cog"></i>configuracion</a></li>
+            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="#"target="pedidos"><i class="fas fa-comments"></i>mensajes</a></li>
+          </ul>
            </div>
            
          <div class="content">
           <nav class="navbar navbar-expand-lg bg-rgb">
             <div class="container-fluid">
-               
+              
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -86,8 +89,8 @@
 
                           <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                               <a class="dropdown-item" href="{{ route('logout') }}"
-                                 onclick="event.preventDefault();
-                                               document.getElementById('logout-form').submit();">
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
                                   {{ __('Logout') }}
                               </a>
 
@@ -102,6 +105,7 @@
                     <img class="img-fluid rounded-circle" style="width:30%;position: relative;left:70%;" src="https://cdn.pixabay.com/photo/2017/11/10/05/48/user-2935527_640.png" alt="">
                 
                   </div>
+                  
               </div>
             </div>
           </nav>

@@ -39,9 +39,9 @@
           <p class="card-text">detalles del servicio</p>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#abono">
               realizar abono
-           </button>
+          </button>
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal{{ $solicitud->id }}">
-             abrir
+            abrir
           </button>
           
         </div>
@@ -68,7 +68,8 @@
                     <p style="color: red;">cantidad:</p>
                     <p style="margin-left: 5%;">{{ $solicitud->cantidad}}</p>
                   </div>
-                 
+                  <p style="color: red;">estado: </p>
+                  <p>{{ $solicitud->estadosolicitud->estadoSolicitud}}</p>  
                     <p style="color: red;">Detalles: </p>
                     <p>{{ $solicitud->descripcion}}</p>               
                     <p style="color: red;">Total: </p>
@@ -79,12 +80,7 @@
                       <li class="list-group-item">fecha abono</li>
                       <li class="list-group-item">cantidad abono</li>
                     </ul>
-                    <ul class="list-group list-group-horizontal-sm">
-                      <li class="list-group-item">2.abono</li>
-                      <li class="list-group-item">fecha abono</li>
-                      <li class="list-group-item">cantidad abono</li>
-                      
-                    </ul>
+                    
                   </div>
                   </div>
                 </div>
@@ -101,12 +97,6 @@
         </div>
       </div>
     </div>
-           
-           
-         
-        
-     
-   
     
       @endforeach
     </div>
@@ -124,47 +114,15 @@
     
           <!-- Modal body -->
           <div class="modal-body">
-            <div style="display: flex;">
-              <div>
-                <section class="form-registerh">
-                    <form action="#">
-                        <center>
-                            <div style=" margin-bottom:20px; background: black;">
-                                <h4 style="color:white;background: none;">REALIZAR ABONO</h4>
-                            </div>
-                        </center>
-                        <input class="controls" type="text" placeholder="Ingrese su Nombre" required id="Nombre de usuario">
-                        <span class="col-1" id="Nombre de usuarioOK"></span>
-                        <input class="controls" type="number" placeholder="Ingrese su DNI" required id="DNI">
-                        <span class="col-1" id="DNIOK"></span>
-                        <input class="controls" type="tel" placeholder="Ingrese numero de contacto" required id="contacto">
-                        <span class="col-1" id="contactoOK"></span>
-                        <input class="controls" type="number" placeholder="Ingrese cantidad de abono" required id="cantidad">
-                        <span class="col-1" id="cantidadOK"></span>
-                        <div>
-                            <select>
-                                <option value="">-Seleccione Metodo de Pago-</option>
-                                <option value="1">NEQUI</option>
-                                <option value="2">TARJETA DE CREDITO</option>
-                                <option value="3">TARJETA DE DEBITO</option>
-                                <option value="4">DAVIPLATA</option>
-                            </select>
-                        </div>
-                        <input class="botons" type="submit" value="Confirmar Abono">
-                    </form>
-                </section>
-                <script src="{{asset('/js/validacionJ2.js')}}"></script>
-            </div>
-            
-            </div>
+            @include('ordenServicio.RealizarAbono')
           </div>
     
           <!-- Modal footer -->
           <div class="modal-footer">
-           
+          
             <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
           </div>
-    
+        
         </div>
       </div>
     </div>

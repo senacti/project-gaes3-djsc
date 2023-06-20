@@ -20,12 +20,13 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'numeroidentificacion',
         'email',
         'password',
         'direccion',
         'telefono',
     ];
-
+   
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -45,4 +46,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function solicitudes()
+    {
+        return $this-> hasMany(Solicitud::class,'id_usuario');
+    }
+    
 }

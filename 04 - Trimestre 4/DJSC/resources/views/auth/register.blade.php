@@ -56,10 +56,11 @@
         @csrf
     <section class="form-register">
         <h4 style="background: none;" >Formulario Registro</h4>
-        <input class="controls" type="text" placeholder="Ingrese su Nombre" required id="Nombre de usuario" name="name" value="{{ old('name') }}">
+        <input class="controls" type="text" placeholder="Ingrese su Nombre completo" required id="Nombre de usuario" name="name" value="{{ old('name') }}">
         <span class="col-1" id="Nombre de usuarioOK"></span>
+        <input class="controls" type="text" placeholder="Ingrese su numero de identificacion" required id="numeroidentificacion" name="numeroidentificacion">
         <input class="controls" type="text" placeholder="Ingrese su direccion" required id="direccion" name="direccion">
-        <span class="col-1" id="direccionOK"></span>
+        
         <input class="controls" type="tel" placeholder="Ingrese el telefono" required id="numerodetelefono" name="telefono">
         <span style="background: none;" class="col-1" id="numerodetelefonoOK"></span>
         <input class="controls" type="text" placeholder="Ingrese su Email" required id="Email" name="email" value="{{ old('email') }}">
@@ -68,7 +69,7 @@
         <span class="col-1" id="contraseñaOK"></span>
         <input id="password-confirm" type="password" class="controls" name="password_confirmation" required autocomplete="new-password" placeholder="repita la contraseña">
         <div>
-          <select>
+          <select >
               <option value="">-Seleccione su genero-</option>
               <option value="1">FEMENINO</option>
               <option value="2">MASCULINO</option>
