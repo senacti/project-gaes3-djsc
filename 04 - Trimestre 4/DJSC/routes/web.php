@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SolicitudController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProduccionController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -109,3 +111,20 @@ Route::post('/Crear Orden de Servicio', [SolicitudController::class, 'store'])->
 Route::get('/mis-solicitudes', [SolicitudController::class, 'misSolicitudes'])->name('abonos');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/pedidosjp', [ProduccionController::class, 'index'])->name('pedidosjp');
+
+Route::get('/registrarOrdenProduccion', [ProduccionController::class, 'create'])->name('ordenProduccion');
+
+Route::post('/ordenproduccion', [ProduccionController::class, 'almacenarOrdenProduccion'])
+    ->name('ordenproduccion.almacenarOrdenProduccion');
+
+Route::get('/consultarordenproduccion', [ProduccionController::class, 'consultarOrdenProduccion'])->name('consultarordenproduccion');
+
+Route::get('/ordenProduccion/{id}/edit', [ProduccionController::class, 'edit'])->name('ordenProduccion.edit');
+
+Route::put('/ordenProduccion/{id}', [ProduccionController::class, 'update'])->name('ordenProduccion.update');
+
+Route::delete('/ordenProduccion/{id}', [ProduccionController::class, 'destroy'])->name('ordenProduccion.destroy');
+
+
