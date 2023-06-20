@@ -130,5 +130,6 @@ Route::put('/ordenProduccion/{id}', [ProduccionController::class, 'update'])->na
 
 Route::delete('/ordenProduccion/{id}', [ProduccionController::class, 'destroy'])->name('ordenProduccion.destroy');
 
+Route::get('/consultarordenesservicio', [SolicitudController::class, 'listaSolicitudes'])->name('listaSolicitudes');
 
 // rutas contrato sub empresa
