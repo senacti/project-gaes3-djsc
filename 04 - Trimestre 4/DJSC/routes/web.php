@@ -115,6 +115,17 @@ Route::get('/mis-solicitudes', [SolicitudController::class, 'misSolicitudes'])->
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+Route::get('/consultarordenesservicio', [SolicitudController::class, 'listaSolicitudes'])->name('listaSolicitudes');
+
+
+Route::get('/ordenServicio/{id}/estadoedit', [SolicitudController::class, 'edit'])->name('ordenServicio.estadoedit');
+
+Route::put('/ordenServicio/{id}/estadoedit', [SolicitudController::class, 'update'])->name('ordenServicio.update');
+
+Route::get('/consultarordenservicio', [SolicitudController::class, 'listaSolicitudes'])->name('ordenServicio.consultarordenservicio');
+
+Route::delete('ordenServicio/{solicitud}', [SolicitudController::class, 'destroy'])->name('ordenServicio.destroy');
+
 Route::get('/pedidosjp', [ProduccionController::class, 'index'])->name('pedidosjp');
 
 Route::get('/registrarOrdenProduccion', [ProduccionController::class, 'create'])->name('ordenProduccion');
@@ -130,6 +141,5 @@ Route::put('/ordenProduccion/{id}', [ProduccionController::class, 'update'])->na
 
 Route::delete('/ordenProduccion/{id}', [ProduccionController::class, 'destroy'])->name('ordenProduccion.destroy');
 
-Route::get('/consultarordenesservicio', [SolicitudController::class, 'listaSolicitudes'])->name('listaSolicitudes');
 
 // rutas contrato sub empresa

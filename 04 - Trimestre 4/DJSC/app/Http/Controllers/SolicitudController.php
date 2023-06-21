@@ -77,23 +77,42 @@ class SolicitudController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit($id)
-    {
-        
-    }
+{
+    $solicitud = solicitud::find($id);
+    $estados = Estado_Solicitud::all();
+    return view('ordenServicio.estadoedit', compact('solicitud', 'estados'));
+}
+
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Solicitud $solicitud)
+    public function update(Request $request, $id)
     {
-        //
-    }
-
+        $request->validate([
+            'estadoSolicitud' => 'required',
+        ]);
+    
+        $solicitud = Solicitud::find($id);
+        $solicitud->id_estado = $request->input('estadoSolicitud');
+        $solicitud->save();
+    
+        return redirect()->route('ordenServicio.consultarordenservicio')->with('success', 'Estado actualizado exitosamente.');
+        }
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Solicitud $solicitud)
+    public function destroy($id)
     {
-        //
+        $solicitud = Solicitud::find($id);
+
+    if ($solicitud) {
+        $solicitud->delete();
+
+        return redirect()->route('ordenServicio.consultarordenservicio')->with('success', 'La orden de producción ha sido eliminada correctamente.');
+    }
+
+    return redirect()->route('ordenServicio.consultarordenservicio')->with('error', 'No se encontró la orden de producción.');
+
     }
 }
