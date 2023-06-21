@@ -7,6 +7,8 @@ use App\Models\tipo_Produccion;
 use App\Models\novedad_Produccion;
 use App\Models\estado_Produccion;
 use Illuminate\Http\Request;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 class ProduccionController extends Controller
 {
@@ -114,5 +116,27 @@ class ProduccionController extends Controller
 
     return redirect()->route('consultarordenproduccion')->with('error', 'No se encontró la orden de producción.');
 
+    }
+
+    public function generarReportePDF()
+    {
+        $producciones = Produccion::with('tipoProduccion', 'estadoProduccion', 'novedadProduccion')->get();
+
+        $reporteView = view('ordenProduccion.reporte', ['producciones' => $producciones]);
+
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($reporteView->render());
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+        $output = $dompdf->output();
+
+        $filePath = public_path('Reportes/reporteProducciones.pdf');
+
+        file_put_contents($filePath, $output);
+
+        return response()->download($filePath);
     }
 }

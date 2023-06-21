@@ -14,6 +14,9 @@
             <input class="form-control mr-sm-2" type="search" placeholder="Nombre del cliente" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
         </form>
+        <div class="ms-auto">
+            <a href="{{ route('generar-reporte-pdf') }}" class="btn btn-primary ml-auto">Generar Reporte</a>
+        </div>
     </nav>
     <table class="table">
         @if ($solicitudes->isEmpty())

@@ -22,6 +22,9 @@
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
+    <div class="ms-auto">
+      <a href="{{ route('generar-reporte-pdf') }}" class="btn btn-primary ml-auto">Generar Reporte</a>
+  </div>
   </nav>
 
   @if ($producciones->isEmpty())

@@ -4,9 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Estado_Solicitud;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 use App\Models\Solicitud;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Dompdf\Dompdf;
+use Dompdf\Options;
+
 
 
 class SolicitudController extends Controller
@@ -98,6 +102,29 @@ class SolicitudController extends Controller
         $solicitud->save();
     
         return redirect()->route('ordenServicio.consultarordenservicio')->with('success', 'Estado actualizado exitosamente.');
+        }
+
+        public function generarReportePDF()
+        {
+            $solicitudes = Solicitud::with('usuario', 'estadosolicitud')->get();
+        
+            $reporteView = view('ordenServicio.reporte', ['solicitudes' => $solicitudes]);
+        
+            $dompdf = new Dompdf();
+            $dompdf->loadHtml($reporteView->render());
+
+            
+            $dompdf->setPaper('A4', 'portrait');
+
+            $dompdf->render();
+        
+            $output = $dompdf->output();
+        
+            $filePath = public_path('Reportes/reporteSolicitudes.pdf');
+        
+            file_put_contents($filePath, $output);
+        
+            return response()->download($filePath);
         }
     /**
      * Remove the specified resource from storage.
