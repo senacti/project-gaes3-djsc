@@ -81,11 +81,11 @@ class SolicitudController extends Controller
      * Show the form for editing the specified resource.
      */
     public function edit($id)
-{
-    $solicitud = solicitud::find($id);
-    $estados = Estado_Solicitud::all();
-    return view('ordenServicio.estadoedit', compact('solicitud', 'estados'));
-}
+    {
+        $solicitud = solicitud::find($id);
+        $estados = Estado_Solicitud::all();
+        return view('ordenServicio.estadoedit', compact('solicitud', 'estados'));
+    }
 
 
     /**
@@ -96,36 +96,36 @@ class SolicitudController extends Controller
         $request->validate([
             'estadoSolicitud' => 'required',
         ]);
-    
+
         $solicitud = Solicitud::find($id);
         $solicitud->id_estado = $request->input('estadoSolicitud');
         $solicitud->save();
-    
+
         return redirect()->route('ordenServicio.consultarordenservicio')->with('success', 'Estado actualizado exitosamente.');
-        }
+    }
 
-        public function generarReportePDF()
-        {
-            $solicitudes = Solicitud::with('usuario', 'estadosolicitud')->get();
-        
-            $reporteView = view('ordenServicio.reporte', ['solicitudes' => $solicitudes]);
-        
-            $dompdf = new Dompdf();
-            $dompdf->loadHtml($reporteView->render());
+    public function generarReportePDF()
+    {
+        $solicitudes = Solicitud::with('usuario', 'estadosolicitud')->get();
 
-            
-            $dompdf->setPaper('A4', 'portrait');
+        $reporteView = view('ordenServicio.reporteS', ['solicitudes' => $solicitudes]);
 
-            $dompdf->render();
-        
-            $output = $dompdf->output();
-        
-            $filePath = public_path('Reportes/reporteSolicitudes.pdf');
-        
-            file_put_contents($filePath, $output);
-        
-            return response()->download($filePath);
-        }
+        $dompdf = new Dompdf();
+        $dompdf->loadHtml($reporteView->render());
+
+
+        $dompdf->setPaper('A4', 'portrait');
+
+        $dompdf->render();
+
+        $output = $dompdf->output();
+
+        $filePath = public_path('Reportes/reporteSolicitudes.pdf');
+
+        file_put_contents($filePath, $output);
+
+        return response()->download($filePath);
+    }
     /**
      * Remove the specified resource from storage.
      */
@@ -133,13 +133,12 @@ class SolicitudController extends Controller
     {
         $solicitud = Solicitud::find($id);
 
-    if ($solicitud) {
-        $solicitud->delete();
+        if ($solicitud) {
+            $solicitud->delete();
 
-        return redirect()->route('ordenServicio.consultarordenservicio')->with('success', 'La orden de producción ha sido eliminada correctamente.');
-    }
+            return redirect()->route('ordenServicio.consultarordenservicio')->with('success', 'La orden de producción ha sido eliminada correctamente.');
+        }
 
-    return redirect()->route('ordenServicio.consultarordenservicio')->with('error', 'No se encontró la orden de producción.');
-
+        return redirect()->route('ordenServicio.consultarordenservicio')->with('error', 'No se encontró la orden de producción.');
     }
 }

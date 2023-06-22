@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css">
     <title>pagina principal</title>
 </head>
 <body>
@@ -22,9 +23,6 @@
               <li class="nav-item me-3">
                 <a class="nav-link active" aria-current="page" href="{{url('/')}}">inicio</a>
               </li>
-              <li class="nav-item me-3">
-                <a class="nav-link" href="{{url('/catalogo')}}">servicios</a>
-              </li>
               <li class="nav-item dropdown me-3">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   Sobre nosotros
@@ -39,10 +37,41 @@
                 <a class="nav-link disabled">Disabled</a>
               </li>
             </ul>
-              <div>
-                <a href="{{url('login')}}"><button type="button" class="btn btn-outline-dark">Iniciar sesión</button></a>
-                <a href="{{url('register')}}"> <button type="button" class="btn btn-outline-dark">Registrarse</button></a>
-              </div>
+              <ul class="navbar-nav ms-auto">
+                <!-- Authentication Links -->
+                @guest
+                    @if (Route::has('login'))
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-dark" href="{{ route('login') }}">{{ __('Iniciar sesión') }}</a>
+                        </li>
+                    @endif
+
+                    @if (Route::has('register'))
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-outline-dark" href="{{ route('register') }}">{{ __('Registrarse') }}</a>
+                        </li>
+                    @endif
+                @else
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle me-1" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }}
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                @endguest
+            </ul>
+            <a href="{{ route('login') }}"><i class="fas fa-home"></i></a>
             </form>
           </div>
         </div>
@@ -88,8 +117,8 @@
     <div style="display: inline-block;">
       <div class="card mb-2 mt-2" style="max-width: 100%;margin-right: 5%;">
         <div class="row g-0">
-          <div class="col-md-4">
-            <img src="https://www.hogarmania.com/archivos/202010/como-lavar-ropa-de-color-668x400x80xX-1.jpg" class="img-fluid rounded-start" alt="...">
+          <div class="col-md-3">
+            <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="img-fluid rounded-start w-100 h-75" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -102,10 +131,10 @@
       </div>
       </a>
       <a href="#" style="text-decoration: none;color: black;">
-      <div class="card mb-2 mt-4" style="max-width: 100%;margin-right: 5%; ">
+      <div class="card mb-2 mt-4" style="max-width: 100%;margin-right: 5%;">
         <div class="row g-0">
-          <div class="col-md-4">
-            <img src="https://www.hogarmania.com/archivos/202010/como-lavar-ropa-de-color-668x400x80xX-1.jpg" class="img-fluid rounded-start" alt="...">
+          <div class="col-md-3 ">
+            <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="img-fluid rounded-start w-100 h-75" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -120,8 +149,8 @@
     <a href="#" style="text-decoration: none;color: black;">
       <div class="card mb-5 mt-4" style="max-width: 100%;margin-right: 5%;">
         <div class="row g-0">
-          <div class="col-md-4">
-            <img src="https://www.hogarmania.com/archivos/202010/como-lavar-ropa-de-color-668x400x80xX-1.jpg" class="img-fluid rounded-start" alt="...">
+          <div class="col-md-3 ">
+            <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="img-fluid rounded-start w-100 h-75" alt="...">
           </div>
           <div class="col-md-8">
             <div class="card-body">
@@ -137,8 +166,8 @@
     </div>
      </div>
     <div class="anun p-5">
-    <div class="card " style="width: 18rem;">
-      <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="card-img-top" alt="...">
+    <div class="card " style="width: 18rem; margin-left: 10%;">
+      <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="card-img-top " alt="...">
       <div class="card-body">
         <h5 class="card-title">Card title</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -180,11 +209,11 @@
 </div>
 
 <div class="circulo mt-4">
-<img style="margin-left: 10%;" src="https://www.hogarmania.com/archivos/202010/como-lavar-ropa-de-color-668x400x80xX-1.jpg" class="img-fluid rounded-circle p-4" alt="...">
-<img src="https://www.hogarmania.com/archivos/202010/como-lavar-ropa-de-color-668x400x80xX-1.jpg" class="img-fluid rounded-circle p-4 " alt="...">
-<img src="https://www.hogarmania.com/archivos/202010/como-lavar-ropa-de-color-668x400x80xX-1.jpg" class="img-fluid rounded-circle p-4 " alt="...">
-<img src="https://www.hogarmania.com/archivos/202010/como-lavar-ropa-de-color-668x400x80xX-1.jpg" class="img-fluid rounded-circle p-4 " alt="...">
-<img src="https://www.hogarmania.com/archivos/202010/como-lavar-ropa-de-color-668x400x80xX-1.jpg" class="img-fluid rounded-circle p-4 " alt="...">
+<img style="margin-left: 10%;" src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="img-fluid rounded-circle p-4" alt="...">
+<img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="img-fluid rounded-circle p-4 " alt="...">
+<img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="img-fluid rounded-circle p-4 " alt="...">
+<img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="img-fluid rounded-circle p-4 " alt="...">
+<img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="img-fluid rounded-circle p-4 " alt="...">
 </div>
 
 

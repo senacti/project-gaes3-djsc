@@ -126,7 +126,7 @@ Route::get('/consultarordenservicio', [SolicitudController::class, 'listaSolicit
 
 Route::delete('ordenServicio/{solicitud}', [SolicitudController::class, 'destroy'])->name('ordenServicio.destroy');
 
-Route::get('/ordenServicio/generar-reporte-pdf', [SolicitudController::class, 'generarReportePDF'])->name('generar-reporte-pdf');
+Route::get('/ordenServicio/generar-reporteS-pdf', [SolicitudController::class, 'generarReportePDF'])->name('generar-reporteS-pdf');
 
 // rutas Orden Produccion
 
@@ -145,7 +145,7 @@ Route::put('/ordenProduccion/{id}', [ProduccionController::class, 'update'])->na
 
 Route::delete('/ordenProduccion/{id}', [ProduccionController::class, 'destroy'])->name('ordenProduccion.destroy');
 
-Route::get('/ordenProduccion/generar-reporte-pdf', [ProduccionController::class, 'generarReportePDF'])->name('generar-reporte-pdf');
+Route::get('/ordenProduccion/generar-reporteP-pdf', [ProduccionController::class, 'generarReportePDF'])->name('generar-reporteP-pdf');
 
 
 

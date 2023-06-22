@@ -18,23 +18,20 @@ class ProduccionController extends Controller
     public function index()
     {
         return view('ordenProduccion.pedidosjp');
-
     }
     public function consultarOrdenProduccion()
-{
-    $producciones = Produccion::all();
-    return view('ordenProduccion.consultarOrdenProduccion', compact('producciones'));
-}
+    {
+        $producciones = Produccion::all();
+        return view('ordenProduccion.consultarOrdenProduccion', compact('producciones'));
+    }
 
     /**
      * Show the form for creating a new resource.
      */
     public function create()
     {
-        $tipoProducciones = tipo_Produccion ::all();
+        $tipoProducciones = tipo_Produccion::all();
         return view('ordenProduccion.registrarOrdenProduccion', compact('tipoProducciones'));
-    
-    
     }
 
     /**
@@ -42,10 +39,10 @@ class ProduccionController extends Controller
      */
     public function almacenarOrdenProduccion(Request $request)
     {
-        
+
         $request->validate([
-        'fechaproduccion' => 'required',
-        'tipoProduccion' => 'required',
+            'fechaproduccion' => 'required',
+            'tipoProduccion' => 'required',
         ]);
 
         $produccion = new Produccion();
@@ -72,9 +69,9 @@ class ProduccionController extends Controller
     public function edit($id)
     {
         $produccion = Produccion::find($id);
-        $tipoProducciones = tipo_Produccion ::all();
-        $estadoProducciones = estado_Produccion ::all();
-        $novedadProducciones = novedad_Produccion ::all();
+        $tipoProducciones = tipo_Produccion::all();
+        $estadoProducciones = estado_Produccion::all();
+        $novedadProducciones = novedad_Produccion::all();
         return view('ordenProduccion.edit', compact('produccion', 'tipoProducciones', 'estadoProducciones', 'novedadProducciones'));
     }
 
@@ -89,16 +86,15 @@ class ProduccionController extends Controller
             'estadoProduccion' => 'required',
             'novedadProduccion' => 'required',
         ]);
-    
+
         $produccion = Produccion::find($id);
         $produccion->fechaproduccion = $request->input('fechaproduccion');
         $produccion->id_tipo = $request->input('tipoProduccion');
         $produccion->id_estado = $request->input('estadoProduccion');
         $produccion->id_novedad = $request->input('novedadProduccion');
         $produccion->save();
-    
+
         return redirect()->route('consultarordenproduccion')->with('success', 'Orden de producción actualizada exitosamente');
-    
     }
 
     /**
@@ -108,21 +104,20 @@ class ProduccionController extends Controller
     {
         $produccion = Produccion::find($id);
 
-    if ($produccion) {
-        $produccion->delete();
+        if ($produccion) {
+            $produccion->delete();
 
-        return redirect()->route('consultarordenproduccion')->with('success', 'La orden de producción ha sido eliminada correctamente.');
-    }
+            return redirect()->route('consultarordenproduccion')->with('success', 'La orden de producción ha sido eliminada correctamente.');
+        }
 
-    return redirect()->route('consultarordenproduccion')->with('error', 'No se encontró la orden de producción.');
-
+        return redirect()->route('consultarordenproduccion')->with('error', 'No se encontró la orden de producción.');
     }
 
     public function generarReportePDF()
     {
         $producciones = Produccion::with('tipoProduccion', 'estadoProduccion', 'novedadProduccion')->get();
 
-        $reporteView = view('ordenProduccion.reporte', ['producciones' => $producciones]);
+        $reporteView = view('ordenProduccion.reporteP', ['producciones' => $producciones]);
 
         $dompdf = new Dompdf();
         $dompdf->loadHtml($reporteView->render());

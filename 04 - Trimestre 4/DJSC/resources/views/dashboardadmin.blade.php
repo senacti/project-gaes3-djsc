@@ -47,9 +47,6 @@
                   <li class="nav-item me-3">
                     <a class="nav-link active" aria-current="page" href="{{url('/')}}">inicio</a>
                   </li>
-                  <li class="nav-item me-3">
-                    <a class="nav-link" href="{{url('/catalogo')}}">servicios</a>
-                  </li>
                   <li class="nav-item dropdown me-3">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Sobre nosotros

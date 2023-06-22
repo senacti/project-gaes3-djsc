@@ -50,9 +50,6 @@
                   <li class="nav-item me-3">
                     <a class="nav-link active" aria-current="page" href="{{url('/')}}">inicio</a>
                   </li>
-                  <li class="nav-item me-3">
-                    <a class="nav-link" href="{{url('/catalogo')}}">servicios</a>
-                  </li>
                   <li class="nav-item dropdown me-3">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Sobre nosotros
@@ -101,6 +98,7 @@
                       </li>
                   @endguest
               </ul>
+              
                   <div style="width: 200px;">
                     <img class="img-fluid rounded-circle" style="width:30%;position: relative;left:70%;" src="https://cdn.pixabay.com/photo/2017/11/10/05/48/user-2935527_640.png" alt="">
                 

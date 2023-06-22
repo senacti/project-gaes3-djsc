@@ -16,7 +16,7 @@
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </nav>
-    <div class="anun p-5">
+    <div class="anun p-5 ms-5">
         <div class="card " style="width: 18rem;">
           <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="card-img-top" alt="...">
           <div class="card-body">
@@ -183,7 +183,7 @@
         </div>
       
     </div>
-    <div class="anun p-5">
+    <div class="anun p-5 ms-5">
         <div class="card " style="width: 18rem;">
           <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="card-img-top" alt="...">
           <div class="card-body">
@@ -334,7 +334,7 @@
       
     </div>
 
-    <div class="anun p-5">
+    <div class="anun p-5 ms-5">
         <div class="card " style="width: 18rem;">
           <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="card-img-top" alt="...">
           <div class="card-body">
