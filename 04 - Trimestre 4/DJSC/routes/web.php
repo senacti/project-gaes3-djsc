@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SolicitudController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProduccionController;
+use App\Http\Controllers\ContratoController;
 
 
 /*
@@ -146,7 +147,11 @@ Route::put('/ordenProduccion/{id}', [ProduccionController::class, 'update'])->na
 Route::delete('/ordenProduccion/{id}', [ProduccionController::class, 'destroy'])->name('ordenProduccion.destroy');
 
 Route::get('/ordenProduccion/generar-reporteP-pdf', [ProduccionController::class, 'generarReportePDF'])->name('generar-reporteP-pdf');
-
-
-
 // rutas contrato sub empresa
+
+Route::get('/consultarcontratos', [ContratoController::class, 'index'])->name('consultarcontratos');
+
+Route::get('/RegistroContrato', [ContratoController::class, 'create'])->name('registrarcontrato');
+
+Route::post('/RegistroContrato', [ContratoController::class, 'store'])->name('guardarcontrato');
+

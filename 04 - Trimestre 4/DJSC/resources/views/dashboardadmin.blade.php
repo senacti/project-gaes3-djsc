@@ -25,8 +25,8 @@
           </div>
           <ul class="list-unstyled px-2">
             <li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/home')}}"target="pedidos"><i class="fas fa-home"></i>dashboard</a></li>
-            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/consultarcontratos')}}"target="pedidos"><i class="fas fa-search"></i></i>consultar contratos con sub empresas</a></li>
-            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/RegistroContrato')}}"target="pedidos"><i class="fas fa-file-contract"></i>registrar contrato sub empresa</a></li>
+            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{route('consultarcontratos')}}"target="pedidos"><i class="fas fa-search"></i></i>consultar contratos con sub empresas</a></li>
+            <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{route('registrarcontrato')}}"target="pedidos"><i class="fas fa-file-contract"></i>registrar contrato sub empresa</a></li>
             <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/Registro de Servicio')}}"target="pedidos"><i class="fas fa-cart-plus"></i>registrar servicios disponibles</a></li>
             <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{route('listaSolicitudes')}}"target="pedidos"><i class="fas fa-search"></i></i>consultar ordenes de servicio</a></li>
             <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/generarinformesS')}}"target="pedidos"><i class="far fa-file-edit"></i>generar informes de solicitudes</a></li>
