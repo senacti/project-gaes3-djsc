@@ -56,14 +56,18 @@ class ContratoController extends Controller
         } elseif ($subempresa->id_estado === 2) {
         // La subempresa está ocupada, mostrar mensaje de error
         return redirect()->back()->withErrors(['message' => 'La empresa se encuentra ocupada']);
-        }
+        }elseif ($subempresa->id_estado === 1) {
+            $subempresa->id_estado = 2;
+            $subempresa->save();
 
+        }
         $contrato = new Contrato_Sub_Empresa();
         $contrato->detalles = $request->input('detalles');
         $contrato->cantidad = $request->input('cantidad');
         $contrato->id_empresa = $subempresa->id;
         $contrato->id_estado = 1;
         $contrato->save();
+        
         
         return view("registroContrato.RegistroContrato");
     }
