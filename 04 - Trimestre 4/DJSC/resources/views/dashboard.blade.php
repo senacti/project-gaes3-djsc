@@ -59,9 +59,12 @@
                       <li><a class="dropdown-item" href="#">vision</a></li>
                      
                     </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link disabled">Disabled</a>
+                    <li class="nav-item me-3">
+                      <a class="nav-link" href="{{url('/dashboardadmin')}}">administrador</a>
+                    </li>
+                    <li class="nav-item me-3">
+                      <a class="nav-link" href="{{url('/dashboard jefe de produccion')}}">jefe de produccion</a>
+                    </li>
                   </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">

@@ -24,7 +24,7 @@
            <br>
           </div>
           <ul class="list-unstyled px-2">
-            <li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/pedidosjp')}}"target="pedidos"><i class="fas fa-home"></i>crear orden de produccion</a></li>
+            <li class="active"><a class="text-decoration-none px-3 py-2 d-block" href="{{route('pedidosjp')}}"target="pedidos"><i class="fas fa-home"></i>crear orden de produccion</a></li>
             <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/consultarordenproduccion')}}"target="pedidos"><i class="fas fa-search"></i>asignar proceso de produccion</a></li>
 
             <li class=""><a class="text-decoration-none px-3 py-2 d-block" href="{{url('/asignarempleados')}}"target="pedidos"><i class="fas fa-shopping-cart"></i>asignar empleados para una actividad</a></li>

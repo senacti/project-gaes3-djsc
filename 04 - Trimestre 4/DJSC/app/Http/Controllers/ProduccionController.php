@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Solicitud;
 use App\Models\Produccion;
 use App\Models\tipo_Produccion;
 use App\Models\novedad_Produccion;
@@ -17,7 +18,10 @@ class ProduccionController extends Controller
      */
     public function index()
     {
-        return view('ordenProduccion.pedidosjp');
+        $solicitudes = Solicitud::orderby('id')->get();
+
+        // Retornamos la vista con las solicitudes
+        return view('ordenProduccion.pedidosjp', ['solicitudes' => $solicitudes]);    
     }
     public function consultarOrdenProduccion()
     {

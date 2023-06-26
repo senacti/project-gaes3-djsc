@@ -8,6 +8,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+
 
 class RegisterController extends Controller
 {
@@ -52,10 +54,22 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:4', 'confirmed'],
-            'telefono' => ['required', 'numeric','min:12'],
+            'password' => ['required', 'min:4', 'confirmed', 'regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/'],
+            'telefono' => ['required', 'regex:/^\d{3}-?\d{3}-?\d{4}$/'],
             'direccion' => ['required', 'string', 'max:255'],
             'numeroidentificacion' => ['required', 'numeric','min:12','unique:users'],
+        ], [
+            'name.required' => 'El nombre es obligatorio.',
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.email' => 'El correo electrónico debe ser válido.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 4 caracteres, una mayuscula, una minuscula, un digito y un caracter especial.',
+            'password.confirmed' => 'La confirmación de contraseña no coincide.',
+            'telefono.required' => 'El número de teléfono es obligatorio.',
+            'telefono.regex' => 'El número de teléfono no cumple con el formato requerido.',
+            'direccion.required' => 'La dirección es obligatoria.',
+            'numeroidentificacion.required' => 'El número de identificación es obligatorio.',
+            'numeroidentificacion.min' => 'El número de identificación debe tener al menos 12 dígitos.',
         ]);
     }
 
@@ -76,4 +90,23 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+    public function register(Request $request)
+    {
+        $validator = $this->validator($request->all());
+
+        if ($validator->fails()) {
+            return redirect('register')
+                ->withErrors($validator)
+                ->withInput();
+        }
+
+        $user = $this->create($request->all());
+
+        $this->guard()->login($user);
+
+        $request->session()->flash('success', '¡Registro exitoso! Los campos son válidos.');
+
+        return redirect($this->redirectPath());
+    }
+
 }

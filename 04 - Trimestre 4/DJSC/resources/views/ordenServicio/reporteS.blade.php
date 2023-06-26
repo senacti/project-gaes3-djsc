@@ -13,7 +13,12 @@
             width: 100%;
             border-collapse: collapse;
         }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
         th, td {
+            border: 1px solid #ccc;
             padding: 8px;
             border-bottom: 1px solid #ddd;
         }
@@ -21,10 +26,22 @@
             background-color: #f2f2f2;
             font-weight: bold;
         }
+        .logo {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 200px; /* Ajusta el tamaño de la imagen según tus necesidades */
+        }
     </style>
 </head>
 <body>
-    <h1>Reporte de Solicitudes</h1>
+    <div class="logo">
+        <img src="{{ asset('img/logo.png') }}" alt=""/>
+    </div>
+    <h1>Reporte de Orden de Servicio</h1>
     <table>
         <thead>
             <tr>

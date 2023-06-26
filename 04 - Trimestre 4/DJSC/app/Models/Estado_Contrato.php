@@ -7,6 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Estado_Contrato extends Model
 {
-    protected $table =  'Estado_Contrato';
+    protected $table = 'estado__contratos';
 }
 

@@ -47,8 +47,14 @@ class SolicitudController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'cantidad' => 'required',
+            'cantidad' => ['required', 'numeric', 'regex:/^\d+(\.\d{1,2})?$/'],
             'descripcion' => 'required',
+    ],
+    [
+        'cantidad.required' => 'La cantidad es obligatoria.',
+        'cantidad.numeric' => 'La cantidad debe ser numérica.',
+        'cantidad.regex' => 'La cantidad debe tener un máximo de 2 decimales.',
+        'descripcion.required' => 'La descripción es obligatoria.',
         ]);
 
         $solicitud = new solicitud();

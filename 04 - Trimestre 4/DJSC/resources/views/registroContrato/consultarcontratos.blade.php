@@ -14,6 +14,9 @@
           <input class="form-control mr-sm-2" type="search" placeholder="nombre sub empresa " aria-label="Search">
           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">buscar</button>
         </form>
+        <div class="ms-auto">
+          <a href="{{ route('generar-reporteC-pdf') }}" class="btn btn-primary ml-auto">Generar Reporte</a>
+      </div>
       </nav>
     <table class="table">
       
@@ -75,8 +78,11 @@
                       <p style="color: red;">correo de contacto:</p>
                       <p style="margin-left: 5%;">{{ $contrato->subempresa->correo }}</p>
                     </div>
-                    
-                   
+                    <div style="display: inline-block; margin-left: 5%;">
+                      <div style="display: flex;">
+                    <p style="color: red;">Estado:</p>
+                    <p>{{ $contrato->estado_contrato->estadoContrato}}</p>
+                  </div> 
                     <div style="display: inline-block; margin-left: 5%;">
                         <div style="display: flex;">
                       <p style="color: red;">cantidad:</p>
@@ -92,8 +98,15 @@
              
                    <!-- Modal footer -->
                    <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" disabled>modificar estado</button>
-                     <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cerrar</button>
+                    <a class="btn btn-primary" href="{{url('registroContrato/'.$contrato->id.'/estadoCedit')}}">Modificar estado</a>
+                    @if ($contrato->estado_contrato->estadoContrato === 'finalizado')
+                                            <form action="{{ route('registroContrato.destroy', $contrato->id) }}" method="POST" class="d-inline">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                                            </form>
+                                        @endif
+                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cerrar</button>
                    </div>
              
                  </div>

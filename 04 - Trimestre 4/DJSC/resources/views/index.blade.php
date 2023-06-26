@@ -78,21 +78,21 @@
       </nav>
       <div style="display: flex;">
       <div class="slide p-2 ">
-        <div class="slide-inner">
+        <div style="width: 800px; height:552px" class="slide-inner">
             <input class="slide-open" type="radio" id="slide-1" 
                   name="slide" aria-hidden="true" hidden="" checked="checked">
             <div class="slide-item">
-                <img src="https://i.ytimg.com/vi/JIrquo9gD9c/maxresdefault.jpg">
+                <img src="img/Pantalones.png">
             </div>
             <input class="slide-open" type="radio" id="slide-2" 
                   name="slide" aria-hidden="true" hidden="">
             <div class="slide-item">
-                <img src="https://i.ytimg.com/vi/JIrquo9gD9c/maxresdefault.jpg">
+              <img src="img/Gorras.png">
             </div>
             <input class="slide-open" type="radio" id="slide-3" 
                   name="slide" aria-hidden="true" hidden="">
             <div class="slide-item">
-                <img src="https://i.ytimg.com/vi/JIrquo9gD9c/maxresdefault.jpg">
+              <img src="img/Pocillo.png">
             </div>
             <label for="slide-3" class="slide-control prev control-1">‹</label>
             <label for="slide-2" class="slide-control next control-1">›</label>

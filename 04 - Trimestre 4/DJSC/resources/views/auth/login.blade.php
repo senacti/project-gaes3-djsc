@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,19 +61,23 @@
               <form action="{{route('login')}}" method="post">
                 @csrf
                 <div class="mb-4 row w-75">
-                    <input type="text" placeholder="Email" required id="Email" name="email">
-                    <span class="col-1" id="emailOK"></span>
+                  <input class="controls" type="text" placeholder="Ingrese su Email" required id="Email" name="email" value="{{ old('email') }}">
+        
                 </div>
                 <div class="mb-4 row w-75">
-                  <input type="password" placeholder="Contraseña" required id="Contraseña" name="password">
-                  <span class="col-1" id="contraseñaOK"></span>
+                  <input class="controls" type="password" placeholder="Ingrese su Contraseña" required id="Contraseña" name="password">
                 </div>
-                <div class="pass"><a href="{{url('/password/reset')}}">¿olvido su contraseña?</a></div>
-                <div class=" w-75 row button">
+                @if ($errors->has('email') || $errors->has('password'))
+                <div class="mb-4 row w-75">
+                  <span class="error-message">Las credenciales no son válidas.</span>
+                </div>
+                @endif
+                <div class="pass"><a href="{{url('/password/reset')}}">¿Olvidó su contraseña?</a></div>
+                <div class="w-75 row button">
                   <input type="submit" value="INGRESAR">
                 </div>
-                <p class=" me-5" style="background: none;"><input type="checkbox" name="remember" id="remember"> RECORDARME</p>
-                <div class="signup-link">¿No es usuario? <a href="{{url('register')}}">Registrese Ahora</a></div>
+                <p class="me-5" style="background: none;"><input type="checkbox" name="remember" id="remember"> RECORDARME</p>
+                <div class="signup-link">¿No es usuario? <a href="{{url('register')}}">Regístrese Ahora</a></div>
               </form>
             </div>
           </div></center>     

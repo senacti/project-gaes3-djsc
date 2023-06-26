@@ -10,48 +10,55 @@
 </head>
 <body>
     <section class="form-register">
-        <center style="background: black;"><h4 style="color: white; background: none;" >CREACION DE ORDEN DE SERVICIO</h4></center>
-         <div style="color:black; background: none;">
+        <center style="background: black;">
+            <h4 style="color: white; background: none;">CREACION DE ORDEN DE SERVICIO</h4>
+        </center>
+        <div style="color:black; background: none;">
             INFORMACION REQUERIDA
         </div>
         <form action="{{route('almacenarordenservicio')}}" method="post">
-          @csrf
-        <input class="controlsj4" type="number" placeholder="Ingrese Cantidad" required id="CantidaddeProductos" name="cantidad" id="cantidad" required>
-        <span style="background: none;" class="col-1" id="CantidaddeProductosOK"></span>
-        <input class="controlsj5" type="text" placeholder="Ingrese detalles" required id="detallesdelServicio" name="descripcion" id="descripcion" value="{{ old ('descripcion')}}" required>
-        <span style="background: none;" class="col-1" id="detallesdelServicioOK"></span>
-        <div style="background: none;">
-        <input class="botons1"data-bs-toggle="modal" data-bs-target="#myModal" type="submit" value="Guardar Orden">
-    </div>
-  </form>
-      <div class="modal " id="myModal">
-       <div style="background: white;" class="modal-dialog modal-lg">
-         <div style="background: white;" class="modal-content">
-     
-           <!-- Modal Header -->
-           <div style="background: white;"class="modal-header">
-             
-             <a href="{{url('/servicios')}}"><button type="button" class="btn-close" data-bs-dismiss="modal"></button></a>
-           </div>
-     
-           <!-- Modal body -->
-           <div style="background: white;" class="modal-body">
-             <div style="background: white;"style="display: flex;">
-             
-               <center><div style=" background: white;display: inline-block; margin-left: 5%;">
-               <center> <img class="check" src="img/check.png" alt=""></center>
-               <center><p style="background: none;">CONFIRMADO </p>
-               <p style="background: none;">Su solicitud se guardo en el sistema de informacion con exito</p></center>
-             </div></center>
-             </div>
-           </div>
-         </div>
-       </div>
-     </div>
-
-      </section>
-      <script src="{{ asset('JS/validacionJ.js')}}"></script>
+            @csrf
+            <input class="controlsj4" type="number" placeholder="Ingrese Cantidad" required id="CantidaddeProductos" name="cantidad" value="{{ old('cantidad') }}" required>
+            @error('cantidad')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <input class="controlsj5" type="text" placeholder="Ingrese detalles" required id="detallesdelServicio" name="descripcion" value="{{ old('descripcion') }}" required>
+            @error('descripcion')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            <div style="background: none;">
+                <input class="botons1" type="submit" value="Guardar Orden">
+            </div>
+        </form>
+        @if ($errors->any())
+            <div class="modal show" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <a href="{{url('/servicios')}}">
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </a>
+                        </div>
+                        <div class="modal-body">
+                            <div style="display: flex;">
+                                <center>
+                                    <div style="display: inline-block; margin-left: 5%;">
+                                        <center><img class="check" src="img/check.png" alt=""></center>
+                                        <center>
+                                            <p>CONFIRMADO</p>
+                                        </center>
+                                        <p>Su solicitud se guardó en el sistema de información con éxito.</p>
+                                    </div>
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
+    </section>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ asset('JS/bootstrap.min.js')}}"></script>
+    <script src="{{ asset('JS/bootstrap.bundle.min.js')}}"></script>
 </body>
-<script src="{{ asset('JS/bootstrap.min.js')}}"></script>
-<script src="{{ asset('JS/bootstrap.bundle.min.js')}}"></script>
 </html>

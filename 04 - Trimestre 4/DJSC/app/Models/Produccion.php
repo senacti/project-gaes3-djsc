@@ -33,4 +33,8 @@ class Produccion extends Model
     {
         return $this->belongsTo(novedad_Produccion::class, 'id_novedad');
     }
+    public function solicitudes()
+    {
+        return $this->belongsTo(Solicitud::class, 'id_Solicitud');
+    }
 }

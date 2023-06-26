@@ -155,3 +155,11 @@ Route::get('/RegistroContrato', [ContratoController::class, 'create'])->name('re
 
 Route::post('/RegistroContrato', [ContratoController::class, 'store'])->name('guardarcontrato');
 
+Route::get('/registroContrato/{id}/estadoCedit', [ContratoController::class, 'edit'])->name('registroContrato.estadoCedit');
+
+Route::put('/registroContrato/{id}/estadoCedit', [ContratoController::class, 'update'])->name('registroContrato.update');
+
+Route::delete('registroContrato/{Contrato_Sub_Empresa}', [ContratoController::class, 'destroy'])->name('registroContrato.destroy');
+
+Route::get('/RegistroContrato/generar-reporteC-pdf', [ContratoController::class, 'generarReportePDF'])->name('generar-reporteC-pdf');
+
