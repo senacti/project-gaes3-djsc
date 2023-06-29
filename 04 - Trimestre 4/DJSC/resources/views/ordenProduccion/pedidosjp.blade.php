@@ -33,10 +33,11 @@
     <div class="anun m-5">
         <div class="card" style="width: 18rem;">
       
-        <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="card-img-top" alt="...">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaboDMoOVmyRkfkpcAV_Tx_UeF7fAQfVdMYg&usqp=CAU" class="card-img-top" alt="...">
         <div class="card-body">
-          <h5 class="card-title">nombre del servicio</h5>
-          <p class="card-text">detalles del servicio</p>
+          <h5 class="card-title">Camisas</h5>
+          <p class="card-text">detalles del servicio:</p>
+          <p>{{ $solicitud->descripcion}}</p> 
           <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal{{ $solicitud->id }}">
             abrir
           </button>
@@ -57,7 +58,7 @@
                 <div class="modal-body">
                   <div style="display: flex;">
                   <div class="card" style="width: 50rem;height: 100%;">
-                      <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" alt="...">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaboDMoOVmyRkfkpcAV_Tx_UeF7fAQfVdMYg&usqp=CAU" alt="...">
                       
                     </div>
                     <div style="display: inline-block; margin-left: 5%;">

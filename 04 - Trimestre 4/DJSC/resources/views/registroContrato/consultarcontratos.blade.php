@@ -10,13 +10,11 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"></a>
-        <form class="form-inline">
-          <input class="form-control mr-sm-2" type="search" placeholder="nombre sub empresa " aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">buscar</button>
+        <form class="form-inline" action="{{ route('generar-reporteC-pdf') }}">
+          <label for="usuario">Filtrar por Nombre Empresa:</label>
+          <input class="form-control mr-sm-2" type="search" placeholder="nombre sub empresa" aria-label="Search" name="nombre_subempresa">
+          <button class="btn btn-primary ml-auto" type="submit">Generar Reporte</button>
         </form>
-        <div class="ms-auto">
-          <a href="{{ route('generar-reporteC-pdf') }}" class="btn btn-primary ml-auto">Generar Reporte</a>
-      </div>
       </nav>
     <table class="table">
       

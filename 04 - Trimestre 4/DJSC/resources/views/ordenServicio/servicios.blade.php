@@ -18,10 +18,10 @@
   </nav>
     <div class="anun p-5 ms-5">
         <div class="card " style="width: 18rem;">
-          <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" class="card-img-top" alt="...">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaboDMoOVmyRkfkpcAV_Tx_UeF7fAQfVdMYg&usqp=CAU" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Card title</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <h5 class="card-title">Camisas</h5>
+            <p class="card-text">Modifica a tu gusto las camisas con las instrucciones y diseños que nos quieras proporcionar</p>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
               abrir
             </button>
@@ -33,7 +33,7 @@
             
                   <!-- Modal Header -->
                  <div class="modal-header">
-                    <h4 class="modal-titl e">nombre del servicio</h4>
+                    <h4 class="modal-titl e">Camisas</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                   </div>
             
@@ -41,7 +41,7 @@
                   <div class="modal-body">
                     <div style="display: flex;">
                       <div class="card" style="width: 50rem;height: 100%;">
-                          <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" alt="...">
+                          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaboDMoOVmyRkfkpcAV_Tx_UeF7fAQfVdMYg&usqp=CAU" alt="...">
                           
                         </div>
                         <div style="display: inline-block; margin-left: 5%;">
@@ -50,7 +50,7 @@
                       </div>
                      
                         <p style="color: red;">Descripcion: </p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores deleniti eligendi illum? Sit non cupiditate consectetur error dolorem facilis, quas voluptate reiciendis dolore unde aut laborum, labore mollitia iste saepe!</p>
+                        <p>Modifica a tu gusto las camisas con las instrucciones y diseños que nos quieras proporcionar para esto te proporcionaremos un formulario en el cual podras darnos los detalles del servicio</p>
                      
                       </div>
                       </div>

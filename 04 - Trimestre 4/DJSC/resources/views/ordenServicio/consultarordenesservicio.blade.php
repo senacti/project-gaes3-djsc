@@ -10,13 +10,18 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"></a>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Nombre del cliente" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        <form method="GET" action="{{ route('ordenServicio.consultarordenservicio') }}">
+            <div class="form-group">
+                <label for="usuario">Buscar por usuario:</label>
+                <input type="text" name="usuario" id="usuario" value="{{ $usuario ?? '' }}" placeholder="Nombre de usuario">
+                <button type="submit">Buscar</button>
+            </div>
         </form>
-        <div class="ms-auto">
-            <a href="{{ route('generar-reporteS-pdf') }}" class="btn btn-primary ml-auto">Generar Reporte</a>
-        </div>
+        <form class="form-inline" action="{{ route('generar-reporteS-pdf') }}" method="GET">
+            <label for="usuario">Filtrar por Usuario:</label>            
+            <input class="form-control mr-sm-2" type="search" name="usuario" placeholder="Nombre del cliente" aria-label="Search">
+            <button class="btn btn-primary ml-auto">Generar Reporte</button>
+        </form>
     </nav>
     <table class="table">
         @if ($solicitudes->isEmpty())
@@ -57,7 +62,7 @@
                                         <div class="modal-body">
                                             <div style="display: flex;">
                                                 <div class="card" style="width: 30rem;height: 100%;">
-                                                    <img src="https://img.freepik.com/foto-gratis/tienda-ropa-tienda-ropa-perchas-tienda-boutique-moderna_1150-8886.jpg" alt="...">
+                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaboDMoOVmyRkfkpcAV_Tx_UeF7fAQfVdMYg&usqp=CAU" alt="...">
                                                 </div>
                                                 <div style="display: inline-block; margin-left: 5%;">
                                                     <div style="display: flex;">

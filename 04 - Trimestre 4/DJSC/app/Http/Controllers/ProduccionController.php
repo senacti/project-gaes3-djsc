@@ -117,10 +117,17 @@ class ProduccionController extends Controller
         return redirect()->route('consultarordenproduccion')->with('error', 'No se encontró la orden de producción.');
     }
 
-    public function generarReportePDF()
+    public function generarReportePDF(Request $request)
     {
-        $producciones = Produccion::with('tipoProduccion', 'estadoProduccion', 'novedadProduccion')->get();
+        $fechaInicio = $request->input('fechaInicio');
+    $fechaFin = $request->input('fechaFin');
+    $producciones = Produccion::query();
 
+    if ($fechaInicio && $fechaFin) {
+        $producciones = $producciones->whereBetween('fechaproduccion', [$fechaInicio, $fechaFin]);
+    }
+
+    $producciones = $producciones->get();
         $reporteView = view('ordenProduccion.reporteP', ['producciones' => $producciones]);
 
         $dompdf = new Dompdf();

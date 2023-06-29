@@ -66,12 +66,24 @@ class SolicitudController extends Controller
 
         return redirect()->route('abonos');
     }
-    public function listaSolicitudes()
+    public function listaSolicitudes(Request $request)
     {
-        $solicitudes = Solicitud::with('usuario', 'estadosolicitud')->get();
-        return view('ordenServicio.consultarordenesservicio', [
-            'solicitudes' => $solicitudes,
-        ]);
+        $usuario = $request->input('usuario');
+
+    $query = Solicitud::with('usuario', 'estadosolicitud');
+
+    if ($usuario) {
+        $query->whereHas('usuario', function ($query) use ($usuario) {
+            $query->where('name', 'like', '%' . $usuario . '%');
+        });
+    }
+
+    $solicitudes = $query->get();
+
+    return view('ordenServicio.consultarordenesservicio', [
+        'solicitudes' => $solicitudes,
+        'usuario' => $usuario,
+    ]);
     }
 
 
@@ -110,28 +122,37 @@ class SolicitudController extends Controller
         return redirect()->route('ordenServicio.consultarordenservicio')->with('success', 'Estado actualizado exitosamente.');
     }
 
-    public function generarReportePDF()
-    {
-        $solicitudes = Solicitud::with('usuario', 'estadosolicitud')->get();
+    public function generarReportePDF(Request $request)
+{
+    $usuario = $request->input('usuario');
 
-        $reporteView = view('ordenServicio.reporteS', ['solicitudes' => $solicitudes]);
+    $query = Solicitud::with('usuario', 'estadosolicitud');
 
-        $dompdf = new Dompdf();
-        $dompdf->loadHtml($reporteView->render());
-
-
-        $dompdf->setPaper('A4', 'portrait');
-
-        $dompdf->render();
-
-        $output = $dompdf->output();
-
-        $filePath = public_path('Reportes/reporteSolicitudes.pdf');
-
-        file_put_contents($filePath, $output);
-
-        return response()->download($filePath);
+    if ($usuario) {
+        $query->whereHas('usuario', function ($query) use ($usuario) {
+            $query->where('name', 'like', '%' . $usuario . '%');
+        });
     }
+
+    $solicitudes = $query->get();
+
+    $reporteView = view('ordenServicio.reporteS', ['solicitudes' => $solicitudes]);
+
+    $dompdf = new Dompdf();
+    $dompdf->loadHtml($reporteView->render());
+
+    $dompdf->setPaper('A4', 'portrait');
+
+    $dompdf->render();
+
+    $output = $dompdf->output();
+
+    $filePath = public_path('Reportes/reporteSolicitudes.pdf');
+
+    file_put_contents($filePath, $output);
+
+    return response()->download($filePath);
+}
     /**
      * Remove the specified resource from storage.
      */

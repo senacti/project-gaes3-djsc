@@ -131,16 +131,23 @@ public function update(Request $request, $id)
     return redirect()->route('consultarcontratos')->with('error', 'No se encontró el contrato.');
 }
     
-    public function generarReportePDF()
-    {
-        $contratos = Contrato_Sub_Empresa::join('sub__empresas', 'contrato__sub__empresas.id_empresa', '=', 'sub__empresas.id')
+public function generarReportePDF(Request $request)
+{
+    $nombreSubempresa = $request->input('nombre_subempresa');
+
+    $contratos = Contrato_Sub_Empresa::join('sub__empresas', 'contrato__sub__empresas.id_empresa', '=', 'sub__empresas.id')
         ->join('estado__sub__empresas', 'sub__empresas.id_estado', '=', 'estado__sub__empresas.id')
         ->join('estado__contratos', 'contrato__sub__empresas.id_estado', '=', 'estado__contratos.id')
+        ->when($nombreSubempresa, function ($query) use ($nombreSubempresa) {
+            $query->whereHas('subempresa', function ($subempresaQuery) use ($nombreSubempresa) {
+                $subempresaQuery->where('nombre', 'LIKE', '%' . $nombreSubempresa . '%');
+            });
+        })
         ->select('contrato__sub__empresas.*', 'estado__sub__empresas.estadoSubEmpresa as estado_subempresa', 'estado__contratos.estadoContrato as estado_contrato')
         ->get();
-    
-        $reporteView = view('registroContrato.reporteC', ['contratos' => $contratos]);
-    
+
+    $reporteView = view('registroContrato.reporteC', ['contratos' => $contratos]);
+
     $dompdf = new Dompdf();
     $dompdf->loadHtml($reporteView->render());
 
