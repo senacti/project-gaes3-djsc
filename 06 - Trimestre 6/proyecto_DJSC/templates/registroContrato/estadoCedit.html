@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/Style.css' %}">
+
+    <title>Editar Estado</title>
+</head>
+
+<body>
+    <div class="container">
+        <center>
+            <h1>Editar Estado</h1>
+        </center>
+        <div class="formulario">
+            <form action="#" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="_method" value="PUT" />
+                <div class="form-group">
+                    <label for="estadoContrato">Estado del Contrato</label>
+                    <select class="form-control" id="estadoContrato" name="estadoContrato">
+                        <option value="">Seleccionar Estado</option>
+                        {% for estado in estados %}
+                            <option value="{{ estado.id }}" {% if contrato.estadoContrato.id == estado.id %} selected {% endif %}>
+                                {{ estado.estadoContrato }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </form>
+        </div>
+    </div>
+    <script src="{% static 'JS/validacion.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/STYLEj3.CSS' %}">
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+    <title>Registro de Servicios</title>
+</head>
+<body>
+    <section class="form-register">
+        <form action="#">
+            <center style="background: black;"><h4 style="color: white; background: none;" >REGISTRO DE SERVICIOS</h4></center>
+            <center style="background: none;"><img src="" alt=""></center>
+            <center style="background: black;"><div style="color: white;margin: 20px; background: none;">
+                INFORMACION PRINCIPAL
+            </div></center>
+            <input class="controls1" type="text" placeholder="Ingrese Nombre del Servicio" required id="NombredelServicio">
+            <span style="background: none;" class="col-1" id="NombredelServicioOK"></span>
+            <input class="controls2" type="text" placeholder="Ingrese Descripcion del Servicio" required id="DescripciondelServicio">
+            <span style="background: none;" class="col-1" id="DescripciondelServicioOK"></span>
+            <input class="controls4" type="text" placeholder="Ingrese el Tipo de Servicio" required id="TipodeServicio">
+            <span style="background: none;" class="col-1" id="TipodeServicioOK"></span>
+            <div style="background: none;">
+                <input class="botons1" type="submit" value="Registrar Servicio">
+            </div>
+        </form>
+    </section>
+    <script src="{% static 'JS/validacionJ.js' %}"></script>
+    <script src="{% static 'JS/bootstrap.min.js' %}"></script>
+    <script src="{% static 'JS/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

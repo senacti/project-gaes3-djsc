@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/Style.css' %}">
+
+    <title>Editar Orden de Producción</title>
+</head>
+<body>
+    <div class="container">
+        <center><h1>Editar Orden de Producción</h1></center>
+        <div class="formulario">
+            <form action="#" method="post" class="row g-3">
+                {% csrf_token %}
+                <input type="hidden" name="_method" value="PUT" />
+                <div class="col-12">
+                    <label for="fechaproduccion">Fecha de Producción</label>
+                    <input type="date" class="form-control" id="fechaproduccion" name="fechaproduccion" required="required" value="{{ produccion.fechaproduccion }}">
+                    <div class="valid-feedback">Espacio correcto</div>
+                    <div class="invalid-feedback">Espacio vacío</div>
+                </div>
+                <div class="col-12">
+                    <label for="tipoProduccion">Tipo de Producción</label>
+                    <select id="tipoProduccion" name="tipoProduccion" class="form-select" required>
+                        <option value="">Seleccionar tipo de producción</option>
+                        {% for tipo in tiposProduccion %}
+                            <option value="{{ tipo.id }}" {% if produccion.tipoProduccion.id == tipo.id %} selected {% endif %}>{{ tipo.tipoProduccion }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="estadoProduccion">Estado de Producción</label>
+                    <select id="estadoProduccion" name="estadoProduccion" class="form-select" required>
+                        <option value="">Seleccionar estado de producción</option>
+                        {% for estado in estadosProduccion %}
+                            <option value="{{ estado.id }}" {% if produccion.estadoProduccion.id == estado.id %} selected {% endif %}>{{ estado.estadoProduccion }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="novedadProduccion">Novedad de Producción</label>
+                    <select id="novedadProduccion" name="novedadProduccion" class="form-select" required>
+                        <option value="">Seleccionar novedad de producción</option>
+                        {% for novedad in novedadesProduccion %}
+                            <option value="{{ novedad.id }}" {% if produccion.novedadProduccion.id == novedad.id %} selected {% endif %}>{{ novedad.novedadProduccion }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="col-6">
+                    <button type="submit" class="btn btn-success">Editar Orden de Producción</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="{% static 'JS/validacion.js' %}"></script>
+</html>
