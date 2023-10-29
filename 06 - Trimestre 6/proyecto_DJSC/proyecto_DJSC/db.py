@@ -23,7 +23,7 @@ SQLITE = {
 MYSQL = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'DJSC',
+        'NAME': 'djsc',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': 'localhost',
