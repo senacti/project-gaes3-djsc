@@ -1,4 +1,5 @@
 from django.db import models
+from solicitudes.models import Request
 
 # Create your models here.
 class Type_Payment(models.Model):
@@ -32,6 +33,7 @@ class Sale(models.Model):
     amount = models.PositiveIntegerField(verbose_name="Cantidad de venta")
     totalVAT = models.FloatField(verbose_name="Total IVA venta")
     totalPrice = models.FloatField(verbose_name="Precio total de venta")
+    request = models.ForeignKey(Request, on_delete=models.CASCADE)
     state = models.ForeignKey(State_Sale, on_delete=models.CASCADE)
 
     def __str__(self):

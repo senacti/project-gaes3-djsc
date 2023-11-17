@@ -1,4 +1,6 @@
 from django.db import models
+from produccion.models import Production
+
 
 # Create your models here.
 class Type_Service(models.Model):
@@ -97,6 +99,7 @@ class Request(models.Model):
     description = models.TextField(verbose_name="Descripcion de la solicitud")
     date = models.DateField(verbose_name="Fecha de la solicitud")
     state = models.ForeignKey(State_Request, on_delete=models.CASCADE)
+    production = models.ForeignKey(Production, on_delete=models.CASCADE)
     service = models.ForeignKey(Service, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -116,7 +119,7 @@ class Contract_Sub_Company(models.Model):
     subcompany = models.ForeignKey(Sub_Company, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.date
+        return self.dateI
     
     class Meta:
         verbose_name = "Contrato Sub Empresa"
