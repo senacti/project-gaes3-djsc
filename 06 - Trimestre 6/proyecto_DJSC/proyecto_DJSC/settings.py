@@ -33,8 +33,8 @@ ALLOWED_HOSTS = []
 # Enviar emails
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'jesusalbertocastellanosromero@gmail.com'
-EMAIL_HOST_PASSWORD = 'atcg wxdq csvi zehh' 
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = '' 
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'solicitudes','ventas','produccion','import_export',
+    'solicitudes','ventas','produccion','import_export','users',
 ]
 JAZZMIN_SETTINGS = {
     "site_title": "Administracion La plancha de pancha",
@@ -56,6 +56,7 @@ JAZZMIN_SETTINGS = {
     "site_logo": "img/logo.png",
     "topmenu_links": [
          {"name": "Inicio",  "url": "index", "permissions": ["auth.view_user"]},
+         {"name": "dashboard",  "url": "dashboard", "permissions": ["auth.view_user"]},
 ]
 }
 

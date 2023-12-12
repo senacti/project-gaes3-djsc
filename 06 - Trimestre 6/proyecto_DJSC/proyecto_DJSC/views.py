@@ -126,7 +126,7 @@ def login_view(request):
                 user = register_form.save()
                 login(request, user)
                 messages.success(request, '¡Registro exitoso! Has iniciado sesión automáticamente.')
-                return redirect('index')
+                return redirect('dashboard')
     else:
         register_form = RegistrationForm()
 

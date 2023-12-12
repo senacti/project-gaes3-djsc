@@ -14,7 +14,7 @@ class Type_Service(models.Model):
         ordering = ['id']
 
 class State_Service(models.Model):
-    state = models.CharField(max_length=30, verbose_name="Estado de servicio")
+    state = models.CharField(max_length=1000, verbose_name="Estado de servicio")
 
     def __str__(self):
         return self.state
@@ -117,7 +117,7 @@ class Contract_Sub_Company(models.Model):
     subcompany = models.ForeignKey(Sub_Company, on_delete=models.CASCADE,verbose_name="sub empresa")
 
     def __str__(self):
-        return self.date
+        return str(self.request)
     
     class Meta:
         verbose_name = "Contrato Sub Empresa"

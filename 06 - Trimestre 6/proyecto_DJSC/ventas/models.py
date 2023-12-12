@@ -52,7 +52,7 @@ class Payment(models.Model):
     type = models.ForeignKey(Type_Payment, on_delete=models.CASCADE,verbose_name="Tipo de pago")
     
     def __str__(self):
-        return self.sale
+        return str(self.sale)
     
     class Meta:
         verbose_name = "Pago"
