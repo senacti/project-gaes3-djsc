@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/Style.css' %}">
+    <title>Editar Estado</title>
+</head>
+<body>
+    <div class="container">
+        <center><h1>Editar Estado</h1></center>
+        <div class="formulario">
+            <form action="#" method="POST" class="row g-3 needs-validation" novalidate>
+                {% csrf_token %}
+                <input type="hidden" name="_method" value="PUT">
+                <input type="hidden" name="_csrf" value="{{ csrf_token }}">
+                <div>
+                    <label for="estadoSolicitud">ESTADO</label>
+                    <select name="estadoSolicitud" id="estadoSolicitud" class="form-select" required>
+                        <option value="">Seleccionar Estado</option>
+                        {% for estado in estados %}
+                            <option value="{{ estado.id }}" {% if solicitud.id_estado == estado.id %} selected {% endif %}>
+                                {{ estado.estadoSolicitud }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-6">
+                    <button type="submit" class="btn btn-success">Editar Estado</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="{% static 'JS/validacion.js' %}"></script>
+</html>
