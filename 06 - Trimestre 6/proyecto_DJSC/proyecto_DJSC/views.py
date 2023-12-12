@@ -8,6 +8,20 @@ from django.contrib import messages
 from .forms import RegistrationForm
 from django.contrib.auth.decorators import login_required
 from users.decorators import no_authenticated_user
+from django.views.generic import View
+from django.http import HttpResponse
+import os
+from django.conf import settings
+from django.http import HttpResponse
+from django.template.loader import get_template
+from xhtml2pdf import pisa
+from django.contrib.staticfiles import finders
+from produccion.models import Production
+from django.core.mail import EmailMessage
+from django.template.loader import render_to_string
+
+from solicitudes.models import Request
+from ventas.models import Sale
 
 def index(request):
     return render(request,'index.html',{
@@ -179,4 +193,120 @@ def estadoCedit(request):
 def RegistroContrato(request):
     return render(request,'registroContrato/RegistroContrato.html',{
         #context
+    })
+class GeneratePdf(View):
+    def get(self, request, *args, **kwargs):
+        template = get_template('reporteS.html')
+        logo_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'logo.png')
+
+        requests = Request.objects.all()
+
+        context = {
+            'title': 'Reporte de Solicitudes',
+            'logo_path': logo_path,
+            'requests': requests,
+        }
+        html = template.render(context)
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="reportS.pdf"'
+        
+        pisa_status = pisa.CreatePDF(html, dest=response, link_callback=link_callback)
+
+        if pisa_status.err:
+            return HttpResponse('Error al generar el PDF', status=500)
+
+        return response
+
+def link_callback(uri, rel):
+    if settings.DEBUG and uri.startswith(settings.STATIC_URL):
+        path = os.path.join(settings.BASE_DIR, uri.replace(settings.STATIC_URL, ""))
+        return path
+
+    return uri
+
+class GeneratePdf2(View):
+    def get(self, request, *args, **kwargs):
+        template = get_template('reporteP.html')
+        logo_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'logo.png')
+
+        productions = Production.objects.all()
+
+        context = {
+            'title': 'Reporte de Producciones',
+            'logo_path': logo_path,
+            'productions': productions,
+        }
+        html = template.render(context)
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="reportP.pdf"'
+        
+        pisa_status = pisa.CreatePDF(html, dest=response, link_callback=link_callback)
+
+        if pisa_status.err:
+            return HttpResponse('Error al generar el PDF', status=500)
+
+        return response
+
+def link_callback(uri, rel):
+    if settings.DEBUG and uri.startswith(settings.STATIC_URL):
+        path = os.path.join(settings.BASE_DIR, uri.replace(settings.STATIC_URL, ""))
+        return path
+
+    return uri
+
+class GeneratePdf3(View):
+    def get(self, request, *args, **kwargs):
+        template = get_template('reporteV.html')
+        logo_path = os.path.join(settings.BASE_DIR, 'static', 'img', 'logo.png')
+
+        sales = Sale.objects.all()
+
+        context = {
+            'title': 'Reporte de Ventas',
+            'logo_path': logo_path,
+            'sales': sales,
+        }
+        html = template.render(context)
+        response = HttpResponse(content_type='application/pdf')
+        response['Content-Disposition'] = 'attachment; filename="reportV.pdf"'
+        
+        pisa_status = pisa.CreatePDF(html, dest=response, link_callback=link_callback)
+
+        if pisa_status.err:
+            return HttpResponse('Error al generar el PDF', status=500)
+
+        return response
+
+def link_callback(uri, rel):
+    if settings.DEBUG and uri.startswith(settings.STATIC_URL):
+        path = os.path.join(settings.BASE_DIR, uri.replace(settings.STATIC_URL, ""))
+        return path
+
+    return uri
+
+def contactenos(request):
+    if request.method == "POST":
+        name = request.POST['name']
+        email = request.POST['email']
+        subject = request.POST['subject']
+        message = request.POST['message']
+        
+        template = render_to_string('email_template.html', {
+            'name': name,
+            'email': email,
+            'message': message
+        })
+    
+        email = EmailMessage(
+            subject,
+            template,
+            settings.EMAIL_HOST_USER,
+            ['jesusalbertocastellanosromero@gmail.com']
+        )
+    
+        email.fail_silently = False
+        email.send()
+    
+    return render(request, 'contactenos.html',{
+
     })

@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        /* Estilos para el reporte */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 10px; /* Reducir el tamaño de la fuente */
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 4px; /* Reducir el espaciado interno de las celdas */
+            border-bottom: 1px solid #ddd;
+            text-align: center; /* Centrar el contenido de las celdas */
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        .logo {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            width: 200px; /* Ajusta el tamaño de la imagen según tus necesidades */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="logo">
+        <img src="{% static 'img/logo.png' %}" alt="Logo" width="150">
+    </div>
+    <h1>LA PLANCHA DE PANCHA</h1> 
+    <h1>Reporte de Ventas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha de venta</th>
+                <th>Fecha de entrega</th>
+                <th>Precio</th>
+                <th>Cantidad de venta</th>
+                <th>Total IVA</th>
+                <th>Precio total</th>
+                <th>estado de venta</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sale in sales %}
+            <tr>
+                <td>{{ sale.date }}</td>
+                <td>{{ sale.datedelivery }}</td>
+                <td>{{ sale.price }}</td>
+                <td>{{ sale.amount }}</td>
+                <td>{{ sale.totalVAT }}</td>
+                <td>{{ sale.totalPrice }}</td>
+                <td>{{ sale.state }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+
+</html>

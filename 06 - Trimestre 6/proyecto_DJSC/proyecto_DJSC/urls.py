@@ -17,6 +17,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from .views import GeneratePdf, GeneratePdf2, GeneratePdf3
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -54,5 +55,10 @@ urlpatterns = [
     path('consultarcontratos', views.consultarcontratos, name='consultarcontratos'),
     path('estadoCedit', views.estadoCedit, name='estadoCedit'),
     path('RegistroContrato', views.RegistroContrato, name='RegistroContrato'),
+    path('reporteS/', GeneratePdf.as_view(), name='reporteS'),
+    path('reporteP/', GeneratePdf2.as_view(), name='reporteP'),
+    path('reporteV/', GeneratePdf3.as_view(), name='reporteV'),
+    path('contactenos', views.contactenos, name='contactenos'),
 
 ]
+

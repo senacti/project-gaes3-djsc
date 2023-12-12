@@ -32,10 +32,10 @@ class Sale(models.Model):
     amount = models.PositiveIntegerField(verbose_name="Cantidad de venta")
     totalVAT = models.FloatField(verbose_name="Total IVA venta")
     totalPrice = models.FloatField(verbose_name="Precio total de venta")
-    state = models.ForeignKey(State_Sale, on_delete=models.CASCADE)
+    state = models.ForeignKey(State_Sale, on_delete=models.CASCADE,verbose_name="estado de la venta")
 
     def __str__(self):
-        return self.date
+         return str(self.date)
     
     class Meta:
         verbose_name = "Venta"
@@ -44,12 +44,12 @@ class Sale(models.Model):
         ordering = ['id']
 
 class Payment(models.Model):
-    sale = models.ForeignKey(Sale, on_delete=models.CASCADE)
+    sale = models.ForeignKey(Sale, on_delete=models.CASCADE,verbose_name="venta")
     date = models.DateField(verbose_name="Fecha de pago")
     paymentdate = models.DateField(verbose_name="Fecha de abono")
     amount = models.PositiveIntegerField(verbose_name="Cantidad de pago")
     paymentI = models.FloatField(verbose_name="Abono de pago")
-    type = models.ForeignKey(Type_Payment, on_delete=models.CASCADE)
+    type = models.ForeignKey(Type_Payment, on_delete=models.CASCADE,verbose_name="Tipo de pago")
     
     def __str__(self):
         return self.sale
