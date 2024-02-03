@@ -16,6 +16,7 @@ from django.http import HttpResponse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django.contrib.staticfiles import finders
+from solicitudes.models import Request
 from produccion.models import Production
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
@@ -156,14 +157,14 @@ def pedidosjp(request):
     })
 def registrarOrdenProduccion(request):
     return render(request,'ordenProduccion/registrarOrdenProduccion.html',{
-        #context
     })
 def abonos(request):
     return render(request,'ordenServicio/abonos.html',{
         #context
     })
 def consultarordenesservicio(request):
-    return render(request,'ordenServicio/consultarordenesservicio.html',{
+    requests = Request.objects.all()
+    return render(request,'ordenServicio/consultarordenesservicio.html',{'requests':requests
         #context
     })
 def Crear_Orden_de_Servicio(request):

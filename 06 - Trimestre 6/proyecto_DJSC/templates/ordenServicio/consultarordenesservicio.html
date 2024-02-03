@@ -18,69 +18,21 @@
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">cantidad</th>
-                <th scope="col">detalles</th>
+                <th scope="col">descripcion</th>
+                <th scope="col">fecha</th>
                 <th scope="col">estado</th>
-                <th scope="col">Acciones</th>
+                <th scope="col">servicio</th>
             </tr>
         </thead>
         <tbody>
-            {% if solicitudes %}
-                {% for solicitud in solicitudes %}
+            {% if request %}
+                {% for request in requests %}
                     <tr>
-                        <th scope="row">{{ solicitud.id }}</th>
-                        <td>{{ solicitud.cantidad }}</td>
-                        <td>{{ solicitud.descripcion }}</td>
-                        <td>{{ solicitud.estadosolicitud.estadoSolicitud }}</td>
-                        <td>
-                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal{{ solicitud.id }}">Abrir</button>
-                            <!-- The Modal -->
-                            <div class="modal" id="myModal{{ solicitud.id }}">
-                                <div class="modal-dialog modal-lg">
-                                    <div class="modal-content">
-                                        <!-- Modal Header -->
-                                        <div class="modal-header">
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                        </div>
-                                        <!-- Modal body -->
-                                        <div class="modal-body">
-                                            <div style="display: flex;">
-                                                <div class="card" style="width: 30rem; height: 100%;">
-                                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaboDMoOVmyRkfkpcAV_Tx_UeF7fAQfVdMYg&usqp=CAU" alt="...">
-                                                </div>
-                                                <div style="display: inline-block; margin-left: 5%;">
-                                                    <div style="display: flex;">
-                                                        <p style="color: red;">ID</p>
-                                                        <p style="margin-left: 5%;">{{ solicitud.id }}</p>
-                                                    </div>
-                                                    <p style="color: red;">cantidad:</p>
-                                                    <p style="margin-left: 5%;">{{ solicitud.cantidad }}</p>
-                                                    <p style="color: red;">detalles:</p>
-                                                    <p style="margin-left: 5%;">{{ solicitud.descripcion }}</p>
-                                                    <p style="color: red;">Cantidad:</p>
-                                                    <p style="margin-left: 5%;">{{ solicitud.cantidad }}</p>
-                                                    <p style="color: red;">Estado:</p>
-                                                    <p style="margin-left: 5%;">{{ solicitud.estadosolicitud.estadoSolicitud }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <!-- Modal footer -->
-                                        <div class="modal-footer">
-                                            <a class="btn btn-primary" href="{% url 'ordenServicio' solicitud.id 'estadoedit' %}">Modificar estado</a>
-                                            {% if solicitud.estadosolicitud.estadoSolicitud == 'finalizada' or solicitud.estadosolicitud.estadoSolicitud == 'cancelada' %}
-                                                <form action="{% url 'ordenServicio-delete' solicitud.id %}" method="post" class="d-inline">
-                                                    {% csrf_token %}
-                                                    <input type="hidden" name="_method" value="DELETE">
-                                                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                                                </form>
-                                            {% endif %}
-                                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
+                        <td>{{ request.description }}</td>
+                        <td>{{ request.date }}</td>
+                        <td>{{ request.state }}</td>
+                        <td>{{ request.service }}</td>
+                        
                     </tr>
                 {% endfor %}
             {% else %}
