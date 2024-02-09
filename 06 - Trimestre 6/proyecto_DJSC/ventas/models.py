@@ -1,4 +1,5 @@
 from django.db import models
+from solicitudes.models import Request
 
 # Create your models here.
 class Type_Payment(models.Model):
@@ -27,11 +28,11 @@ class State_Sale(models.Model):
     
 class Sale(models.Model):
     date = models.DateField(verbose_name="Fecha de venta")
-    datedelivery = models.DateField(verbose_name="Fecha de entrega de venta")
     price = models.FloatField(verbose_name="Precio de venta")
-    amount = models.PositiveIntegerField(verbose_name="Cantidad de venta")
+    amount = models.FloatField(verbose_name="Abono inicial")
     totalVAT = models.FloatField(verbose_name="Total IVA venta")
     totalPrice = models.FloatField(verbose_name="Precio total de venta")
+    request = models.ForeignKey(Request,on_delete=models.CASCADE,verbose_name="Solicitud")
     state = models.ForeignKey(State_Sale, on_delete=models.CASCADE,verbose_name="estado de la venta")
 
     def __str__(self):
@@ -47,8 +48,7 @@ class Payment(models.Model):
     sale = models.ForeignKey(Sale, on_delete=models.CASCADE,verbose_name="venta")
     date = models.DateField(verbose_name="Fecha de pago")
     paymentdate = models.DateField(verbose_name="Fecha de abono")
-    amount = models.PositiveIntegerField(verbose_name="Cantidad de pago")
-    paymentI = models.FloatField(verbose_name="Abono de pago")
+    paymentI = models.FloatField(verbose_name="Cantidad de abono")
     type = models.ForeignKey(Type_Payment, on_delete=models.CASCADE,verbose_name="Tipo de pago")
     
     def __str__(self):

@@ -15,13 +15,13 @@ class StateSaleAdmin(ImportExportModelAdmin):
 
 @admin.register(Sale)
 class SaleAdmin(ImportExportModelAdmin):
-    list_display = ('date', 'datedelivery', 'price', 'amount', 'totalVAT', 'totalPrice', 'state')
+    list_display = ('date', 'price', 'amount', 'totalVAT', 'totalPrice','request','state')
     search_fields = ('date', 'datedelivery', 'state__state')
     list_filter = ('state',)
 
 @admin.register(Payment)
 class PaymentAdmin(ImportExportModelAdmin):
-    list_display = ('sale', 'date', 'paymentdate', 'amount', 'paymentI', 'type')
+    list_display = ('sale', 'date', 'paymentdate', 'paymentI', 'type')
     search_fields = ('sale__date', 'date', 'paymentdate', 'type__type')
     list_filter = ('type',)
 

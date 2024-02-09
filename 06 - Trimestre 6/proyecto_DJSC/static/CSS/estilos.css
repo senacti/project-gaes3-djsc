@@ -7,7 +7,7 @@
 }
 
 body{
-    background: linear-gradient(to bottom right, #930091, #2589BD);
+    background: linear-gradient(rgba(84,93,220,-0.3), #930091),url(../img/menu.png);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -18,7 +18,7 @@ main{
     width: 100%;
     padding: 20px;
     margin: auto;
-    margin-top: 100px;
+    margin-top: 15%;
 }
 
 .contenedor__todo{
