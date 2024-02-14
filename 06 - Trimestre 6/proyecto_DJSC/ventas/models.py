@@ -1,3 +1,4 @@
+from pickle import TRUE
 from django.db import models
 from solicitudes.models import Request
 
@@ -27,13 +28,13 @@ class State_Sale(models.Model):
         ordering = ['id']
     
 class Sale(models.Model):
-    date = models.DateField(verbose_name="Fecha de venta")
+    date = models.DateField(verbose_name="Fecha de venta",blank=True,null=True)
     price = models.FloatField(verbose_name="Precio de venta")
     amount = models.FloatField(verbose_name="Abono inicial")
     totalVAT = models.FloatField(verbose_name="Total IVA venta")
     totalPrice = models.FloatField(verbose_name="Precio total de venta")
     request = models.ForeignKey(Request,on_delete=models.CASCADE,verbose_name="Solicitud")
-    state = models.ForeignKey(State_Sale, on_delete=models.CASCADE,verbose_name="estado de la venta")
+    state = models.ForeignKey(State_Sale, on_delete=models.CASCADE,verbose_name="estado de la venta",blank=True,null=True)
 
     def __str__(self):
          return str(self.date)

@@ -62,9 +62,9 @@ JAZZMIN_SETTINGS = {
 
 JAZZMIN_UI_TWEAKS = {
    
-   "theme": "darkly",
-   "custom_css": "static/CSS/STYLEabonos.css",
-}
+"brand_colour": "navbar-purple",  
+    "accent": "accent-purple",  
+    "sidebar": "sidebar-dark-purple", }
 
 
 MIDDLEWARE = [
