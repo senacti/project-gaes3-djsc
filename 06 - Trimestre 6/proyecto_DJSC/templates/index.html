@@ -16,7 +16,7 @@
 
 <body>
 
-<a id="whatsapp" href="https://api.whatsapp.com/send?phone=5491130160246"><img src="imagenes/whatsapp.png" alt=""></a>
+<a id="whatsapp" href="https://api.whatsapp.com/send?phone=5491130160246"><img src="{% static 'img/whatsapp.png' %}" alt=""></a>
 <header>
   <div class="menu">
     <div class="contenedor">
@@ -24,12 +24,11 @@
       <img class="menu-icon" src="{% static 'img/menu-click.png' %}" alt="Logo">
       <nav>
         <ul class="lista-menu">
-          <li><a href="#sobre-mi">Sobre mi</a></li>
+          <li><a href="#sobre-mi">Sobre nosotros</a></li>
           <li><a href="#servicios">Servicios</a></li>
-          <li><a href="#mis-trabajos">Mis Trabajos</a></li>
-          <li><a href="#por-que-trabajar">¿Por que trabajar conmigo?</a></li>
-          <li><a href="#blog">Blog</a></li>
-          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#por-que-trabajar">Nuestros valores</a></li>
+          <li><a href="#Mision-y-vision">Mision y Vision</a></li>
+          <li><a href="#contacto">Contactenos</a></li>
           <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
         </ul>
       </nav>
@@ -38,8 +37,8 @@
 
 <div class="contenedor" id="contenedor-titulo-flex">
   <div class="contenedor-titulo">
-    <h1>Jonathan Lifschitz</h1>
-    <h2>Diseñador & Desarrollador Web</h2>
+    <h1>Bienvenido</h1>
+    <h2>Para conocer mas sobre nuestros servicios inicia sesion</h2>
     <div class="btn__inicio">
       <a href="{% url 'login' %}"><button>Iniciar sesión</button></a>
     </div>
@@ -52,15 +51,15 @@
 
 <section id="sobre-mi">
   <div class="contenedor">
-    <h3>Sobre mi</h3>
+    <h3>Sobre nosotros</h3>
     <div class="contenedor-sobremi">
       <div class="computadoras">
         <img src="imagenes/computadoras.png">
       </div>
       <div class="texto">
-        <p>Mi nombre es Jonathan Lifschitz y soy diseñador de páginas web. Tengo la experiencia en desarrollo de sitios web para pequeñas y medianas empresas, hasta tiendas en línea con carrito de compras.</p>
-        <p>Me aseguro de utilizar siempre las últimas tecnologías de desarrollo web: HTML5, CSS3, jQuery, Wordpress. Si necesitás una página web moderna, funcional, que se adapte a todos los diferentes tipos de pantalla, te aseguro que llegaste al lugar correcto.</p>
-        <p>Podes ponerte en contacto conmigo a través de Facebook, Linkedin o completando el formulario de contacto que se encuentra al final de mi sitio web.</p>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt numquam nisi, vero omnis, adipisci exercitationem eligendi tempore blanditiis nemo eveniet ad officia reiciendis at molestias earum! Ipsum expedita doloremque officiis.</p>
+        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur mollitia voluptate voluptatum earum quam, cupiditate laborum iste, esse placeat voluptatem vero distinctio, neque ab fugit. Aliquam repudiandae iusto officiis repellendus.</p>
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id dignissimos corrupti iusto odit facere placeat eaque aliquam delectus, animi deserunt reiciendis veritatis pariatur itaque non sunt ipsa tempora assumenda rerum!</p>
         <a href="">VER MIS TRABAJOS</a>
       </div>
     </div>
@@ -72,38 +71,38 @@
     <h3>Servicios</h3>
     <div class="contenedor-servicios">
       <div class="servicio violeta">
-        <h4>Diseño Web</h4>
-        <p>Páginas web atractivas y funcionales con el objetivo de satisfacer todas tus expectativas. La importancia del diseño es fundamental para tener éxito y atraer a tus visitantes. También lo es la velocidad de carga del sitio web, deben ser rápidos para que el visitante tenga la mejor experiencia</p>
+        <h4>Ropa</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate quo itaque, libero expedita quasi doloribus, magni neque voluptatem laborum vero beatae sint recusandae quisquam cumque ex iure minima. Laudantium, pariatur!</p>
         <img class="icono" src="imagenes/monitor.png">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
       <div class="servicio celeste">
-        <h4>Responsive Design</h4>
-        <p>Hoy en día las páginas web se ven en multitud de dispositivos como tablets, celulares, libros electrónicos, notebooks, PCs, etc. La tecnología móvil es el presente y el futuro. Para eso es importante y me aseguro de que tu sitio web sea compatible con todos los tamaños de pantalla de esta época moderna</p>
+        <h4>Ceramica</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, voluptate aut corporis eum fuga eos ducimus dicta autem quam vel rerum laboriosam, rem, architecto enim facere nulla animi! Quod, distinctio.</p>
         <img class="icono" src="imagenes/mobile.png">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
       <div class="servicio violeta">
-        <h4>SEO</h4>
-        <p>Al crear sitios web, tengo muy en cuenta la optimización de motores de búsqueda (SEO). Llevo a cabo prácticas de SEO estándar en cada página del sitio web, lo que permite que tu sitio tenga una clasificación más alta en los resultados de Google y asi generar mas tráfico a la web</p>
+        <h4>Carteles</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex temporibus reiciendis numquam, veniam ratione eius assumenda tempora aliquid repudiandae nihil saepe totam fugiat quam quasi illo possimus corrupti iusto accusantium.</p>
         <img class="icono" src="imagenes/seo.png">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
       <div class="servicio celeste">
-        <h4>Autoadministrable</h4>
-        <p>Es importante que puedas administrar tu página web vos mismo, desde cualquier lugar y en cualquier momento. Desarrollo sistemas de gestión de contenido que te permiten ver los datos de tu página web y editar el contenido que quieras, lo que te permite mantenerte actualizado</p>
+        <h4>Accesorios</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem ea praesentium magnam eveniet quasi, alias libero dolorum suscipit numquam voluptas error debitis totam labore molestias quod et placeat dicta aliquid.</p>
         <img class="icono" src="imagenes/wordpress.png">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
       <div class="servicio violeta">
-        <h4>Mantenimiento</h4>
-        <p>Podés contactarme si necesitas actualizar tu página web, agregar nuevas secciones o cualquier cambio que necesites. Esto es perfecto para los sitios web de pequeñas empresas, donde no se necesita un diseñador de páginas web a tiempo completo, sino solo en distintas ocasiones</p>
+        <h4>Pvc</h4>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi neque assumenda, veritatis alias necessitatibus consequuntur sunt nisi cumque, blanditiis facere, recusandae explicabo. Magnam eaque labore culpa laudantium delectus quae vitae.</p>
         <img class="icono" src="imagenes/mante.png">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
       <div class="servicio celeste">
-        <h4>Marketing Digital</h4>
-        <p>Utilizo las herramientas mas importantes como Google Adwords y Google Analytics, para que tu negocio aparezca en los resultados de búsqueda de Google justo cuando alguien te necesita y analizar como los usuarios interactúan con tu página web</p>
+        <h4>Decoracion</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae dignissimos cupiditate ipsum, debitis fuga atque impedit ducimus dolorem recusandae et, inventore exercitationem ratione nostrum necessitatibus eos, dolorum veritatis. Dignissimos, eveniet.</p>
         <img class="icono" src="imagenes/marketing.png">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
@@ -111,97 +110,54 @@
   </div>
 </section>
 
-<section id="mis-trabajos">
-  <div class="contenedor">
-    <h3>Mis Trabajos</h3>
-    <div class="owl-carousel owl-theme">
-    <div class="item">
-      <a href="www.google.com">
-      <img src="imagenes/sassy.jpg">
-      <p>Sassy Kids</p>
-      </a>
-    </div>
-    <div class="item">
-      <a href="www.google.com">
-      <img src="imagenes/sassy.jpg">
-      <p>Sassy Kids</p>
-      </a>
-    </div>
-    <div class="item">
-      <a href="www.google.com">
-      <img src="imagenes/sassy.jpg">
-      <p>Sassy Kids</p>
-      </a>
-    </div>
-    <div class="item">
-      <a href="www.google.com">
-      <img src="imagenes/sassy.jpg">
-      <p>Sassy Kids</p>
-      </a>
-    </div>
-    <div class="item">
-      <a href="www.google.com">
-      <img src="imagenes/sassy.jpg">
-      <p>Sassy Kids</p>
-      </a>
-    </div>
-    <div class="item">
-      <a href="www.google.com">
-      <img src="imagenes/sassy.jpg">
-      <p>Sassy Kids</p>
-      </a>
-    </div>
-</div>
-  </div>
-</section>
 
 <section id="por-que-trabajar">
   <div class="contenedor">
-    <h3>¿Por que trabajar conmigo?</h3>
+    <h3>¿Porque escoger nuestros servicios?</h3>
     <div class="contenedor-trabajar">
       <div class="item">
         <ul>
           <li><img src="imagenes/velocidad.png" alt=""></li>
           <li>Velocidad</li>
-          <li>Me aseguro de que tu web cargue entre 2 y 4 segundos (depende de la cantidad de contenido del sitio). Si una web tarda más de 5 segundos en cargar, el 70% de los usuarios lo cierra y no vuelve a entrar más</li>
+          <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste impedit dolores vitae repudiandae sit consectetur necessitatibus libero, deserunt aliquam eius enim. Quo facere asperiores, sint voluptatum adipisci laudantium repellendus amet.</li>
         </ul>
       </div>
       <div class="item">
         <ul>
           <li><img src="imagenes/mantenimiento.png" alt=""></li>
-          <li>Mantenimiento</li>
-          <li>Mantengo una comunicación constante con mi cliente, para enseñarle a modificar contenido mediante el panel de Wordpress o para cualquier duda/cambio que quiera hacer en su sitio web</li>
+          <li>cumplimiento</li>
+          <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae architecto magnam totam dolorem ducimus ut dignissimos, voluptates excepturi eum modi eveniet quia natus quasi obcaecati aperiam pariatur repellendus. Mollitia, quae?</li>
         </ul>
       </div>
       <div class="item">
         <ul>
           <li><img src="imagenes/mobile2.png" alt=""></li>
-          <li>Mobile Priority</li>
-          <li>Cada vez mas personas navegan desde sus celulares en cualquier parte del mundo. Me aseguro de que tu web esté optimizada para cualquier tipo de dispositivo móvil</li>
+          <li>calidad</li>
+          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque qui ipsa excepturi possimus molestiae cum eius sed accusamus ad quisquam veniam quo impedit cumque odio, laudantium, repudiandae quas fugit? Eos!</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section id="blog">
+<section id="Mision-y-vision">
   <div class="contenedor">
-    <h3>Blog</h3>
+    <h3>Mision y Vision</h3>
     <div class="contenedor-publicaciones">
       <div class="publicacion">
         <img src="imagenes/blog1.jpg" alt="">
         <div class="contenido">
-          <h4>No alcanza con tener solamente una página web</h4>
-          <p>¿Querés aprender cuales son las herramientas que usan las mejores marcas para generar tráfico?</p>
+          <h4>Mision</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, nisi necessitatibus. Veritatis, iusto assumenda</p>
           <a href="">Leer mas ➝</a>
         </div>
       </div>
       <div class="publicacion">
         <img src="imagenes/blog2.jpg" alt="">
         <div class="contenido">
-          <h4>¿Qué es el remarketing y como utilizarlo?</h4>
-          <p>El remarketing es una de las técnicas mas utlizadas por las mejores companías! ¿Querés saber de que se trata?</p>
-          <a href="">Leer mas ➝</a>
+          <h4>Vision</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, nisi necessitatibus. Veritatis, iusto assumenda</p>
+          <a href="">sabes mas ➝</a>
         </div>
       </div>
     </div>
@@ -210,7 +166,7 @@
 
 <section id="que-esperas">
   <div class="contenedor">
-    <h3>¿Qué esperas para tener tu página web?</h3>
+    <h3>¿Tienes alguna duda?</h3>
     <a href="">CHARLEMOS</a>
   </div>
 </section>
@@ -236,8 +192,8 @@
 
 
     <div class="contacto-info">
-      <div class="mail"><img src="imagenes/mail-icon.png" alt="">jonlifschitz@gmail.com</div>
-      <div class="whatsapp"><img src="imagenes/whatsapp-icon.png" alt="">1530160246</div>
+      <div class="mail"><img src="{% static 'img/mail-icon.png' %}" alt="">ejemplo@gmail.com</div>
+      <div class="whatsapp"><img src="{% static 'img/whatsapp-icon.png' %}" alt="">123456789</div>
     </div>
 
 
@@ -249,13 +205,13 @@
 <footer>
   <div class="contenedor">
     <div class="redes">
-      <a href="#"><img src="imagenes/facebook.png" alt="imagen de facebook"></a>
-      <a href="#"><img src="imagenes/medium.png" alt="imagen de facebook"></a>
-      <a href="#"><img src="imagenes/github.png" alt="imagen de facebook"></a>
-      <a href="#"><img src="imagenes/linkedin.png" alt="imagen de facebook"></a>
+      <a href="#"><img src="{% static 'img/facebook.png' %}" alt="imagen de facebook"></a>
+      <a href="#"><img src="{% static 'img/medium.png' %}" alt="imagen de facebook"></a>
+      <a href="#"><img src="{% static 'img/github.png' %}" alt="imagen de facebook"></a>
+      <a href="#"><img src="{% static 'img/linkedin.png' %}" alt="imagen de facebook"></a>
     </div>
     <div class="parrafo">
-      <p>© 2016 Jonathan Lifschitz | Diseñador Web Argentina. Todos los derechos reservados</p>
+      <p>© 2023 jhoan sebastian | Diseñador Web Colombia. Todos los derechos reservados</p>
     </div>
   </div>
 </footer>
@@ -267,26 +223,6 @@
   integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
   crossorigin="anonymous"></script>
 <script src="owl/owl.carousel.min.js"></script>
-<script>
-$('.owl-carousel').owlCarousel({
-  loop:true,
-  margin:10,
-  nav:true,
-  dots:false,
-  responsive:{
-      0:{
-          items:1
-      },
-      600:{
-          items:3
-      },
-      1000:{
-          items:4
-      }
-  }
-})
-</script>
-
 <script>
 
 $(document).ready(function(){
