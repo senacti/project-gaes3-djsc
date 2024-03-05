@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import (
     Type_Activity, State_Activity, Type_Production, State_Production,
-    Novelty_Production, Activity, Production
+    Novelty_Production, Activity, Production,Novelty_Activity
 )
 from import_export import resources
 from import_export.admin import ImportExportModelAdmin
@@ -15,6 +15,11 @@ class TypeActivityAdmin(ImportExportModelAdmin):
 class StateActivityAdmin(ImportExportModelAdmin):
     list_display = ('state',)
     search_fields = ('state',)
+
+@admin.register(Novelty_Activity)
+class NoveltyActivityAdmin(ImportExportModelAdmin):
+    list_display = ('novelty',)
+    search_fields = ('novelty',)
 
 @admin.register(Type_Production)
 class TypeProductionAdmin(ImportExportModelAdmin):

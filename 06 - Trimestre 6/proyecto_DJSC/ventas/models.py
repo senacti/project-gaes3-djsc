@@ -1,6 +1,7 @@
 from pickle import TRUE
 from django.db import models
 from solicitudes.models import Request
+import datetime
 
 # Create your models here.
 class Type_Payment(models.Model):
@@ -28,7 +29,7 @@ class State_Sale(models.Model):
         ordering = ['id']
     
 class Sale(models.Model):
-    date = models.DateField(verbose_name="Fecha de venta",blank=True,null=True)
+    date = models.DateField(verbose_name="Fecha de venta",default=datetime.date.today)
     price = models.FloatField(verbose_name="Precio de venta")
     amount = models.FloatField(verbose_name="Abono inicial")
     totalVAT = models.FloatField(verbose_name="Total IVA venta")
@@ -47,8 +48,8 @@ class Sale(models.Model):
 
 class Payment(models.Model):
     sale = models.ForeignKey(Sale, on_delete=models.CASCADE,verbose_name="venta")
-    date = models.DateField(verbose_name="Fecha de pago")
-    paymentdate = models.DateField(verbose_name="Fecha de abono")
+    date = models.DateField(verbose_name="Fecha de pago", default=datetime.date.today)
+    paymentdate = models.DateField(verbose_name="Fecha de abono", default=datetime.date.today)
     paymentI = models.FloatField(verbose_name="Cantidad de abono")
     type = models.ForeignKey(Type_Payment, on_delete=models.CASCADE,verbose_name="Tipo de pago")
     

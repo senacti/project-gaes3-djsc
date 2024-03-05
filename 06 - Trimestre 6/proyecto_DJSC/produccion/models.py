@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 
 # Create your models here.
@@ -23,6 +24,18 @@ class State_Activity(models.Model):
         verbose_name = "Estado de actividad"
         verbose_name_plural = "Estados de actividad"
         db_table = "Estado_Actividad"
+        ordering = ['id']
+
+class Novelty_Activity(models.Model):
+    novelty = models.CharField(max_length=30, verbose_name="Novedad de actividad")
+
+    def __str__(self):
+        return self.novelty
+            
+    class Meta:
+        verbose_name = "Novedad de actividad"
+        verbose_name_plural = "Novedades de actividad"
+        db_table = "Novedad_Actividad"
         ordering = ['id']
 
 class Type_Production(models.Model):
@@ -62,9 +75,9 @@ class Novelty_Production(models.Model):
         ordering = ['id']
 
 class Activity(models.Model):
-    date = models.DateField(verbose_name="Fecha actividad")
-    novelty = models.CharField(max_length=50, verbose_name="Novedad de actividad")
-    state = models.ForeignKey(State_Activity, on_delete=models.CASCADE,verbose_name="estado de la actividad")
+    date = models.DateField(verbose_name="Fecha actividad",default=datetime.date.today)
+    novelty = models.ForeignKey(Novelty_Activity, on_delete=models.CASCADE,verbose_name="novedad de actividad",blank=True,null=True)
+    state = models.ForeignKey(State_Activity, on_delete=models.CASCADE,verbose_name="estado de la actividad",blank=True,null=True)
     type = models.ForeignKey(Type_Activity, on_delete=models.CASCADE,verbose_name="Tipo de actividad")
 
     def __str__(self):
@@ -78,13 +91,13 @@ class Activity(models.Model):
 
 class Production(models.Model):
     activity = models.ForeignKey(Activity, on_delete=models.CASCADE,verbose_name="actividad")
-    date = models.DateField(verbose_name="Fecha produccion")
-    novelty = models.ForeignKey(Novelty_Production, on_delete=models.CASCADE,verbose_name="novedad de produccion")
+    date = models.DateField(verbose_name="Fecha produccion",default=datetime.date.today)
+    novelty = models.ForeignKey(Novelty_Production, on_delete=models.CASCADE,verbose_name="novedad de produccion",blank=True,null=True)
     type = models.ForeignKey(Type_Production, on_delete=models.CASCADE,verbose_name="Tipo de produccion")
-    state = models.ForeignKey(State_Production, on_delete=models.CASCADE,verbose_name="estado de produccion")
+    state = models.ForeignKey(State_Production, on_delete=models.CASCADE,verbose_name="estado de produccion",blank=True,null=True)
 
     def __str__(self):
-        return str(self.type)
+        return f'{self.type} - {self.activity}'
             
     class Meta:
         verbose_name = "Produccion"
