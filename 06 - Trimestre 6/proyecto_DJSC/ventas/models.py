@@ -1,4 +1,3 @@
-from pickle import TRUE
 from django.db import models
 from solicitudes.models import Request
 import datetime
