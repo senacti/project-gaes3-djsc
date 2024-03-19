@@ -5,40 +5,89 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'CSS/Style.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/forms.css' %}">
     <title>Registrar Actividades</title>
 </head>
 <body>
-    <div class="formulario">
-        <div class="container">
-            <center><h1>Registrar Actividades</h1></center>
-            <form action="#" class="row g-3" method="post">
-                <div>
-                    <label for="name">Nombre de la Actividad</label>
-                    <input type="text" class="form-control" id="name" required="required">
-                    <div class="valid-feedback">Espacio correcto</div>
-                    <div class="invalid-feedback">Espacio vacío</div>
-                </div>
-                <div>
-                    <label for="fecha">Fecha de la Actividad</label>
-                    <input type="date" class="form-control" id="fecha" required="required">
-                    <div class="valid-feedback">Espacio correcto</div>
-                    <div class="invalid-feedback">Espacio vacío</div>
-                </div>
-                <div>
-                    <label for="det">Detalles</label>
-                    <input type="text" class="form-control" id="det">
-                    <div class="valid-feedback">Espacio correcto</div>
-                    <div class="invalid-feedback">Espacio vacío</div>
-                </div>
-                <div class="col-6"></div>
-                <div class="col-6">
-                    <button type="submit" class="btn btn-primary">registrar actividad</button>
-                </div>
-            </form>
+    <form action="" id="myForm" novalidate>
+    <div class="form">
+        <div class="title">Registrar Actividades</div>
+        <div class="subtitle">Completa la información</div>
+    
+        <div class="input-container ic1">
+            <input placeholder="" type="text" class="input" id="nombre_actividad" required>
+            <div class="cut"></div>
+            <label class="iLabel" for="nombre_actividad">Nombre de la Actividad</label>
         </div>
+    
+        <div class="input-container ic2">
+            <input placeholder="" type="date" class="input" id="fecha_actividad" required>
+            <div class="cut"></div>
+            <label class="iLabel" for="fecha_actividad">Fecha de la Actividad</label>
+        </div>
+    
+        <div class="input-container ic2">
+            <input placeholder="" type="text" class="input" id="descripcion" required>
+            <div class="cut"></div>
+            <label class="iLabel" for="descripcion">Detalles</label>
+        </div>
+    
+        <button class="submit" type="submit">Registrar Actividad</button>
     </div>
+</form>
+  <div class="error-container" id="errorContainer" style="display: none;"></div>
 </body>
-<script src="{% static 'JS/validacion.js' %}"></script>
+<script src="{% static 'JS/forms.js' %}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('myForm');
+    const errorContainer = document.getElementById('errorContainer');
+  
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Evitar que el formulario se envíe
+  
+      // Limpiar los mensajes de error anteriores
+      errorContainer.innerHTML = '';
+  
+      // Validar los campos del formulario
+      const nombreActividad = document.getElementById('nombre_actividad');
+      const fechaActividad = document.getElementById('fecha_actividad');
+      const detallesActividad = document.getElementById('descripcion');
+  
+      let hasError = false;
+  
+      if (nombreActividad.value.trim() === '') {
+        hasError = true;
+        addError('Por favor, ingrese un nombre de actividad.');
+      }
+      
+      if (fechaActividad.value.trim() === '') {
+        hasError = true;
+        addError('Por favor, ingrese una fecha.');
+      }
+      
+      if (descripcion.value.trim() === '') {
+        hasError = true;
+        addError('Por favor, ingrese una descripción.');
+      }
+      
+      if (hasError) {
+        // Mostrar la tarjeta de error
+        errorContainer.style.display = 'block';
+      } else {
+        // Ocultar la tarjeta de error
+        errorContainer.style.display = 'none';
+        // Si no hay errores, enviar el formulario
+        form.submit();
+      }
+    });
+  
+    // Función para agregar mensajes de error al contenedor
+    function addError(message) {
+      const errorParagraph = document.createElement('p');
+      errorParagraph.textContent = message;
+      errorContainer.appendChild(errorParagraph);
+    }
+  });
+</script>
 </html>

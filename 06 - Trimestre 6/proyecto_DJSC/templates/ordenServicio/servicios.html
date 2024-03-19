@@ -5,69 +5,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'CSS/Style.css' %}">
-    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
-    <script src="{% static 'JS/jquery-3.6.4.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'CSS/tarjetas.css' %}">
     <script src="{% static 'JS/bootstrap.min.js' %}"></script>
     <title>pedidos</title>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand"></a>
-    </nav>
-    <div class="anun p-5 ms-5">
-        <div class="card" style="width: 18rem;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaboDMoOVmyRkfkpcAV_Tx_UeF7fAQfVdMYg&usqp=CAU" class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">Camisas</h5>
-                <p class="card-text">Modifica a tu gusto las camisas con las instrucciones y diseños que nos quieras proporcionar</p>
-                <button id="orden" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                    abrir
-                </button>
-                <!-- The Modal -->
-                <div id="myModal" class="modal">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">Camisas</h4>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                            </div>
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <div style="display: flex;">
-                                    <div class="card" style="width: 50rem; height: 100%;">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaboDMoOVmyRkfkpcAV_Tx_UeF7fAQfVdMYg&usqp=CAU" alt="...">
-                                    </div>
-                                    <div style="display: inline-block; margin-left: 5%;">
-                                        <div style="display: flex;"></div>
-                                        <p style="color: red;">Descripcion: </p>
-                                        <p>Modifica a tu gusto las camisas con las instrucciones y diseños que nos quieras proporcionar para esto te proporcionaremos un formulario en el cual podras darnos los detalles del servicio</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <a href="{% url 'Crear Orden de Servicio' %}"><button type="button" class="btn btn-primary">
-                                    crear orden de servicio
-                                </button></a>
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <div class="card">
+        <div class="card__image">
+          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.My7lN7GOn16w60PnKEK1_wHaFU%26pid%3DApi&f=1&ipt=c32a724f2ff06606e6b3366c2030eddd7153a75228571f174d4526b57ccb096c&ipo=images" alt="servicio">
+        </div>
+        <div class="card__content">
+          <p class="card__title">Card Title</p>
+          <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          <a class="card__button mostrar-modal-btn" href="#">Read More</a>
+        </div>
+      </div>
+      <!-- The Modal -->
+      <div id="modal" class="modal">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.My7lN7GOn16w60PnKEK1_wHaFU%26pid%3DApi&f=1&ipt=c32a724f2ff06606e6b3366c2030eddd7153a75228571f174d4526b57ccb096c&ipo=images" alt="Imagen">
+            <h2>Nombre</h2>
+            <p>Descripcion:</p>
+            <div class="input-container ic2">
+                <textarea placeholder="" class="input" id="descripcion"  required ></textarea>
+                <div class="cut cut-short"></div>
             </div>
+            <button class="enviar-btn">Enviar</button>
+            <button class="cerrar-btn">Cerrar</button>
         </div>
     </div>
-    <script src="{% static 'JS/jquery-3.6.4.min.js' %}"></script>
-    <script>
-        $(document).ready(function () {
-            $("#orden").click(function () {
-                $('#myModal').modal('toggle');
-            });
-        });
-    </script>
-    <script src="{% static 'JS/bootstrap.min.js' %}"></script>
-    <script src="{% static 'JS/bootstrap.bundle.min.js' %}"></script>
 </body>
+<script>
+    const cerrarBtn = document.querySelector('.cerrar-btn');
+    const mostrarModalBtn = document.querySelector('.mostrar-modal-btn');
+    
+    cerrarBtn.addEventListener('click', () => {
+        document.querySelector('.modal').style.display = 'none';
+    });
+    
+    mostrarModalBtn.addEventListener('click', () => {
+        document.querySelector('.modal').style.display = 'block';
+    });
+</script>
+<script src="{% static 'JS/forms.js' %}"></script>
 </html>

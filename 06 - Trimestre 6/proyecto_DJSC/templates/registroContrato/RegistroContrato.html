@@ -1,79 +1,118 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'CSS/STYLEJF.css' %}">
-    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
-    <title>RegistroContrato</title>
+    <link rel="stylesheet" href="{% static 'CSS/forms.css' %}">
+    <title>Registro de Contrato</title>
 </head>
-
 <body>
-    <section class="form-register2">
-        <form action="{% url 'consultarcontratos' %}" method="post">
-            {% csrf_token %}
-            <center style="background: black;">
-                <h4 style="color: white; background: none;">Registro de Contrato Sub Empresa</h4>
-            </center>
-
-            <center style="margin: 10px;">
-                <div style="color:white; background: black;">
-                    INFORMACION REQUERIDA
-                </div>
-            </center>
-
-            <input class="controlsh1" type="text" placeholder="Ingrese Nombre de sub empresa" required id="Nombredeusuario" name="nombre">
-            <span style="background: none;" class="col-1" id="NombredeusuarioOK"></span>
-
-            <input class="controlsh2" type="tel" placeholder="Ingrese el teléfono de contacto" required id="numerodecontacto" name="telefono">
-            <span style="background: none;" class="col-1" id="numerodecontactoOK"></span>
-
-            <input class="controlsh3" type="email" placeholder="Ingrese su Email corporativo" required id="Email" name="correo">
-            <input class="controlsh2" type="number" placeholder="Ingrese la cantidad de producto" required id="cantidad" name="cantidad">
-            <span style="background: none;" class="col-1" id="emailOK"></span>
-
-            <input class="controlsh5" type="text" placeholder="Ingrese detalles del producto" required id="detallesdelServicio" name="detalles">
-            <span style="background: none;" class="col-1" id="detallesdelServicioOK"></span>
-
-            <div style="background: none;">
-                <button class="botons2" type="submit">Confirmar</button>
-            </div>
-
-            <div class="modal" id="myModal">
-                <div style="background: white;" class="modal-dialog modal-lg">
-                    <div style="background: white;" class="modal-content">
-
-                        <!-- Modal Header -->
-                        <div style="background: white;" class="modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-
-                        <!-- Modal body -->
-                        <div style="background: white;" class="modal-body">
-                            <div style="background: white; display: flex;">
-                                <center>
-                                    <div style=" background: white;display: inline-block; margin-left: 5%;">
-                                        <center> <img class="check" src="img/check.png" alt=""></center>
-                                        <center>
-                                            <p style="background: none;">CONFIRMADO </p>
-                                            <p style="background: none;">el contrato se ha registrado con éxito y se enviará un correo a la empresa</p>
-                                        </center>
-                                    </div>
-                                </center>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </form>
-    </section>
-    <script src="{% static 'JS/validacionJ.js' %}"></script>
-    <script src="{% static 'JS/bootstrap.min.js' %}"></script>
-    <script src="{% static 'JS/bootstrap.bundle.min.js' %}"></script>
+    <form action="{% url 'consultarcontratos' %}" method="post" id="myForm" novalidate>
+    {% csrf_token %}
+    <div class="form">
+        <div class="title">Registro de Contrato Sub Empresa</div>
+        <div class="subtitle">Información requerida</div>
+    
+        <div class="input-container ic2">
+            <input placeholder="" type="text" class="input" id="nombre" name="nombre" required>
+            <div class="cut"></div>
+            <label class="iLabel" for="nombre">Nombre de sub empresa</label>
+        </div>
+    
+        <div class="input-container ic2">
+            <input placeholder="" type="tel" class="input" id="telefono" name="telefono" required>
+            <div class="cut"></div>
+            <label class="iLabel" for="telefono">Teléfono de contacto</label>
+        </div>
+    
+        <div class="input-container ic2">
+            <input placeholder="" type="email" class="input" id="correo" name="correo" required>
+            <div class="cut"></div>
+            <label class="iLabel" for="correo">Email corporativo</label>
+        </div>
+    
+        <div class="input-container ic2">
+            <input placeholder="" type="number" class="input" id="cantidad" name="cantidad" required>
+            <div class="cut"></div>
+            <label class="iLabel" for="cantidad">Cantidad de producto</label>
+        </div>
+    
+        <div class="input-container ic2">
+            <textarea placeholder="" class="input" id="descripcion" name="detalles" required></textarea>
+            <div class="cut cut-short"></div>
+            <label class="iLabel" for="detalles">Detalles del producto</label>
+        </div>
+        <button class="submit" type="submit">Confirmar</button>
+    </div>
+</form>
+  <div class="error-container" id="errorContainer" style="display: none;"></div>
 </body>
-
+<script src="{% static 'JS/forms.js' %}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('myForm');
+    const errorContainer = document.getElementById('errorContainer');
+  
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Evitar que el formulario se envíe
+  
+      // Limpiar los mensajes de error anteriores
+      errorContainer.innerHTML = '';
+  
+      // Validar los campos del formulario
+      const nombre = document.getElementById('nombre');
+      const telefono = document.getElementById('telefono');
+      const correo = document.getElementById('correo');
+      const cantidad = document.getElementById('cantidad');
+      const detalles = document.getElementById('descripcion');
+  
+      let hasError = false;
+  
+      if (nombre.value.trim() === '') {
+        hasError = true;
+        addError('Por favor, ingrese un nombre de sub empresa.');
+      }
+      
+      if (telefono.value.trim() === '' || !/^\d{10}$/.test(telefono.value.trim())) {
+        hasError = true;
+        addError('Por favor, ingrese un teléfono de contacto válido (10 dígitos).');
+      }
+      
+      if (correo.value.trim() === '' || !/^\S+@\S+\.\S+$/.test(correo.value.trim())) {
+        hasError = true;
+        addError('Por favor, ingrese un correo electrónico corporativo válido.');
+      }
+      
+      if (cantidad.value.trim() === '' || !/^\d+$/.test(cantidad.value.trim())) {
+        hasError = true;
+        addError('Por favor, ingrese una cantidad válida.');
+      }
+      
+      if (detalles.value.trim() === '') {
+        hasError = true;
+        addError('Por favor, ingrese detalles del producto.');
+      }
+  
+      
+    if (hasError) {
+      // Mostrar la tarjeta de error
+      errorContainer.style.display = 'block';
+    } else {
+      // Ocultar la tarjeta de error
+      errorContainer.style.display = 'none';
+      // Si no hay errores, enviar el formulario
+      form.submit();
+    }
+    });
+  
+    // Función para agregar mensajes de error al contenedor
+    function addError(message) {
+      const errorParagraph = document.createElement('p');
+      errorParagraph.textContent = message;
+      errorContainer.appendChild(errorParagraph);
+    }
+  });
+  </script>
 </html>

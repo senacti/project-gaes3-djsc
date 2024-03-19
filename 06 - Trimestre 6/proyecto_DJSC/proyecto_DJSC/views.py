@@ -44,11 +44,12 @@ def catalogo(request):
     return render(request,'catalogo.html',{
         #context
     })
+@login_required
 def dashboard_jefe_de_produccion(request):
-    return render(request,'dashboard jefe de produccion.html',{
-        #context
-    })
-
+   user = request.user
+   full_name = user.full_name if hasattr(user, 'full_name') else None
+    
+   return render(request, 'dashboard jefe de produccion.html', {'full_name': full_name})
 @login_required
 def dashboard_view(request):
     user = request.user
@@ -56,10 +57,13 @@ def dashboard_view(request):
     
     return render(request, 'dashboard.html', {'full_name': full_name})
 
-def dashboardadmin(request):
-    return render(request,'dashboardadmin.html',{
-        #context
-    })
+@login_required
+def dashboardadmin_view(request):
+    user = request.user
+    full_name = user.full_name if hasattr(user, 'full_name') else None
+    
+    return render(request, 'dashboardadmin.html', {'full_name': full_name})
+
 def dashboardV(request):
     return render(request,'dashboardV.html',{
         #context

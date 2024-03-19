@@ -5,31 +5,114 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'CSS/STYLEj3.CSS' %}">
-    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/forms.css' %}">
     <title>Registro de Servicios</title>
 </head>
 <body>
-    <section class="form-register">
-        <form action="#">
-            <center style="background: black;"><h4 style="color: white; background: none;" >REGISTRO DE SERVICIOS</h4></center>
-            <center style="background: none;"><img src="" alt=""></center>
-            <center style="background: black;"><div style="color: white;margin: 20px; background: none;">
-                INFORMACION PRINCIPAL
-            </div></center>
-            <input class="controls1" type="text" placeholder="Ingrese Nombre del Servicio" required id="NombredelServicio">
-            <span style="background: none;" class="col-1" id="NombredelServicioOK"></span>
-            <input class="controls2" type="text" placeholder="Ingrese Descripcion del Servicio" required id="DescripciondelServicio">
-            <span style="background: none;" class="col-1" id="DescripciondelServicioOK"></span>
-            <input class="controls4" type="text" placeholder="Ingrese el Tipo de Servicio" required id="TipodeServicio">
-            <span style="background: none;" class="col-1" id="TipodeServicioOK"></span>
-            <div style="background: none;">
-                <input class="botons1" type="submit" value="Registrar Servicio">
-            </div>
-        </form>
-    </section>
-    <script src="{% static 'JS/validacionJ.js' %}"></script>
-    <script src="{% static 'JS/bootstrap.min.js' %}"></script>
-    <script src="{% static 'JS/bootstrap.bundle.min.js' %}"></script>
+    <form action="" id="myForm" novalidate>
+    <div class="form">
+        <div class="title">Registro de Servicios</div>
+        <div class="subtitle">Completa la información</div>
+    
+        <div class="input-container ic1">
+            <select id="tipo_servicio" class="input" required>
+                <option value="" disabled selected>Tipo de Servicio</option>
+                <option value="limpieza">Limpieza</option>
+                <option value="mantenimiento">Mantenimiento</option>
+                <option value="reparacion">Reparación</option>
+            </select>
+        </div>
+    
+        <div class="input-container ic2">
+            <input placeholder="" type="file" class="input" id="imagen_servicio" accept="image/png, image/jpeg" required>
+        </div>
+    
+        <div class="input-container ic2">
+            <input placeholder="" type="text" class="input" id="nombre_servicio" required>
+            <div class="cut"></div>
+            <label class="iLabel" for="nombre_servicio">Nombre del Servicio</label>
+        </div>
+    
+        <div class="input-container ic2">
+            <input placeholder="" type="number" class="input" id="cantidad" required>
+            <div class="cut"></div>
+           <label class="iLabel" for="cantidad">Cantidad</label>
+        </div>
+    
+        <div class="input-container ic2">
+            <textarea placeholder="" class="input" id="descripcion"  required ></textarea>
+            <div class="cut cut-short"></div>
+            <label class="iLabel" for="descripcion">Descripción</label>
+        </div>
+        <button class="submit" type="submit">Enviar</button>
+    </div>
+</form>
+  <div class="error-container" id="errorContainer" style="display: none;"></div>
 </body>
-</html>
+<script src="{% static 'JS/forms.js' %}"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('myForm');
+    const errorContainer = document.getElementById('errorContainer');
+  
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Evitar que el formulario se envíe
+  
+      // Limpiar los mensajes de error anteriores
+      errorContainer.innerHTML = '';
+  
+      // Validar los campos del formulario
+      const tipoServicio = document.getElementById('tipo_servicio');
+      const imagenServicio = document.getElementById('imagen_servicio');
+      const nombreServicio = document.getElementById('nombre_servicio');
+      const cantidad = document.getElementById('cantidad');
+      const descripcion = document.getElementById('descripcion');
+  
+      let hasError = false;
+  
+      if (tipoServicio.value === '') {
+        hasError = true;
+        addError('Por favor, seleccione un tipo de servicio.');
+      }
+      
+      if (imagenServicio.value === '') {
+        hasError = true;
+        addError('Por favor, seleccione una imagen.');
+      }
+      
+      if (nombreServicio.value.trim() === '' || !/^[a-zA-Z]+$/.test(nombreServicio.value.trim())) {
+        hasError = true;
+        addError('Por favor, ingrese un nombre de servicio válido.');
+      }
+      
+      if (cantidad.value.trim() === '' || !/^\d+$/.test(cantidad.value.trim())) {
+        hasError = true;
+        addError('Por favor, ingrese una cantidad válida.');
+      }
+      
+      if (descripcion.value.trim() === '') {
+        hasError = true;
+        addError('Por favor, ingrese una descripción.');
+      }
+  
+      
+    if (hasError) {
+      // Mostrar la tarjeta de error
+      errorContainer.style.display = 'block';
+    } else {
+      // Ocultar la tarjeta de error
+      errorContainer.style.display = 'none';
+      // Si no hay errores, enviar el formulario
+      form.submit();
+    }
+    });
+  
+    // Función para agregar mensajes de error al contenedor
+    function addError(message) {
+      const errorParagraph = document.createElement('p');
+      errorParagraph.textContent = message;
+      errorContainer.appendChild(errorParagraph);
+    }
+  });
+  </script>
+    </html>

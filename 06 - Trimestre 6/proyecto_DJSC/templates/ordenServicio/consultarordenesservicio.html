@@ -1,28 +1,45 @@
 {% load static %}
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="{% static 'CSS/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'CSS/listas.css' %}" rel="stylesheet">
     <title>Consultar Órdenes de Servicio</title>
 </head>
 <body>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"></a>
         <form class="form-inline" action="#" method="GET">
-        <button class="btn btn-primary ml-auto" type="submit">Generar Reporte</button>
+            <button class="arc-btn-retro">
+                Generar reporte
+              </button>
         </form>
     </nav>
     <table class="table">
         <thead>
-            <tr>
-                <th scope="col">descripcion</th>
-                <th scope="col">fecha</th>
-                <th scope="col">estado</th>
-                <th scope="col">servicio</th>
-            </tr>
+            <div class="lista">
+                <div class="titulo">Servicio</div>
+                <div class="titulo">Estado</div>
+                <div class="titulo">Fecha</div>
+                <div class="titulo">Descripción</div>
+                
+                <div class="dato">Limpieza</div>
+                <div class="dato">En progreso</div>
+                <div class="dato">12/08/2021</div>
+                <div class="dato">Limpieza general de la oficina</div>
+                
+                <div class="dato">Reparación</div>
+                <div class="dato">Completado</div>
+                <div class="dato">15/08/2021</div>
+                <div class="dato">Reparación de la impresora</div>
+                
+                <div class="dato">Instalación</div>
+                <div class="dato">Pendiente</div>
+                <div class="dato">20/08/2021</div>
+                <div class="dato">Instalación de software de contabilidad</div>
+            </div>
         </thead>
         <tbody>
             {% if request %}
