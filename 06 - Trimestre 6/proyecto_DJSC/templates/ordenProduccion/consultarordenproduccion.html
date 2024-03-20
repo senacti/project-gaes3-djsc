@@ -24,13 +24,13 @@
   </div>
 </nav>
 
-  {% if not producciones %}
+ {% if not producciones %}
     <div class="centered-message">
       <div class="my-5">
         <center><h1 style="font-size: 3rem;">No existen ordenes aún</h1></center>
       </div>
     </div>
-  {% endif %}
+  {% endif %} 
   {% if producciones %}
     <div class="row">
       {% for produccion in producciones %}

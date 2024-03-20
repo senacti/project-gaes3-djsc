@@ -1,3 +1,4 @@
+from pickle import TRUE
 from django.db import models
 from solicitudes.models import Request
 import datetime
@@ -35,6 +36,7 @@ class Sale(models.Model):
     totalPrice = models.FloatField(verbose_name="Precio total de venta")
     request = models.ForeignKey(Request,on_delete=models.CASCADE,verbose_name="Solicitud")
     state = models.ForeignKey(State_Sale, on_delete=models.CASCADE,verbose_name="estado de la venta",blank=True,null=True)
+    type = models.ForeignKey(Type_Payment, on_delete=models.CASCADE,verbose_name="Tipo de pago")
 
     def __str__(self):
          return str(self.date)

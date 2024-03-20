@@ -48,7 +48,6 @@ urlpatterns = [
     path('registrarOrdenProduccion', views.registrarOrdenProduccion, name='registrarOrdenProduccion'),
     path('abonos', views.abonos, name='abonos'),
     path('consultarordenesservicio', views.consultarordenesservicio, name='consultarordenesservicio'),
-    path('Crear Orden de Servicio', views.Crear_Orden_de_Servicio, name='Crear Orden de Servicio'),
     path('estadoedit', views.estadoedit, name='estadoedit'),
     path('RealizarAbono', views.RealizarAbono, name='RealizarAbono'),
     path('servicios', views.servicios, name='servicios'),

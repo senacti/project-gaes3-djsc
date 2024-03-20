@@ -53,7 +53,7 @@ INSTALLED_APPS = [
 JAZZMIN_SETTINGS = {
     "site_title": "Administracion La plancha de pancha",
     "site_brand": "La plancha de pancha",
-    "site_logo": "img/logo.png",
+    "site_logo": "img/logopp.png",
     "topmenu_links": [
          {"name": "Inicio",  "url": "index", "permissions": ["auth.view_user"]},
          {"name": "dashboard",  "url": "dashboard", "permissions": ["auth.view_user"]},

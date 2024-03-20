@@ -21,8 +21,9 @@ from produccion.models import Production
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
 
-from solicitudes.models import Request
+from solicitudes.models import Request,Type_Service,Service
 from ventas.models import Sale
+from solicitudes.forms import ServiceForm,RequestForm
 
 def index(request):
     return render(request,'index.html',{
@@ -101,9 +102,16 @@ def registrarActividades(request):
         #context
     })
 def Registro_de_Servicio(request):
-    return render(request,'Registro de Servicio.html',{
-        #context
-    })
+    if request.method == 'POST':
+        form = ServiceForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('Registro de Servicio')
+    else:
+        form = ServiceForm()
+    tipos_servicio = Type_Service.objects.all()
+    return render(request, 'Registro de Servicio.html', {'form': form, 'tipos_servicio': tipos_servicio})
+
 @no_authenticated_user
 def login_view(request):
     register_form = RegistrationForm() 
@@ -171,10 +179,6 @@ def consultarordenesservicio(request):
     return render(request,'ordenServicio/consultarordenesservicio.html',{'requests':requests
         #context
     })
-def Crear_Orden_de_Servicio(request):
-    return render(request,'ordenServicio/Crear Orden de Servicio.html',{
-        #context
-    })
 def estadoedit(request):
     return render(request,'ordenServicio/estadoedit.html',{
         #context
@@ -184,9 +188,20 @@ def RealizarAbono(request):
         #context
     })
 def servicios(request):
-    return render(request,'ordenServicio/servicios.html',{
-        #context
-    })
+    servicios = Service.objects.all()
+    if request.method == 'POST':
+        form = RequestForm(request.POST)
+        if form.is_valid():
+            servicio_id = request.POST.get('servicio_id')
+            servicio = Service.objects.get(pk=servicio_id)
+            solicitud = form.save(commit=False)
+            solicitud.service = servicio
+            solicitud.save()
+            return redirect('ordenServicio/servicios.html')  
+    else:
+        form = RequestForm()
+
+    return render(request, 'ordenServicio/servicios.html', {'servicios': servicios, 'form': form})
 def consultarcontratos(request):
     return render(request,'registroContrato/consultarcontratos.html',{
         #context
