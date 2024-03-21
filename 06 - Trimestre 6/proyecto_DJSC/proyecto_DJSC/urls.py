@@ -58,6 +58,7 @@ urlpatterns = [
     path('reporteP/', GeneratePdf2.as_view(), name='reporteP'),
     path('reporteV/', GeneratePdf3.as_view(), name='reporteV'),
     path('contactenos', views.contactenos, name='contactenos'),
+     path('validar_correo_existente/', views.validar_correo_existente, name='validar_correo_existente'),
 
 ]
 

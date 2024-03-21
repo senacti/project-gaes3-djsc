@@ -200,19 +200,23 @@ main{
     margin-bottom: 20px;
 }
 
-.error-message {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #ff9999;
-    color: #ffffff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    z-index: 1;
-}
+.mensaje-error {
+    background-color: transparent; /* Cambiamos el color de fondo a transparente */
+    color: #000;
+    border: 1px solid #000; /* Agregamos un borde negro */
+    max-width: 80%; /* Establecemos un ancho máximo */
+    margin: auto; /* Centramos horizontalmente */
+    font-family: "Roboto", sans-serif; /* Establecemos la fuente de letra */
+    font-weight: 700; /* Establecemos el peso de la letra */
+    font-size: 12px; /* Establecemos el tamaño de la letra */
+    letter-spacing: 0.5px; /* Ajustamos el espaciado entre letras */
+    padding: 5px; /* Establecemos el relleno */
+    text-align: center; /* Establecemos alineación del texto */
+    margin-bottom: 10px; /* Establecemos el margen inferior */
+    display: none; /* Ocultamos el mensaje de error por defecto */
 
-.error-message.active {
-    display: block;
+}
+.mensaje-error button.cerrar {
+    font-size: 10px; /* Establecemos el tamaño de la fuente del botón de cierre */
+    padding: 2px 5px; /* Establecemos el relleno del botón de cierre */
 }

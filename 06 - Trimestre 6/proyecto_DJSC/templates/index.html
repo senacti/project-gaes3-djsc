@@ -18,7 +18,7 @@
 <header>
   <div class="menu">
     <div class="contenedor">
-      <p class="logo">SDI SAS</p>
+      <img class="logo" src="{% static 'img/logopp.png' %}" alt="">
       <img class="menu-icon" src="{% static 'img/menu-click.png' %}" alt="Logo">
       <nav>
         <ul class="lista-menu">
@@ -26,7 +26,6 @@
           <li><a href="#servicios">Servicios</a></li>
           <li><a href="#por-que-trabajar">Nuestros valores</a></li>
           <li><a href="#Mision-y-vision">Mision y Vision</a></li>
-          <li><a href="#contacto">Contactenos</a></li>
           <li><a href="{% url 'login' %}">Iniciar sesión</a></li>
         </ul>
       </nav>
@@ -52,13 +51,12 @@
     <h3>Sobre nosotros</h3>
     <div class="contenedor-sobremi">
       <div class="computadoras">
-        <img src="imagenes/computadoras.png">
+        <img src="{% static 'img/maquina.png' %}">
       </div>
       <div class="texto">
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nesciunt numquam nisi, vero omnis, adipisci exercitationem eligendi tempore blanditiis nemo eveniet ad officia reiciendis at molestias earum! Ipsum expedita doloremque officiis.</p>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consequatur mollitia voluptate voluptatum earum quam, cupiditate laborum iste, esse placeat voluptatem vero distinctio, neque ab fugit. Aliquam repudiandae iusto officiis repellendus.</p>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id dignissimos corrupti iusto odit facere placeat eaque aliquam delectus, animi deserunt reiciendis veritatis pariatur itaque non sunt ipsa tempora assumenda rerum!</p>
-        <a href="">VER MIS TRABAJOS</a>
+        <p>En La Plancha de Pancha, nos dedicamos a la sublimación creativa y personalizada. Somos líderes en la industria, ofreciendo una amplia gama de productos y servicios para transformar tus ideas en realidad.</p>
+    <p>Nuestro equipo apasionado y experto se esfuerza por brindarte una experiencia excepcional desde el diseño hasta la entrega. Creemos en la creatividad sin límites y en la calidad sostenible en cada paso del proceso.</p>
+<p>Gracias por elegirnos para tus necesidades de sublimación creativa.</p>
       </div>
     </div>
   </div>
@@ -70,38 +68,39 @@
     <div class="contenedor-servicios">
       <div class="servicio violeta">
         <h4>Ropa</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate quo itaque, libero expedita quasi doloribus, magni neque voluptatem laborum vero beatae sint recusandae quisquam cumque ex iure minima. Laudantium, pariatur!</p>
-        <img class="icono" src="imagenes/monitor.png">
+        <p>Descubre nuestra colección única de ropa sublimada, diseñada para expresar tu estilo. Desde camisetas hasta accesorios, encuentra la magia de la personalización con nosotros.</p>
+        <img class="icono" src="{% static 'img/camisa.png' %}">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
       <div class="servicio celeste">
         <h4>Ceramica</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse, voluptate aut corporis eum fuga eos ducimus dicta autem quam vel rerum laboriosam, rem, architecto enim facere nulla animi! Quod, distinctio.</p>
-        <img class="icono" src="imagenes/mobile.png">
+        <p>Explora nuestra selección única de cerámica artesanal, donde la creatividad cobra vida en cada pieza. Desde vajillas hasta decoraciones para el hogar, cada artículo está meticulosamente elaborado con técnicas tradicionales y un toque moderno.</p>
+        <img class="icono" src="{% static 'img/ceramica.png' %}">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
       <div class="servicio violeta">
         <h4>Carteles</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex temporibus reiciendis numquam, veniam ratione eius assumenda tempora aliquid repudiandae nihil saepe totam fugiat quam quasi illo possimus corrupti iusto accusantium.</p>
-        <img class="icono" src="imagenes/seo.png">
+        <p>Destaca tu mensaje con nuestros carteles únicos y personalizados. Desde eventos especiales hasta promociones, te ofrecemos impresiones de alta calidad que capturan la atención.
+          </p>
+        <img class="icono" src="{% static 'img/carteles.png' %}">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
       <div class="servicio celeste">
         <h4>Accesorios</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem ea praesentium magnam eveniet quasi, alias libero dolorum suscipit numquam voluptas error debitis totam labore molestias quod et placeat dicta aliquid.</p>
-        <img class="icono" src="imagenes/wordpress.png">
+        <p>Completa tu estilo con nuestros accesorios personalizados. Desde bolsos hasta fundas para teléfonos, cada artículo está diseñado para reflejar tu individualidad.</p>
+        <img class="icono" src="{% static 'img/accesorios.png' %}">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
       <div class="servicio violeta">
-        <h4>Pvc</h4>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi neque assumenda, veritatis alias necessitatibus consequuntur sunt nisi cumque, blanditiis facere, recusandae explicabo. Magnam eaque labore culpa laudantium delectus quae vitae.</p>
-        <img class="icono" src="imagenes/mante.png">
+        <h4>Productos para mascotas</h4>
+        <p>Explora nuestra colección de productos personalizados para mascotas en La Plancha de Pancha. Desde platos para comida hasta collares y juguetes, ofrecemos una amplia gama de opciones para consentir a tus compañeros peludos.</p>
+        <img class="icono" src="{% static 'img/mascotas.png' %}">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
       <div class="servicio celeste">
         <h4>Decoracion</h4>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestiae dignissimos cupiditate ipsum, debitis fuga atque impedit ducimus dolorem recusandae et, inventore exercitationem ratione nostrum necessitatibus eos, dolorum veritatis. Dignissimos, eveniet.</p>
-        <img class="icono" src="imagenes/marketing.png">
+        <p>Haz de tu espacio algo único con nuestra decoración personalizada. Desde cuadros hasta almohadas decorativas, cada artículo está diseñado para agregar un toque de estilo a tu hogar u oficina.</p>
+        <img class="icono" src="{% static 'img/decoracion.png' %}">
         <img class="ondas" src="{% static 'img/waves.png' %}" alt="Logo">
       </div>
     </div>
@@ -117,21 +116,21 @@
         <ul>
           <li><img src="imagenes/velocidad.png" alt=""></li>
           <li>Velocidad</li>
-          <li>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iste impedit dolores vitae repudiandae sit consectetur necessitatibus libero, deserunt aliquam eius enim. Quo facere asperiores, sint voluptatum adipisci laudantium repellendus amet.</li>
+          <li>En La Plancha de Pancha, comprendemos la importancia del tiempo. Nos comprometemos a ofrecerte un servicio rápido y eficiente para satisfacer tus necesidades en el menor tiempo posible. Desde la consulta inicial hasta la entrega del producto final, puedes confiar en nosotros para cumplir con tus plazos con precisión y profesionalismo.</li>
         </ul>
       </div>
       <div class="item">
         <ul>
           <li><img src="imagenes/mantenimiento.png" alt=""></li>
           <li>cumplimiento</li>
-          <li>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae architecto magnam totam dolorem ducimus ut dignissimos, voluptates excepturi eum modi eveniet quia natus quasi obcaecati aperiam pariatur repellendus. Mollitia, quae?</li>
+          <li>En La Plancha de Pancha, nos comprometemos a cumplir con nuestras promesas. Desde la calidad de nuestros productos hasta el tiempo de entrega, mantenemos altos estándares de cumplimiento en cada etapa del proceso. Puedes confiar en nosotros para proporcionarte un servicio confiable y consistente que supere tus expectativas en todo momento.</li>
         </ul>
       </div>
       <div class="item">
         <ul>
           <li><img src="imagenes/mobile2.png" alt=""></li>
           <li>calidad</li>
-          <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque qui ipsa excepturi possimus molestiae cum eius sed accusamus ad quisquam veniam quo impedit cumque odio, laudantium, repudiandae quas fugit? Eos!</li>
+          <li>En La Plancha de Pancha, la calidad es nuestra prioridad principal. Nos esforzamos por ofrecer productos y servicios que superen tus expectativas en términos de durabilidad, precisión y atención al detalle. Desde la selección de materiales hasta los procesos de producción, cada paso se realiza con un compromiso inquebrantable con la excelencia. Confía en nosotros para proporcionarte resultados que perduren y te satisfagan plenamente.</li>
         </ul>
       </div>
     </div>
@@ -146,57 +145,20 @@
         <img src="imagenes/blog1.jpg" alt="">
         <div class="contenido">
           <h4>Mision</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, nisi necessitatibus. Veritatis, iusto assumenda</p>
-          <a href="">Leer mas ➝</a>
+          <p>Nuestra misión es ayudar a nuestros clientes a plasmar sus ideas en una amplia variedad de objetos personalizados. Creemos que la sublimación es una herramienta poderosa para expresar la individualidad y la creatividad, y nos sentimos orgullosos de poder formar parte de este proceso.</p>
         </div>
       </div>
       <div class="publicacion">
         <img src="imagenes/blog2.jpg" alt="">
         <div class="contenido">
           <h4>Vision</h4>
-          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident, nisi necessitatibus. Veritatis, iusto assumenda</p>
-          <a href="">sabes mas ➝</a>
+          <p>Nuestra visión es ser la empresa líder en sublimación personalizada, reconocida por la calidad de nuestros productos, la excelencia de nuestro servicio y la satisfacción de nuestros clientes.</p>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section id="que-esperas">
-  <div class="contenedor">
-    <h3>¿Tienes alguna duda?</h3>
-    <a href="">CHARLEMOS</a>
-  </div>
-</section>
-
-<section id="contacto">
-  <?php
-      if(@$_GET['i']=='ok') { // QUIERE DECIR QUE EL FORMULARIO SE ENVIO CORRECTAMENTE ?>
-
-      <h3>La consulta se envio correctamente. Nos contactaremos a la brevedad.</h3>
-
-      <?php
-      } else{
-      ?>
-  <div class="contenedor">
-    <h3>Contacto</h3>
-    <form action="envio-formulario.php" method="post" enctype="multipart/form-data">
-      <input type="text" placeholder="Nombre" name="nombre" required>
-      <input type="email" placeholder="Email" name="email" required>
-      <textarea placeholder="Mensaje" name="mensaje" required></textarea>
-      <input type="submit" value="ENVIAR MENSAJE">
-    </form>
-          <?php } ?>
-
-
-    <div class="contacto-info">
-      <div class="mail"><img src="{% static 'img/mail-icon.png' %}" alt="">ejemplo@gmail.com</div>
-      <div class="whatsapp"><img src="{% static 'img/whatsapp-icon.png' %}" alt="">123456789</div>
-    </div>
-
-
-  </div>
-</section>
 
 </main>
 

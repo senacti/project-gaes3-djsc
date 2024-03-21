@@ -1,66 +1,190 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>REGISTRO E INICIO DE SESION USUARIO </title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>REGISTRO E INICIO DE SESION USUARIO</title>
 
     <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'CSS/estilos.css' %}">
-</head>
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'CSS/estilos.css' %}" />
+  </head>
 
-<body>
-    <div class="btn__inicio">
-        <a href="{% url 'index' %}"><button>Inicio</button></a>
+  <body>
+    <div class="btn__inicio" style="display: flex">
+      <a href="{% url 'index' %}"><button>Inicio</button></a>
+      <div id="loginError" class="mensaje-error"></div>
+      <div id="registerError" class="mensaje-error"></div>
     </div>
     <main>
-
-        <div class="contenedor__todo">
-            <div class="caja__trasera">
-                <div class="caja__trasera-login">
-                    <h3>¿Ya tienes una cuenta?</h3>
-                    <p>Inicia sesión para entrar en la página</p>
-                    <button id="btn__iniciar-sesion">Iniciar Sesión</button>
-                </div>
-                <div class="caja__trasera-register">
-                    <h3>¿Aún no tienes una cuenta?</h3>
-                    <p>Regístrate para que puedas iniciar sesión</p>
-                    <button id="btn__registrarse">Regístrarse</button>
-                </div>
-            </div>
-
-            <!--Formulario de Login y registro-->
-            <div class="contenedor__login-register">
-                <!--Login-->
-                <form method="post" class="formulario__login" id="loginForm">
-                    {% csrf_token %}
-                    <h2>Iniciar Sesión</h2>
-                    <input type="email" name="email" placeholder="Correo Electronico">
-                    <input type="password" name="password" placeholder="Contraseña">
-                    <button type="submit" name="login_submit">Entrar</button>
-                    <li><a scr="#">¿olvido su contraseña?</a></li>
-                </form>
-
-                <!--Register-->
-                <form method="post" class="formulario__register"id="registerForm">
-                    {% csrf_token %}
-                    <h2>Registrarse</h2>
-                    <input type="text" name="full_name" placeholder="Nombre completo">
-                    <input type="email" name="email" placeholder="Correo Electrónico">
-                    <input type="text" name="address" placeholder="Dirección">
-                    <input type="password" name="password" placeholder="Contraseña">
-                    <input type="password" name="confirm_password" placeholder="Repetir contraseña">
-                    <button type="submit" name="register_submit">Registrarse</button>
-                </form>
-            </div>
+      <div class="contenedor__todo">
+        <div class="caja__trasera">
+          <div class="caja__trasera-login">
+            <h3>¿Ya tienes una cuenta?</h3>
+            <p>Inicia sesión para entrar en la página</p>
+            <button id="btn__iniciar-sesion">Iniciar Sesión</button>
+          </div>
+          <div class="caja__trasera-register">
+            <h3>¿Aún no tienes una cuenta?</h3>
+            <p>Regístrate para que puedas iniciar sesión</p>
+            <button id="btn__registrarse">Regístrarse</button>
+          </div>
         </div>
 
+        <!--Formulario de Login y registro-->
+        <div class="contenedor__login-register">
+          <!--Login-->
+          <form
+            method="post"
+            class="formulario__login"
+            id="loginForm"
+          >
+            {% csrf_token %}
+            <h2>Iniciar Sesión</h2>
+            <input type="email" name="email" placeholder="Correo Electronico" />
+            <input type="password" name="password" placeholder="Contraseña" />
+            <button type="submit" name="login_submit">Entrar</button>
+          </form>
+
+          <!--Register-->
+          <form method="post" class="formulario__register" id="registerForm" novalidate>
+            {% csrf_token %}
+            <h2>Registrarse</h2>
+            <input type="text" name="full_name" placeholder="Nombre completo" />
+            <input type="email" name="email" placeholder="Correo Electrónico" />
+            <input type="text" name="address" placeholder="Dirección" />
+            <input type="password" name="password" placeholder="Contraseña" />
+            <input
+              type="password"
+              name="confirm_password"
+              placeholder="Repetir contraseña"
+            />
+            <button type="submit" name="register_submit">Registrarse</button>
+          </form>
+        </div>
+      </div>
     </main>
     <script src="{% static 'js/script.js' %}" type="text/javascript"></script>
-</body>
+    <script>
+      // Función para mostrar mensaje de error
+      function mostrarError(elementId, message) {
+        var errorElement = document.getElementById(elementId);
+        errorElement.innerHTML =
+          message +
+          '<button class="cerrar" onclick="ocultarError(\'' +
+          elementId +
+          "')\">X</button>"; // Agregamos un botón de cierre
+        errorElement.style.backgroundColor = "#ffeb3b"; // Cambiamos el color de fondo a amarillo menos oscuro
+        errorElement.style.display = "block"; // Mostramos el mensaje de error
+      }
 
+      // Función para ocultar mensaje de error
+      function ocultarError(elementId) {
+        var errorElement = document.getElementById(elementId);
+        errorElement.style.display = "none"; // Ocultamos el mensaje de error
+      }
+
+      // Función de validación para el inicio de sesión
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          var email = document.forms["loginForm"]["email"].value;
+          var password = document.forms["loginForm"]["password"].value;
+          if (email === "" || password === "") {
+            mostrarError("loginError", "Por favor, completa todos los campos.");
+            event.preventDefault();
+          } else {
+            ocultarError("loginError"); // Ocultar el mensaje de error si no hay errores
+          }
+        });
+      // Función para validar el nombre
+      function validarNombre(nombre) {
+        return /^[A-Za-z\s]+$/.test(nombre);
+      }
+
+      function validarCorreo(correo) {
+  // Expresión regular para validar el formato del correo electrónico
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  // Verificar si el correo electrónico cumple con el formato y no está en blanco
+  if (correo === "" || !emailRegex.test(correo)) {
+    mostrarError("registerError", "Ingrese un correo electrónico válido.");
+    return false;
+  } else {
+    // Verificar si el correo electrónico ya está registrado
+    var xhr = new XMLHttpRequest();
+    var csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+    xhr.open('POST', '/validar_correo_existente/', true);
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    xhr.setRequestHeader('X-CSRFToken', csrftoken); // Agregar el token CSRF a la cabecera
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        if (xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          if (response.existe) {
+            mostrarError("registerError", "Este correo electrónico ya está registrado.");
+          } else {
+            ocultarError("registerError");
+          }
+        } else {
+          // Manejar errores de red u otros errores de la solicitud
+          mostrarError("registerError", "Error al verificar el correo electrónico.");
+        }
+      }
+    };
+
+    xhr.send('correo=' + encodeURIComponent(correo));
+    return true; // El correo electrónico es válido 
+  }
+}
+
+
+      // Función para validar la contraseña
+      function validarContraseña(contraseña) {
+        return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*\W).{8,}$/.test(contraseña);
+      }
+
+      // Función para validar el formulario de registro antes de enviarlo
+      document;
+      document
+        .getElementById("registerForm")
+        .addEventListener("submit", function (event) {
+          var nombre = document.forms["registerForm"]["full_name"].value;
+          var correo = document.forms["registerForm"]["email"].value;
+          var contraseña = document.forms["registerForm"]["password"].value;
+          var confirmarContraseña =
+            document.forms["registerForm"]["confirm_password"].value;
+          var dirección = document.forms["registerForm"]["address"].value;
+
+          if (!validarNombre(nombre)) {
+            mostrarError(
+              "registerError",
+              "El nombre solo puede contener letras y espacios."
+            );
+            event.preventDefault();
+
+          } else if (!validarContraseña(contraseña)) {
+            mostrarError(
+              "registerError",
+              "La contraseña debe contener al menos 8 caracteres, una mayúscula, una minúscula, un número y un caracter especial."
+            );
+            event.preventDefault();
+          } else if (contraseña !== confirmarContraseña) {
+            mostrarError("registerError", "Las contraseñas no coinciden.");
+            event.preventDefault();
+          }else if (!validarCorreo(correo)) {
+            event.preventDefault();
+
+          } else {
+            ocultarError("registerError");
+            document.getElementById("registerForm").submit(); // Enviar el formulario después de la validación exitosa
+          }
+        });
+    </script>
+  </body>
 </html>

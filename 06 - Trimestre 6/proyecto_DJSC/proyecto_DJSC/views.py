@@ -20,6 +20,8 @@ from solicitudes.models import Request
 from produccion.models import Production
 from django.core.mail import EmailMessage
 from django.template.loader import render_to_string
+from django.http import JsonResponse
+from users.models import User
 
 from solicitudes.models import Request,Type_Service,Service
 from ventas.models import Sale
@@ -330,3 +332,9 @@ def contactenos(request):
     return render(request, 'contactenos.html',{
 
     })
+def validar_correo_existente(request):
+    if request.method == 'POST':
+        correo = request.POST.get('correo')
+        if User.objects.filter(email=correo).exists():
+            return JsonResponse({'existe': True})
+    return JsonResponse({'existe': False})

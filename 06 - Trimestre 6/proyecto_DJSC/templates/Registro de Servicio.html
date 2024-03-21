@@ -9,39 +9,38 @@
     <title>Registro de Servicios</title>
 </head>
 <body>
-  <form method="post" action="{% url 'Registro de Servicio' %}" id="myForm" enctype="multipart/form-data" novalidate>
-    {% csrf_token %}
+    <form action="" id="myForm" novalidate>
     <div class="form">
         <div class="title">Registro de Servicios</div>
         <div class="subtitle">Completa la información</div>
     
         <div class="input-container ic1">
-          <select id="tipo_servicio" class="input" name="type" required>
-              <option value="" disabled selected>Tipo de Servicio</option>
-              {% for tipo_servicio in tipos_servicio %}
-                  <option value="{{ tipo_servicio.id }}">{{ tipo_servicio.type }}</option>
-              {% endfor %}
-          </select>
-      </div>
-    
-        <div class="input-container ic2">
-            <input placeholder="" type="file" class="input" id="imagen_servicio" name="image" accept="image/png, image/jpeg" required>
+            <select id="tipo_servicio" class="input" required>
+                <option value="" disabled selected>Tipo de Servicio</option>
+                <option value="limpieza">Limpieza</option>
+                <option value="mantenimiento">Mantenimiento</option>
+                <option value="reparacion">Reparación</option>
+            </select>
         </div>
     
         <div class="input-container ic2">
-            <input placeholder="" type="text" class="input" id="nombre_servicio" name="name" required>
+            <input placeholder="" type="file" class="input" id="imagen_servicio" accept="image/png, image/jpeg" required>
+        </div>
+    
+        <div class="input-container ic2">
+            <input placeholder="" type="text" class="input" id="nombre_servicio" required>
             <div class="cut"></div>
             <label class="iLabel" for="nombre_servicio">Nombre del Servicio</label>
         </div>
     
         <div class="input-container ic2">
-            <input placeholder="" type="number" class="input" id="cantidad" name="amount" required>
+            <input placeholder="" type="number" class="input" id="cantidad" required>
             <div class="cut"></div>
            <label class="iLabel" for="cantidad">Cantidad</label>
         </div>
     
         <div class="input-container ic2">
-            <textarea placeholder="" class="input" id="descripcion" name="description"  required ></textarea>
+            <textarea placeholder="" class="input" id="descripcion"  required ></textarea>
             <div class="cut cut-short"></div>
             <label class="iLabel" for="descripcion">Descripción</label>
         </div>

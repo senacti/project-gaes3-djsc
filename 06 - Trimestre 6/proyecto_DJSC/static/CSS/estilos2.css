@@ -65,9 +65,8 @@ body {
     display: inline-block;
   }
   
-  p.logo {
-    color: #fff;
-    font-size: 20px;
+  img.logo {
+    width: 75px;
   }
   
   nav ul li a {
@@ -137,6 +136,9 @@ body {
   
   .icono {
     float: right;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
   }
   
   /* SECCION MIS TRABAJOS */
