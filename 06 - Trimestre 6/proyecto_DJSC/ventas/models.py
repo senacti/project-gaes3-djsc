@@ -32,7 +32,7 @@ class Sale(models.Model):
     date = models.DateField(verbose_name="Fecha de venta",default=datetime.date.today)
     price = models.FloatField(verbose_name="Precio de venta")
     amount = models.FloatField(verbose_name="Abono inicial")
-    totalVAT = models.FloatField(verbose_name="Total IVA venta")
+    totalVAT = models.FloatField(default=0.19,verbose_name="Total IVA venta",blank=True,null=True)
     totalPrice = models.FloatField(verbose_name="Precio total de venta")
     request = models.ForeignKey(Request,on_delete=models.CASCADE,verbose_name="Solicitud")
     state = models.ForeignKey(State_Sale, on_delete=models.CASCADE,verbose_name="estado de la venta",blank=True,null=True)

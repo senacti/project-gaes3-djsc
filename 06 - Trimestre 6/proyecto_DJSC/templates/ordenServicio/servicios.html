@@ -8,43 +8,97 @@
     <link rel="stylesheet" href="{% static 'CSS/tarjetas.css' %}">
     <script src="{% static 'JS/bootstrap.min.js' %}"></script>
     <title>pedidos</title>
+    <style>
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; /* Distribuye las tarjetas uniformemente en el contenedor */
+        }
+    </style>
 </head>
-<body>
-    <div class="card">
-        <div class="card__image">
-          <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.My7lN7GOn16w60PnKEK1_wHaFU%26pid%3DApi&f=1&ipt=c32a724f2ff06606e6b3366c2030eddd7153a75228571f174d4526b57ccb096c&ipo=images" alt="servicio">
-        </div>
-        <div class="card__content">
-          <p class="card__title">Card Title</p>
-          <p class="card__text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-          <a class="card__button mostrar-modal-btn" href="#">Read More</a>
-        </div>
-      </div>
-      <!-- The Modal -->
-      <div id="modal" class="modal">
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.My7lN7GOn16w60PnKEK1_wHaFU%26pid%3DApi&f=1&ipt=c32a724f2ff06606e6b3366c2030eddd7153a75228571f174d4526b57ccb096c&ipo=images" alt="Imagen">
-            <h2>Nombre</h2>
-            <p>Descripcion:</p>
-            <div class="input-container ic2">
-                <textarea placeholder="" class="input" id="descripcion"  required ></textarea>
-                <div class="cut cut-short"></div>
-            </div>
-            <button class="enviar-btn">Enviar</button>
-            <button class="cerrar-btn">Cerrar</button>
-        </div>
+<body> <div class="card-container">
+    {% for servicio in servicios %}
+<div class="card">
+    <div class="card__image">
+        <img src="{{ servicio.image.url }}" alt="servicio">
     </div>
+    <div class="card__content">
+        <p class="card__title">{{ servicio.name }}</p>
+        <p class="card__text">{{ servicio.description }}</p>
+        <a class="card__button mostrar-modal-btn" href="#" data-modal-id="modal{{ servicio.id }}">Más información</a>
+    </div>
+</div>
+{% endfor %}
+
+<!-- The Modal -->
+{% for servicio in servicios %}
+<div id="modal{{ servicio.id }}" class="modal">
+    <img src="{{ servicio.image.url }}" alt="servicio">
+    <h2>{{ servicio.name }}</h2>
+    <p>{{ servicio.description }}</p>
+    <p>{{ servicio.amount }}</p>
+    <form class="formulario-solicitud" data-service-id="{{ servicio.id }}">
+        {% csrf_token %}
+        <input type="hidden" name="servicio_id" value="{{ servicio.id }}">  <!-- Agrega este campo oculto -->
+        <div class="input-container ic2">
+            <textarea placeholder="Descripción de la solicitud" class="input" id="descripcion" name="description" required></textarea>
+            <div class="cut cut-short"></div>
+        </div>
+        <button type="submit" class="enviar-btn">Enviar</button>
+    </form>
+    <button class="cerrar-btn">Cerrar</button>
+</div>
+{% endfor %}
+</div>
 </body>
 <script>
-    const cerrarBtn = document.querySelector('.cerrar-btn');
-    const mostrarModalBtn = document.querySelector('.mostrar-modal-btn');
-    
-    cerrarBtn.addEventListener('click', () => {
-        document.querySelector('.modal').style.display = 'none';
+    const mostrarModalBtns = document.querySelectorAll('.mostrar-modal-btn');
+const cerrarBtns = document.querySelectorAll('.cerrar-btn');
+const formularioSolicitud = document.querySelectorAll('.formulario-solicitud');
+
+
+mostrarModalBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const modalId = btn.getAttribute('data-modal-id');
+        document.getElementById(modalId).style.display = 'block';
     });
-    
-    mostrarModalBtn.addEventListener('click', () => {
-        document.querySelector('.modal').style.display = 'block';
+});
+
+cerrarBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        const modalId = btn.parentElement.getAttribute('id');
+        document.getElementById(modalId).style.display = 'none';
     });
+});
+formularioSolicitud.forEach(form => {
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const serviceId = form.querySelector('input[name="servicio_id"]').value;  
+        const descripcion = form.querySelector('textarea[name="description"]').value;
+
+        fetch('servicios', { 
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}'
+            },
+            body: JSON.stringify({
+                servicio_id: serviceId,
+                descripcion: descripcion
+            })
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log('Solicitud enviada con éxito');
+            } else {
+                console.error('Error al enviar la solicitud');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+    });
+});
 </script>
 <script src="{% static 'JS/forms.js' %}"></script>
 </html>

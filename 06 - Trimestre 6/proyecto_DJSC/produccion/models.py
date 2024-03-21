@@ -75,10 +75,12 @@ class Novelty_Production(models.Model):
         ordering = ['id']
 
 class Activity(models.Model):
-    date = models.DateField(verbose_name="Fecha actividad",default=datetime.date.today)
+    employee = models.CharField(max_length=30, verbose_name="Empleado")
+    date = models.DateField(verbose_name="Fecha actividad")
     novelty = models.ForeignKey(Novelty_Activity, on_delete=models.CASCADE,verbose_name="novedad de actividad",blank=True,null=True)
     state = models.ForeignKey(State_Activity, on_delete=models.CASCADE,verbose_name="estado de la actividad",blank=True,null=True)
     type = models.ForeignKey(Type_Activity, on_delete=models.CASCADE,verbose_name="Tipo de actividad")
+    email = models.EmailField(verbose_name="Email")
 
     def __str__(self):
         return str(self.type)

@@ -9,49 +9,52 @@
     <title>Registro de Contrato</title>
 </head>
 <body>
-    <form action="{% url 'consultarcontratos' %}" method="post" id="myForm" novalidate>
-    {% csrf_token %}
-    <div class="form">
-        <div class="title">Registro de Contrato Sub Empresa</div>
-        <div class="subtitle">Información requerida</div>
-    
-        <div class="input-container ic2">
-            <input placeholder="" type="text" class="input" id="nombre" name="nombre" required>
-            <div class="cut"></div>
-            <label class="iLabel" for="nombre">Nombre de sub empresa</label>
-        </div>
-    
-        <div class="input-container ic2">
-            <input placeholder="" type="tel" class="input" id="telefono" name="telefono" required>
-            <div class="cut"></div>
-            <label class="iLabel" for="telefono">Teléfono de contacto</label>
-        </div>
-    
-        <div class="input-container ic2">
-            <input placeholder="" type="email" class="input" id="correo" name="correo" required>
-            <div class="cut"></div>
-            <label class="iLabel" for="correo">Email corporativo</label>
-        </div>
+    <form action="{% url 'RegistroContrato' %}" method="post" id="myForm" novalidate>
+      {% csrf_token %}
+      <div class="form">
+          <div class="title">Registro de Contrato Sub Empresa</div>
+          <div class="subtitle">Información requerida</div>
 
-        <div class="input-container ic2">
-          <input placeholder="" type="date" class="input" id="fecha_fc" required>
-          <div class="cut"></div>
-          <label class="iLabel" for="fecha_fc">Fecha de finalizacion del contrato</label>
+          <div class="input-container ic1">
+            <select id="solicitud" class="input" name="solicitud" required>
+                <option value="" disabled selected>solicitud</option>
+                {% for solicitud in solicitudes %}
+                    <option value="{{ solicitud.id }}">{{ solicitud.description }}</option>
+                {% endfor %}
+            </select>
+        </div>
+      
+          <div class="input-container ic2">
+              <input placeholder="" type="text" class="input" id="nombre" name="nombre" required>
+              <div class="cut"></div>
+              <label class="iLabel" for="nombre">Nombre de sub empresa</label>
+          </div>
+      
+          <div class="input-container ic2">
+              <input placeholder="" type="tel" class="input" id="telefono" name="telefono" required>
+              <div class="cut"></div>
+              <label class="iLabel" for="telefono">Teléfono de contacto</label>
+          </div>
+      
+          <div class="input-container ic2">
+              <input placeholder="" type="email" class="input" id="correo" name="correo" required>
+              <div class="cut"></div>
+              <label class="iLabel" for="correo">Email corporativo</label>
+          </div>
+  
+          <div class="input-container ic2">
+              <input placeholder="" type="date" class="input" id="fecha_fc" name="fecha_fc" required>
+              <div class="cut"></div>
+              <label class="iLabel" for="fecha_fc">Fecha de finalización del contrato</label>
+          </div>
+  
+          <div class="input-container ic2">
+              <textarea placeholder="" class="input" id="descripcion" name="detalles" required></textarea>
+              <div class="cut cut-short"></div>
+              <label class="iLabel" for="detalles">Detalles del producto</label>
+          </div>
+          <button class="submit" type="submit">Confirmar</button>
       </div>
-    
-        <div class="input-container ic2">
-            <input placeholder="" type="number" class="input" id="cantidad" name="cantidad" required>
-            <div class="cut"></div>
-            <label class="iLabel" for="cantidad">Cantidad de producto</label>
-        </div>
-    
-        <div class="input-container ic2">
-            <textarea placeholder="" class="input" id="descripcion" name="detalles" required></textarea>
-            <div class="cut cut-short"></div>
-            <label class="iLabel" for="detalles">Detalles del producto</label>
-        </div>
-        <button class="submit" type="submit">Confirmar</button>
-    </div>
 </form>
   <div class="error-container" id="errorContainer" style="display: none;"></div>
 </body>
@@ -68,15 +71,20 @@
       errorContainer.innerHTML = '';
   
       // Validar los campos del formulario
+      const solicitud= document.getElementById('solicitud');
       const nombre = document.getElementById('nombre');
       const telefono = document.getElementById('telefono');
       const correo = document.getElementById('correo');
-      const cantidad = document.getElementById('cantidad');
       const fechaFinalizacion = document.getElementById('fecha_fc');
       const detalles = document.getElementById('descripcion');
   
       let hasError = false;
   
+      if (solicitud.value === '') {
+        hasError = true;
+        addError('Por favor, seleccione la solicitud.');
+      }
+      
       if (nombre.value.trim() === '') {
         hasError = true;
         addError('Por favor, ingrese un nombre de sub empresa.');
@@ -97,10 +105,6 @@
         addError('Por favor, ingrese un correo electrónico corporativo válido.');
       }
       
-      if (cantidad.value.trim() === '' || !/^\d+$/.test(cantidad.value.trim())) {
-        hasError = true;
-        addError('Por favor, ingrese una cantidad válida.');
-      }
       
       if (detalles.value.trim() === '') {
         hasError = true;

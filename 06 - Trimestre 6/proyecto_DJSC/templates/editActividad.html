@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/Style.css' %}">
+
+    <title>Editar actividad</title>
+</head>
+<body>
+    <div class="container">
+        <center><h1>Editar actividad</h1></center>
+        <div class="formulario">
+            <form action="{% url 'editActividad' actividad_id=actividad.id %}" method="post" class="row g-3">
+                {% csrf_token %}
+                <div class="col-12">
+                    <label for="estadoactividad">Estado de actividad</label>
+                    <select id="estadoactividad" name="state" class="form-select" required>
+                        <option value="">Seleccionar estado de actividad</option>
+                        {% for estado in estados %}
+                            <option value="{{ estado.id }}" {% if actividad.state_id == estado.id %} selected {% endif %}>{{ estado.state }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-12">
+                    <label for="novedadactividad">Novedad de actividad</label>
+                    <select id="novedadactividad" name="novelty" class="form-select" required>
+                        <option value="">Seleccionar novedad de actividad</option>
+                        {% for tipo_novedad in tipos_novedad %}
+                            <option value="{{ tipo_novedad.id }}" {% if actividad.novelty_id == tipo_novedad.id %} selected {% endif %}>{{ tipo_novedad.novelty }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="col-6">
+                    <button type="submit" name="submit" class="btn btn-success">Editar actividad</button>
+                </div>
+            </form>
+            
+        </div>
+    </div>
+</body>
+<script src="{% static 'JS/validacion.js' %}"></script>
+</html>

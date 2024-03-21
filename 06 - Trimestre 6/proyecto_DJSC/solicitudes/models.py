@@ -111,15 +111,15 @@ class Request(models.Model):
         ordering = ['id']
 
 class Contract_Sub_Company(models.Model):
-    request = models.ForeignKey(Request, on_delete=models.CASCADE,verbose_name="Solicitud")
-    state = models.ForeignKey(State_Contract_Sub_Company, on_delete=models.CASCADE,verbose_name="estado de contrato sub empresa",blank=True,null=True)
-    dateI = models.DateField(verbose_name="Fecha inicio de contrato",default=datetime.date.today)
+    request = models.ForeignKey(Request, on_delete=models.CASCADE, verbose_name="Solicitud")
+    state = models.ForeignKey(State_Contract_Sub_Company, on_delete=models.CASCADE, verbose_name="estado de contrato sub empresa", blank=True, null=True)
+    dateI = models.DateField(verbose_name="Fecha inicio de contrato", default=datetime.date.today)
     dateF = models.DateField(verbose_name="Fecha finalizacion de contrato")
-    subcompany = models.ForeignKey(Sub_Company, on_delete=models.CASCADE,verbose_name="sub empresa")
+    subcompany = models.OneToOneField(Sub_Company, on_delete=models.CASCADE, verbose_name="sub empresa")
 
     def __str__(self):
         return str(self.request)
-    
+
     class Meta:
         verbose_name = "Contrato Sub Empresa"
         verbose_name_plural = "Contratos Sub Empresa"

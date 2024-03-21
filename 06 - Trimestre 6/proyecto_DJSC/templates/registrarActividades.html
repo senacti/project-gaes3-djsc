@@ -9,85 +9,99 @@
     <title>Registrar Actividades</title>
 </head>
 <body>
-    <form action="" id="myForm" novalidate>
-    <div class="form">
-        <div class="title">Registrar Actividades</div>
-        <div class="subtitle">Completa la información</div>
-    
-        <div class="input-container ic1">
-            <input placeholder="" type="text" class="input" id="nombre_actividad" required>
-            <div class="cut"></div>
-            <label class="iLabel" for="nombre_actividad">Nombre de la Actividad</label>
-        </div>
-    
-        <div class="input-container ic2">
-            <input placeholder="" type="date" class="input" id="fecha_actividad" required>
-            <div class="cut"></div>
-            <label class="iLabel" for="fecha_actividad">Fecha de la Actividad</label>
-        </div>
-    
-        <div class="input-container ic2">
-            <input placeholder="" type="text" class="input" id="descripcion" required>
-            <div class="cut"></div>
-            <label class="iLabel" for="descripcion">Detalles</label>
-        </div>
-    
-        <button class="submit" type="submit">Registrar Actividad</button>
-    </div>
-</form>
-  <div class="error-container" id="errorContainer" style="display: none;"></div>
-</body>
-<script src="{% static 'JS/forms.js' %}"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('myForm');
-    const errorContainer = document.getElementById('errorContainer');
-  
-    form.addEventListener('submit', function(event) {
-      event.preventDefault(); // Evitar que el formulario se envíe
-  
-      // Limpiar los mensajes de error anteriores
-      errorContainer.innerHTML = '';
-  
-      // Validar los campos del formulario
-      const nombreActividad = document.getElementById('nombre_actividad');
-      const fechaActividad = document.getElementById('fecha_actividad');
-      const detallesActividad = document.getElementById('descripcion');
-  
-      let hasError = false;
-  
-      if (nombreActividad.value.trim() === '') {
-        hasError = true;
-        addError('Por favor, ingrese un nombre de actividad.');
-      }
+        <form action="{% url 'registrarActividades' %}" id="myForm" method="POST" novalidate>
+          {% csrf_token %}
+          <div class="form">
+            <div class="title">Registrar Actividades</div>
+            <div class="subtitle">Completa la información</div>
+            <div class="input-container ic1">
+              <select id="tipo_servicio" class="input" name="type" required>
+                  <option value="" disabled selected>Tipo de actividad</option>
+                  {% for tipo_actividad in tipos_actividad %}
+                      <option value="{{ tipo_actividad.id }}">{{ tipo_actividad.type }}</option>
+                  {% endfor %}
+              </select>
+          </div>
+          
+              <div class="input-container ic1">
+                  <input placeholder="" type="text" class="input" id="nombre_empleado" name="employee" required>
+                  <div class="cut"></div>
+                  <label class="iLabel" for="nombre_empleado">Nombre del Empleado</label>
+              </div>
+          
+              <div class="input-container ic2">
+                  <input placeholder="" type="date" class="input" id="fecha" name="date" required>
+                  <div class="cut"></div>
+                  <label class="iLabel" for="fecha">Fecha</label>
+              </div>
+          
+              <div class="input-container ic2">
+                  <input placeholder="" type="email" class="input" id="correo_empleado" name="email" style="margin-bottom: 20px;">
+                  <div class="cut"></div>
+                  <label class="iLabel" for="correo_empleado">Correo del Empleado</label>
+              </div>
+          
+              <button class="submit" type="submit">registrar actividad</button>
+          </div>
+      </form>
+      <div class="error-container" id="errorContainer" style="display: none;"></div>
       
-      if (fechaActividad.value.trim() === '') {
-        hasError = true;
-        addError('Por favor, ingrese una fecha.');
-      }
+      </body>
+      <script src="{% static 'JS/forms.js' %}"></script>
+      <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          const form = document.getElementById('myForm');
+          const errorContainer = document.getElementById('errorContainer');
+        
+          form.addEventListener('submit', function(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe
+        
+            // Limpiar los mensajes de error anteriores
+            errorContainer.innerHTML = '';
+        
+            // Validar los campos del formulario
+            const nombreEmpleado = document.getElementById('nombre_empleado');
+            const fecha = document.getElementById('fecha');
+            const actividadAsignada = document.getElementById('actividad_asignada');
+            const correoEmpleado = document.getElementById('correo_empleado');
+        
+            let hasError = false;
+        
+            if (nombreEmpleado.value.trim() === '' || !/^[a-zA-Z\s]+$/.test(nombreEmpleado.value.trim())) {
+              hasError = true;
+              addError('Por favor, ingrese un nombre de empleado válido.');
+            }
+            
+            if (fecha.value.trim() === '') {
+              hasError = true;
+              addError('Por favor, ingrese una fecha.');
+            }
+            
+            
+            if (correoEmpleado.value.trim() === '' || !/\S+@\S+\.\S+/.test(correoEmpleado.value.trim())) {
+              hasError = true;
+              addError('Por favor, ingrese un correo electrónico válido.');
+            }
+        
+            
+          if (hasError) {
+            // Mostrar la tarjeta de error
+            errorContainer.style.display = 'block';
+          } else {
+            // Ocultar la tarjeta de error
+            errorContainer.style.display = 'none';
+            // Si no hay errores, enviar el formulario
+            form.submit();
+          }
+          });
+        
+          // Función para agregar mensajes de error al contenedor
+          function addError(message) {
+            const errorParagraph = document.createElement('p');
+            errorParagraph.textContent = message;
+            errorContainer.appendChild(errorParagraph);
+          }
+        });
+        </script>
+          </html>
       
-      if (descripcion.value.trim() === '') {
-        hasError = true;
-        addError('Por favor, ingrese una descripción.');
-      }
-      
-      if (hasError) {
-        // Mostrar la tarjeta de error
-        errorContainer.style.display = 'block';
-      } else {
-        // Ocultar la tarjeta de error
-        errorContainer.style.display = 'none';
-        // Si no hay errores, enviar el formulario
-        form.submit();
-      }
-    });
-  
-    // Función para agregar mensajes de error al contenedor
-    function addError(message) {
-      const errorParagraph = document.createElement('p');
-      errorParagraph.textContent = message;
-      errorContainer.appendChild(errorParagraph);
-    }
-  });
-</script>
-</html>

@@ -52,7 +52,6 @@
         <thead>
             <tr>
                 <th>Fecha de venta</th>
-                <th>Fecha de entrega</th>
                 <th>Precio</th>
                 <th>Cantidad de venta</th>
                 <th>Total IVA</th>
@@ -64,7 +63,6 @@
             {% for sale in sales %}
             <tr>
                 <td>{{ sale.date }}</td>
-                <td>{{ sale.datedelivery }}</td>
                 <td>{{ sale.price }}</td>
                 <td>{{ sale.amount }}</td>
                 <td>{{ sale.totalVAT }}</td>

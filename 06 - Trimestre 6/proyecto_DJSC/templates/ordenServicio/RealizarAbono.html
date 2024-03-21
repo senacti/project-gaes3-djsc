@@ -6,34 +6,50 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'CSS/STYLEabonos.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'CSS/Style.css' %}">
     <title>REALIZAR ABONO</title>
 </head>
 
 <body>
     <div>
         <section class="form-registerh">
-            <form action="#" method="post">
-                {% csrf_token %}
-
-                <center>
-                    <div style="margin-bottom: 20px; background: black;">
-                        <h4 style="color: white; background: none;">REALIZAR ABONO</h4>
-                    </div>
-                </center>
-                <input class="controls" type="number" placeholder="Ingrese cantidad de abono" required id="cantidad"
-                    name="cantidad">
-                <span class="col-1" id="cantidadOK"></span>
-                <div>
-                    <select name="metodoPago">
-                        <option value="">-Seleccione Metodo de Pago-</option>
-                        <option value="NEQUI">NEQUI</option>
-                        <option value="TARJETA DE CREDITO">TARJETA DE CREDITO</option>
-                        <option value="TARJETA DE DEBITO">TARJETA DE DEBITO</option>
-                    </select>
+            <div class="formulario">
+                <div class="container">
+                    <center><h1>Registrar Abono</h1></center>
+                    <form action="{% url 'RealizarAbono' %}" class="row g-3" method="post">
+                        {% csrf_token %}
+                        <div class="input-container ic1">
+                            <select  class="input" name="sale" required>
+                                <option value="" disabled selected>Venta</option>
+                                {% for venta in ventas %}
+                                    <option value="{{ venta.id }}">{{ venta.request }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div>
+                            <label for="num">cantidad de abono</label>
+                            <input type="number" name="paymentI" class="form-control" id="num"  required="required">
+                            <div class="valid-feedback">Espacio correcto</div>
+                            <div class="invalid-feedback">Espacio vacío</div>
+                        </div>
+                        
+                        <div class="input-container ic1">
+                            <select  class="input" name="type" required>
+                                <option value="" disabled selected>tipo pago</option>
+                                {% for tipo in tipos %}
+                                    <option value="{{ tipo.id }}">{{ tipo.type }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        
+                        <div class="col-6"></div>
+                        <div class="col-6">
+                            <button type="submit" class="btn btn-primary">Registrar Venta</button>
+                        </div>
+                    </form>
                 </div>
-                <input class="botons" type="submit" value="Confirmar Abono">
-            </form>
+            </div>
         </section>
         <script src="{% static 'JS/validacionJ.js' %}"></script>
     </div>

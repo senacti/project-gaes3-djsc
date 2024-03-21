@@ -20,20 +20,21 @@
         <div class="formulario">
             <form action="#" method="POST">
                 {% csrf_token %}
-                <input type="hidden" name="_method" value="PUT" />
+                <input type="hidden" name="contrato_id" value="{{ contrato_id }}">
                 <div class="form-group">
                     <label for="estadoContrato">Estado del Contrato</label>
                     <select class="form-control" id="estadoContrato" name="estadoContrato">
                         <option value="">Seleccionar Estado</option>
                         {% for estado in estados %}
-                            <option value="{{ estado.id }}" {% if contrato.estadoContrato.id == estado.id %} selected {% endif %}>
-                                {{ estado.estadoContrato }}
+                            <option value="{{ estado.id }}" {% if selected_state and estado.id == selected_state.id %} selected {% endif %}>
+                                {{ estado }}
                             </option>
                         {% endfor %}
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">Guardar Cambios</button>
             </form>
+                 
         </div>
     </div>
     <script src="{% static 'JS/validacion.js' %}"></script>

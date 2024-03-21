@@ -18,8 +18,8 @@
 <nav class="navbar navbar-light bg-light">
   <a class="navbar-brand"></a>
   <div class="ms-auto">
-      <form action="/reporte" method="get">
-    <button class="btn btn-primary ml-auto" type="submit">Generar Reporte</button>
+      <form action="{% url 'reporteP' %}" method="get">
+    <button class="btn btn-primary ml-auto" type="submit">Generar informe en pdf producciones</button>
 </form>
   </div>
 </nav>
@@ -40,9 +40,9 @@
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaboDMoOVmyRkfkpcAV_Tx_UeF7fAQfVdMYg&usqp=CAU" class="card-img-top" alt="...">
             <div class="card-body">
               <h5 class="card-title">Tipo de Produccion:</h5>
-              <p>{{ produccion.tipoProduccion.tipoProduccion }}</p>
+              <p>{{ produccion.type }}</p>
               <p class="card-text">Fecha de la Produccion:</p>
-              <p>{{ produccion.fechaproduccion }}</p>
+              <p>{{ produccion.date }}</p>
               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal{{ produccion.id }}">
                  abrir
               </button>
@@ -59,7 +59,7 @@
           <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              <button type="button" class="btn-close" data-bs-dismiss="modal{}"></button>
             </div>
             <!-- Modal body -->
             <div class="modal-body">
@@ -70,14 +70,16 @@
                 <div style="display: inline-block; margin-left: 5%;">
                   <div style="display: flex;">
                     <p style="color: red;">Estado:</p>
-                    <p style="margin-left: 5%;">{{ produccion.estadoProduccion.estadoProduccion }}</p>
+                    <p style="margin-left: 5%;">{{ produccion.state }}</p>
                   </div>
                   <p style="color: red;">Tipo Produccion: </p>
-                  <p>{{ produccion.tipoProduccion.tipoProduccion }}</p>
+                  <p>{{ produccion.type }}</p>
                   <p style="color: red;">Novedad Produccion: </p>
-                  <p>{{ produccion.novedadProduccion.novedadProduccion }}</p>
+                  <p>{{ produccion.novelty }}</p>
                   <p style="color: red;">Fecha Produccion: </p>
-                  <p>{{ produccion.fechaproduccion }}</p>
+                  <p>{{ produccion.date }}</p>
+                  <p style="color: red;">actividad: </p>
+                  <p>{{ produccion.activity }}</p>
                 </div>
               </div>
             </div>

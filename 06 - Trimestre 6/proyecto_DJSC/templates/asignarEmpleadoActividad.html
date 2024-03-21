@@ -9,39 +9,35 @@
     <title>Asignar Empleados para una Actividad</title>
 </head>
 <body>
-    <form action="" id="myForm" novalidate>
+  <form action="" id="myForm" method="POST" novalidate>
+    {% csrf_token %}
     <div class="form">
         <div class="title">Asignar Empleados para una Actividad</div>
         <div class="subtitle">Completa la información</div>
     
         <div class="input-container ic1">
-            <input placeholder="" type="text" class="input" id="nombre_empleado" required>
+            <input placeholder="" type="text" class="input" id="nombre_empleado" name="employee" required>
             <div class="cut"></div>
             <label class="iLabel" for="nombre_empleado">Nombre del Empleado</label>
         </div>
     
         <div class="input-container ic2">
-            <input placeholder="" type="date" class="input" id="fecha" required>
+            <input placeholder="" type="date" class="input" id="fecha" name="date" required>
             <div class="cut"></div>
             <label class="iLabel" for="fecha">Fecha</label>
         </div>
     
         <div class="input-container ic2">
-            <input placeholder="" type="text" class="input" id="actividad_asignada" required>
+            <input placeholder="" type="email" class="input" id="correo_empleado" name="email" style="margin-bottom: 20px;">
             <div class="cut"></div>
-            <label class="iLabel" for="actividad_asignada">Actividad Asignada</label>
-        </div>
-    
-        <div class="input-container ic2">
-            <input placeholder="" type="email" class="input" id="correo_empleado" required style="margin-bottom: 20px;">
-            <div class="cut"></div>
-           <label class="iLabel" for="correo_empleado">Correo del Empleado</label>
+            <label class="iLabel" for="correo_empleado">Correo del Empleado</label>
         </div>
     
         <button class="submit" type="submit">Asignar Empleado para una Actividad</button>
     </div>
 </form>
-  <div class="error-container" id="errorContainer" style="display: none;"></div>
+<div class="error-container" id="errorContainer" style="display: none;"></div>
+
 </body>
 <script src="{% static 'JS/forms.js' %}"></script>
 <script>
@@ -73,10 +69,6 @@
         addError('Por favor, ingrese una fecha.');
       }
       
-      if (actividadAsignada.value.trim() === '') {
-        hasError = true;
-        addError('Por favor, ingrese una actividad asignada.');
-      }
       
       if (correoEmpleado.value.trim() === '' || !/\S+@\S+\.\S+/.test(correoEmpleado.value.trim())) {
         hasError = true;

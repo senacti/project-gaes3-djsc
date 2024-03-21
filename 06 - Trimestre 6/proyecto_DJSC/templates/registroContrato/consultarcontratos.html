@@ -14,26 +14,27 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"></a>
-        <form action="#" method="get">
-            <button class="btn btn-primary ml-auto" type="submit">Generar Reporte</button>
-        </form>
+        
     </nav>
     <table class="table">
         <thead>
             <tr>
-                <th scope="col">id contrato</th>
+                <th scope="col">fecha inicial</th>
+                <th scope="col">fecha final</th>
                 <th scope="col">nombre sub-empresa</th>
-                <th scope="col">id empresa</th>
+                <th scope="col">email</th>
                 <th scope="col">numero de contacto</th>
             </tr>
         </thead>
         <tbody>
             {% for contrato in contratos %}
             <tr>
-                <td>{{ contrato.id }}</td>
-                <td>{{ contrato.subempresa.nombre }}</td>
-                <td>{{ contrato.subempresa.id }}</td>
-                <td>{{ contrato.subempresa.telefono }}</td>
+                
+                <td>{{ contrato.dateI }}</td>
+                <td>{{ contrato.dateF }}</td>
+                <td>{{ contrato.subcompany }}</td>
+                <td>{{ contrato.subcompany.email }}</td>
+                <td>{{ contrato.subcompany.phone }}</td>
                 <td>
                     <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal{{ contrato.id }}">abrir</button>
                 </td>
@@ -50,30 +51,30 @@
                                     <div style="display: inline-block; margin-left: 5%;">
                                         <div style="display: flex;">
                                             <p style="color: red;">nombre sub empresa:</p>
-                                            <p style="margin-left: 5%;">{{ contrato.subempresa.nombre }}</p>
+                                            <p style="margin-left: 5%;">{{ contrato.subcompany }}</p>
                                         </div>
                                         <div style="display: inline-block; margin-left: 5%;">
                                             <div style="display: flex;">
                                                 <p style="color: red;">numero de contacto:</p>
-                                                <p style="margin-left: 5%;">{{ contrato.subempresa.telefono }}</p>
+                                                <p style="margin-left: 5%;">{{ contrato.subcompany.phone }}</p>
                                             </div>
                                             <div style="display: inline-block; margin-left: 5%;">
                                                 <div style="display: flex;">
                                                     <p style="color: red;">correo de contacto:</p>
-                                                    <p style="margin-left: 5%;">{{ contrato.subempresa.correo }}</p>
+                                                    <p style="margin-left: 5%;">{{ contrato.subcompany.email }}</p>
                                                 </div>
                                                 <div style="display: inline-block; margin-left: 5%;">
                                                     <div style="display: flex;">
                                                         <p style="color: red;">Estado:</p>
-                                                        <p>{{ contrato.estadoContrato.estadoContrato }}</p>
+                                                        <p>{{ contrato.state }}</p>
                                                     </div>
                                                     <div style="display: inline-block; margin-left: 5%;">
                                                         <div style="display: flex;">
-                                                            <p style="color: red;">cantidad:</p>
-                                                            <p>{{ contrato.cantidad }}</p>
+                                                            <p style="color: red;">Fecha de inicio:</p>
+                                                            <p>{{ contrato.dateI }}</p>
                                                         </div>
-                                                        <p style="color: red;">Detalles contrato: </p>
-                                                        <p>{{ contrato.detalles }}</p>
+                                                        <p style="color: red;">Fecha de finalizacion: </p>
+                                                        <p>{{ contrato.dateF }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -82,13 +83,13 @@
                                 </div>
                             </div>
                             <div class="modal-footer">
-                                <a class="btn btn-primary" href="/contratos/{{ contrato.id }}/editar">Modificar estado</a>
-                                <form action="/contratos/{{ contrato.id }}/eliminar" method="post" class="d-inline">
+                                <a class="btn btn-primary" href="{% url 'estadoCedit' %}?contrato_id={{ contrato.id }}" data-id="{{ contrato.id }}">Modificar estado</a>
+                                <form action="{% url 'eliminar_contrato' %}" method="POST">
                                     {% csrf_token %}
-                                    <input type="hidden" name="_method" value="DELETE">
-                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    <input type="hidden" name="contrato_id" value="{{ contrato.id }}">
+                                    <a class="btn btn-danger"><button type="submit" class="btn-danger">Eliminar</button></a>
                                 </form>
-                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">cerrar</button>
+                                <button type="button"  data-bs-dismiss="modal">cerrar</button>
                             </div>
                         </div>
                     </div>

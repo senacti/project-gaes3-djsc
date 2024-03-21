@@ -16,66 +16,28 @@
   </nav>
 
   <div>
+    
     <div class="row">
+      {% for solicitud in solicitudes %}
       <div class="col-sm-3">
         <div class="anun m-5">
           <div class="card" style="width: 18rem;">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaboDMoOVmyRkfkpcAV_Tx_UeF7fAQfVdMYg&usqp=CAU" class="card-img-top" alt="...">
+            <img src="{{solicitud.service.image.url}}" class="card-img-top" alt="servicio">
             <div class="card-body">
-              <h5 class="card-title">Camisas</h5>
-              <p class="card-text">detalles del servicio:</p>
-              <p>se pidio para estampar unas 40 camiasas</p>
-              <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">
-                abrir
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- The Modal -->
-      <div class="modal" id="myModal">
-        <div class="modal-dialog modal-lg">
-          <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <!-- Modal body -->
-            <div class="modal-body">
-              <div style="display: flex;">
-                <div class="card" style="width: 50rem;height: 100%;">
-                  <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTaboDMoOVmyRkfkpcAV_Tx_UeF7fAQfVdMYg&usqp=CAU" alt="...">
-                </div>
-                <div style="display: inline-block; margin-left: 5%;">
-                  <div style="display: flex;">
-                    <p style="color: red;">cantidad:</p>
-                    
-                  </div>
-                  <p style="color: red;">estado: </p>
-                  <p>EN ESPERA</p>
-                  <p style="color: red;">Detalles: </p>
-                  <p>se pidio para estampar unas 40 camiasas</p>
-                  <p style="color: red;">Total: </p>
-                  <p>13.500$</p>
-                  <ul class="list-group list-group-horizontal-sm">
-                    <li class="list-group-item">1.abono</li>
-                    <li class="list-group-item">fecha abono</li>
-                    <li class="list-group-item">cantidad abono</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <!-- Modal footer -->
-            <div class="modal-footer">
+              <h5 class="card-title">{{solicitud.service.name}}</h5>
+              <p class="card-text">{{solicitud.description}}</p>
+              <p class="card-text">Fecha: {{solicitud.date}}</p>
+              <p class="card-text">estado: {{solicitud.state}}</p>
               <a href="{% url 'registrarOrdenProduccion' %}"><button type="button" class="btn btn-primary">
                 crear orden de produccion
               </button></a>
-              <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
         </div>
       </div>
+      {% endfor %}
+
+     
     </div>
   </div>
 </body>

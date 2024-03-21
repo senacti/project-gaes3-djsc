@@ -11,9 +11,9 @@
 <body>
     <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand"></a>
-        <form class="form-inline" action="#" method="GET">
+        <form class="form-inline" action="{% url 'reporteS' %}" method="GET">
             <button class="arc-btn-retro">
-                Generar reporte
+                informe solicitudes
               </button>
         </form>
     </nav>
@@ -24,46 +24,47 @@
                 <div class="titulo">Estado</div>
                 <div class="titulo">Fecha</div>
                 <div class="titulo">Descripción</div>
+                <div class="titulo">Editar</div>
+                <div class="titulo">Eliminar</div>
                 
-                <div class="dato">Limpieza</div>
-                <div class="dato">En progreso</div>
-                <div class="dato">12/08/2021</div>
-                <div class="dato">Limpieza general de la oficina</div>
+
+            {% if request %}
+            {% for request in requests %}
+            
                 
-                <div class="dato">Reparación</div>
-                <div class="dato">Completado</div>
-                <div class="dato">15/08/2021</div>
-                <div class="dato">Reparación de la impresora</div>
-                
-                <div class="dato">Instalación</div>
-                <div class="dato">Pendiente</div>
-                <div class="dato">20/08/2021</div>
-                <div class="dato">Instalación de software de contabilidad</div>
+                <div class="dato">{{ request.service }}</div>
+                <div class="dato">{{ request.state }}</div>
+                <div class="dato">{{ request.date }}</div>
+                <div class="dato">{{ request.description }}</div>
+                <div class="dato"><a href="{% url 'estadoedit' %}?solicitud_id={{ request.id }}" data-id="{{ request.id }}"><button class="edit-btn" >Editar</button></a></div>
+                <div class="dato">
+                    <form action="{% url 'eliminar_solicitud' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="solicitud_id" value="{{ request.id }}">
+                        <button type="submit" class="edit-btn">Eliminar</button>
+                    </form>
+                </div>                {% endfor %}
+            {% else %}
             </div>
+            
+            <tr>
+                <td colspan="5" class="centered-message">
+                    <div class="my-5">
+                        <center><h1 style="font-size: 3rem;">No hay solicitudes</h1></center>
+                    </div>
+                </td>
+            </tr>
+        {% endif %}
         </thead>
         <tbody>
-            {% if request %}
-                {% for request in requests %}
-                    <tr>
-                        <td>{{ request.description }}</td>
-                        <td>{{ request.date }}</td>
-                        <td>{{ request.state }}</td>
-                        <td>{{ request.service }}</td>
-                        
-                    </tr>
-                {% endfor %}
-            {% else %}
-                <tr>
-                    <td colspan="5" class="centered-message">
-                        <div class="my-5">
-                            <center><h1 style="font-size: 3rem;">No hay solicitudes</h1></center>
-                        </div>
-                    </td>
-                </tr>
-            {% endif %}
         </tbody>
     </table>
 </body>
 <script src="{% static 'JS/bootstrap.min.js' %}"></script>
 <script src="{% static 'JS/bootstrap.bundle.min.js' %}"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+
+
+
 </html>
