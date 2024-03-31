@@ -85,17 +85,17 @@
             </div>
             <!-- Modal footer -->
             <div class="modal-footer">
-              <a href="/edit/{{ produccion.id }}" class="btn btn-warning">Editar</a>
-              <form action="/delete/{{ produccion.id }}" method="post" class="d-inline">
+              <!-- <a href="#" class="btn btn-warning">Editar</a>
+              <form action="#" method="post" class="d-inline">
                 {% csrf_token %}
                 <input type="hidden" name="_method" value="DELETE" />
                 <button type="submit" class="btn btn-danger">Eliminar</button>
-              </form>
-              <a >
+              </form> -->
+              <!-- a >
                 <button type="button" class="btn btn-primary">
                   asignar proceso de produccion
                 </button>
-              </a>
+              </a> -->
               <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cerrar</button>
             </div>
           </div>
